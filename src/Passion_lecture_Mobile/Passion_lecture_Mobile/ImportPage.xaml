@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Passion_lecture_Mobile.ImportPage"
+             Title="ImportPage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+
+        <Label
+Text="Importation"
+Style="{StaticResource SubHeadline}"
+SemanticProperties.HeadingLevel="Level1"/>
+
+
+        <Button Text="Importer un livre"
+     Clicked="ImportBook"
+     HorizontalOptions="Center"/>
+
+
+        <Button Text="Back"
+            Clicked="GoBack"
+            HorizontalOptions="Center"/>
+
+
+    </VerticalStackLayout>
+</ContentPage>

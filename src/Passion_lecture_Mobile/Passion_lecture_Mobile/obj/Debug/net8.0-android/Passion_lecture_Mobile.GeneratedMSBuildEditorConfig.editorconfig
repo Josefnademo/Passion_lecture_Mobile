@@ -1,0 +1,91 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Passion_lecture_Mobile
+build_property.ProjectDir = C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\Passion_lecture_Mobile\Passion_lecture_Mobile\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/EditPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.EditPage.xaml
+build_metadata.AdditionalFiles.TargetPath = EditPage.xaml
+build_metadata.AdditionalFiles.RelativePath = EditPage.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/EtapChoosenBookPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.EtapChoosenBookPage.xaml
+build_metadata.AdditionalFiles.TargetPath = EtapChoosenBookPage.xaml
+build_metadata.AdditionalFiles.RelativePath = EtapChoosenBookPage.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/helpers/helpers/maui-client/ApiPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.helpers.helpers.maui_client.ApiPage.xaml
+build_metadata.AdditionalFiles.TargetPath = helpers\helpers\maui-client\ApiPage.xaml
+build_metadata.AdditionalFiles.RelativePath = helpers\helpers\maui-client\ApiPage.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/ImportPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.ImportPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ImportPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ImportPage.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/LibraryPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.LibraryPage.xaml
+build_metadata.AdditionalFiles.TargetPath = LibraryPage.xaml
+build_metadata.AdditionalFiles.RelativePath = LibraryPage.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/ReadBookPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.ReadBookPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ReadBookPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ReadBookPage.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/TagsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.TagsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = TagsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = TagsPage.xaml
