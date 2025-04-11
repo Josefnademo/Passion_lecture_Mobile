@@ -5,8 +5,12 @@
              Title="EditPage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Edition du livre"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        
+        
+        
+        
     </VerticalStackLayout>
 </ContentPage>

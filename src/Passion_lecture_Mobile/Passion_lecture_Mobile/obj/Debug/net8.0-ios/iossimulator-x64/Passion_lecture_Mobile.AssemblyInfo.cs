@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Passion_lecture_Mobile")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+dee6b6d1e2a133d64b61313f590bf501efede5d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+337bd126dbea7e17a0e7981c2ebef5e25789f4bd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Passion_lecture_Mobile")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Passion_lecture_Mobile")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -8,5 +8,25 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Button
+            x:Name="ReadBook"
+            Text="Lire ce livre" 
+            SemanticProperties.Hint="BookTextDisplay"
+            Clicked="ReadThisBook"
+            HorizontalOptions="Fill" />
+            
+        <Button
+            x:Name="ModifyBook"
+            Text="Modiffier ce livre" 
+            SemanticProperties.Hint="library with all added books"
+            Clicked="ModifyThisBook"
+            HorizontalOptions="Fill" />
+
+        <Button 
+         Text="Back"
+         Clicked="GoBack"
+         HorizontalOptions="Center"/>
+        
     </VerticalStackLayout>
 </ContentPage>

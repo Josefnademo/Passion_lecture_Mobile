@@ -1,37 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Passion_lecture_Mobile.MainPage">
+             x:Class="Passion_lecture_Mobile.MainPage"
+             Title="Accueil"
+             BackgroundImageSource="ancient-library.jpeg">
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+            Padding="30,60,30,30"
+            Spacing="40">
 
             <Label
                 Text="Bienvenue à la librairie des amoureux des livres"
-                Style="{StaticResource SubHeadline}"
+                Style="{StaticResource MainTitle}"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
                 SemanticProperties.HeadingLevel="Level1"
                 SemanticProperties.Description="Welcome to library of books lovers" />
 
+            <VerticalStackLayout Spacing="20">
             <Button
      x:Name="Library"
      Text="Ma bibliothèque" 
      SemanticProperties.Hint="library with all added books"
      Clicked="NavigateToLibraryPage"
-     HorizontalOptions="Fill" />
+      Style="{StaticResource PrimaryButton}" />
 
             <Button
       x:Name="Import"
       Text="Importer un livre" 
       SemanticProperties.Hint="Import a book"
-      Clicked="NavigateToImportPage"
-      HorizontalOptions="Fill" />
+      Style="{StaticResource PrimaryButton}"
+      Clicked="NavigateToImportPage"      />
+
 
             <Button
       x:Name="Tags"
@@ -39,6 +40,7 @@
       SemanticProperties.Hint="Your Tags"
       Clicked="NavigateToTagsPage"
       HorizontalOptions="Fill" />
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
