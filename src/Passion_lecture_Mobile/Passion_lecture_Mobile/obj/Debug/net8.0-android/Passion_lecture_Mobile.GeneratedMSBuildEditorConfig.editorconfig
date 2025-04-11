@@ -78,11 +78,23 @@ build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.Res
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/Resources/Styles/ImportStyles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.Resources.Styles.ImportStyles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\ImportStyles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\ImportStyles.xaml
+
 [C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/Resources/Styles/TagsStyles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Passion_lecture_Mobile.Resources.Styles.TagsStyles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\TagsStyles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\TagsStyles.xaml
 
 [C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/Passion_lecture_Mobile/Passion_lecture_Mobile/TagsPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

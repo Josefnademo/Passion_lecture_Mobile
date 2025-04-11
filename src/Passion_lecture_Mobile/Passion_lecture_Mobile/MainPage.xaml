@@ -38,8 +38,8 @@
       x:Name="Tags"
       Text="Tags" 
       SemanticProperties.Hint="Your Tags"
-      Clicked="NavigateToTagsPage"
-      HorizontalOptions="Fill" />
+      Style="{StaticResource SecondaryButton}"
+      Clicked="NavigateToTagsPage" />
             </VerticalStackLayout>
 
         </VerticalStackLayout>

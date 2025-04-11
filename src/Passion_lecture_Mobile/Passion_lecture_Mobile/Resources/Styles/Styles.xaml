@@ -7,15 +7,8 @@
     <!-- Passion Lecture -->
     <!-- Passion Lecture -->
     <!-- Passion Lecture -->
-
-
-
-
-
-
-
-
-
+    <Shadow x:Key="ShadowSmall" Radius="5" Opacity="0.1" Offset="0,2" Brush="#000000"/>
+    <Shadow x:Key="ShadowMedium" Radius="10" Opacity="0.2" Offset="0,4" Brush="#000000"/>
 
     <!-- colors -->
     <Color x:Key="PageBackground">#F8F9FA</Color>

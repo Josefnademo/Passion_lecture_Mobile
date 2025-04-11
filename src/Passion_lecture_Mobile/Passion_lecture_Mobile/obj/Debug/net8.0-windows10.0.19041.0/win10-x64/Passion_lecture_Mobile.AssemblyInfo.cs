@@ -11,14 +11,10 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyMetadataAttribute("Microsoft.Maui.ApplicationModel.AppInfo.PackageName", "com.companyname.passion_lecture_mobile")]
-[assembly: System.Reflection.AssemblyMetadataAttribute("Microsoft.Maui.ApplicationModel.AppInfo.PublisherName", "User Name")]
-[assembly: System.Reflection.AssemblyMetadataAttribute("Microsoft.Maui.ApplicationModel.AppInfo.Name", "Passion_lecture_Mobile")]
-[assembly: System.Reflection.AssemblyMetadataAttribute("Microsoft.Maui.ApplicationModel.AppInfo.Version", "1.0.0.1")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Passion_lecture_Mobile")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+337bd126dbea7e17a0e7981c2ebef5e25789f4bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+4426dfb85ff450b621bded08ae6ee8cbfa66c88c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Passion_lecture_Mobile")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Passion_lecture_Mobile")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
