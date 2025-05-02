@@ -8,6 +8,11 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+
+                <!-- Page-specific styles -->
+                <ResourceDictionary Source="Resources/Styles/TagsStyles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ImportStyles.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
