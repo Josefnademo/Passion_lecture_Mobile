@@ -5,34 +5,35 @@
              Title="TagsPage">
 
 
-    <VerticalStackLayout>
+    <VerticalStackLayout
+     Padding="40,50,40,30"
+     Spacing="20">
 
 
 
         <Label Text="Tags"
-               Style="{StaticResource PageTitle}" />
+               Style="{StaticResource PageTitle}"
+               HorizontalOptions="Center"/>
 
-        <Frame Style="{StaticResource InputFrame}">
-            <Entry Placeholder="Entrez le nom du tag"
-                       Style="{StaticResource PrimaryEntry}" />
+
+        <!-- Список тегов (пример одного тега) -->
+        <Frame Style="{StaticResource TagFrame}">
+            <HorizontalStackLayout Spacing="60">
+                <Label Text="(Entrez le nom du tag)"
+                           Style="{StaticResource TagLabel}" />
+                <!-- Иконка удаления (можно заменить на FontAwesome) -->
+                <Image Source="delete_icon.png"
+                           HeightRequest="100"
+                           HorizontalOptions="End" />
+            </HorizontalStackLayout>
         </Frame>
+
+
 
         <!-- Поле ввода -->
         <Frame Style="{StaticResource InputFrame}">
             <Entry Placeholder="Entrez le nom du tag"
                        Style="{StaticResource PrimaryEntry}" />
-        </Frame>
-
-        <!-- Список тегов (пример одного тега) -->
-        <Frame Style="{StaticResource TagFrame}">
-            <HorizontalStackLayout Spacing="10">
-                <Label Text="Tag_name"
-                           Style="{StaticResource TagLabel}" />
-                <!-- Иконка удаления (можно заменить на FontAwesome) -->
-                <Image Source="delete_icon.png"
-                           HeightRequest="20"
-                           HorizontalOptions="End" />
-            </HorizontalStackLayout>
         </Frame>
 
 

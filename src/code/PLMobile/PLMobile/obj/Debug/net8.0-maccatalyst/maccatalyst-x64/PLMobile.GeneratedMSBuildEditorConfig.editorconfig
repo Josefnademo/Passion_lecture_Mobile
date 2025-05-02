@@ -48,6 +48,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
+[C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/ReadPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.ReadPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ReadPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ReadPage.xaml
+
 [C:/Users/pn25kdv/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.Resources.Styles.Colors.xaml

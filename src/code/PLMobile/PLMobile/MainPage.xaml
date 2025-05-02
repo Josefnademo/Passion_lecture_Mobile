@@ -4,8 +4,17 @@
              x:Class="PLMobile.MainPage"
              Title="Accueil"
              BackgroundImageSource="ancient-library.jpeg">
+<Grid>
 
-    <ScrollView>
+        <!-- Background Image -->
+        <Image Source="ancient-library.jpeg"
+               Aspect="AspectFill"/>
+
+        <!-- Semi-transparent overlay -->
+        <BoxView Color="#FFFFFF" Opacity="0.8"/>
+
+        <!-- Content -->
+        <ScrollView>
         <VerticalStackLayout
             Padding="30,60,30,30"
             Spacing="40">
@@ -44,5 +53,6 @@
 
         </VerticalStackLayout>
     </ScrollView>
+    </Grid>
 
 </ContentPage>

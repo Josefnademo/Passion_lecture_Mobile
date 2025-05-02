@@ -14,6 +14,41 @@
                 <ResourceDictionary Source="Resources/Styles/ImportStyles.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Colors -->
+            <Color x:Key="PrimaryColor">#512BD4</Color>
+            <Color x:Key="SecondaryColor">#2B0B98</Color>
+            <Color x:Key="White">#FFFFFF</Color>
+
+            <!-- Label Style -->
+            <Style x:Key="MainTitle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource SecondaryColor}"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0,0,0,20"/>
+            </Style>
+
+            <!-- Primary Button Style -->
+            <Style x:Key="PrimaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource White}"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Padding" Value="0,14"/>
+            </Style>
+
+            <!-- Secondary Button Style -->
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Padding" Value="0,14"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

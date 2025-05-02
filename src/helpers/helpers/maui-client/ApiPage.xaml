@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloMaui1.ApiPage"
+             Title="ApiPage">
+    <VerticalStackLayout>
+        <Entry x:Name="endpoint" WidthRequest="300"
+            Text="http://10.0.2.2:3000/epub/1"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <HorizontalStackLayout>
+            <Label Text="XML"/>
+            <Switch Toggled="Switch_Toggled" IsToggled="False"></Switch>
+        </HorizontalStackLayout>
+
+        <Button Text="Load data" Clicked="Button_Clicked"></Button>
+
+        <Label x:Name="title" Text="book title"></Label>
+
+        <Image x:Name="cover" WidthRequest="150" HeightRequest="150" Source="book.png" />
+    </VerticalStackLayout>
+</ContentPage>
