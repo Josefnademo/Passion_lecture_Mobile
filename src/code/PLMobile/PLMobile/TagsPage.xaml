@@ -2,52 +2,52 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PLMobile.TagsPage"
-             Title="TagsPage">
+             Title="Tags">
 
-
-    <VerticalStackLayout
-     Padding="40,50,40,30"
-     Spacing="20">
-
-
+    <VerticalStackLayout Padding="30" Spacing="20">
 
         <Label Text="Tags"
-               Style="{StaticResource PageTitle}"
-               HorizontalOptions="Center"/>
+               FontSize="24"
+               HorizontalOptions="Center"
+               FontAttributes="Bold" />
 
+        <!-- Affichage dynamique des tags -->
+        <CollectionView x:Name="TagsList"
+                        ItemsSource="{Binding Tags}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Gray" CornerRadius="10" Padding="10" Margin="0,5">
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Name}"
+                                   VerticalOptions="Center"
+                                   FontSize="16" />
+                            <ImageButton Source="delete_icon.png"
+                                         HeightRequest="24"
+                                         HorizontalOptions="EndAndExpand"
+                                         Clicked="DeleteTag"
+                                         CommandParameter="{Binding Id}" />
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
-        <!-- Список тегов (пример одного тега) -->
-        <Frame Style="{StaticResource TagFrame}">
-            <HorizontalStackLayout Spacing="60">
-                <Label Text="(Entrez le nom du tag)"
-                           Style="{StaticResource TagLabel}" />
-                <!-- Иконка удаления (можно заменить на FontAwesome) -->
-                <Image Source="delete_icon.png"
-                           HeightRequest="100"
-                           HorizontalOptions="End" />
-            </HorizontalStackLayout>
-        </Frame>
-
-
-
-        <!-- Поле ввода -->
-        <Frame Style="{StaticResource InputFrame}">
-            <Entry Placeholder="Entrez le nom du tag"
-                       Style="{StaticResource PrimaryEntry}" />
-        </Frame>
-
+        <!-- Saisie -->
+        <Entry x:Name="TagEntry"
+               Placeholder="Entrez le nom du tag"
+               FontSize="16" />
 
         <Button Text="Créer un tag"
-         Clicked="CreateTag"
-         HorizontalOptions="Center"/>
+                Clicked="CreateTag"
+                HorizontalOptions="Center"
+                BackgroundColor="LightGreen"
+                TextColor="Black" />
 
-
-        <Button Text="Back"
+        <Button Text="Retour"
                 Clicked="GoBack"
-                HorizontalOptions="Center"/>
-
-
-
-
+                HorizontalOptions="Center"
+                BackgroundColor="LightGray"
+                TextColor="Black" />
     </VerticalStackLayout>
 </ContentPage>

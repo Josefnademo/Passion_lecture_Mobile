@@ -5,6 +5,7 @@ const app = express();
 const port = 3000;
 const multer = require("multer");
 const BookModel = require("./models/BookModel");
+const TagModel = require("./models/TagModel");
 
 /*multer is a middleware for Express.js that allows you to accept files from multipart/form-data requests 
 (for example, when uploading an .epub file from a MAUI application). */
@@ -24,6 +25,9 @@ const sequelize = new Sequelize(
 );
 
 const Book = BookModel(sequelize);
+const Tag = TagModel(sequelize);
+
+app.use(express.json()); // permet de lire le body JSON des requêtes
 
 //FROM FILE
 app.get("/epub/1", function (req, res) {
@@ -49,11 +53,36 @@ app.get("/epub/2", function (req, res) {
   });
 });
 
+//use any epub by id
+app.get("/epub/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const book = await Book.findByPk(id);
+    if (!book) return res.status(404).send("Livre non trouvé");
+
+    res
+      .header("Content-Type", "application/epub+zip")
+      .header(
+        "Content-Disposition",
+        `attachment; filename="${book.title}.epub"`
+      )
+      .header("Content-Length", book.epub.length)
+      .send(book.epub);
+  } catch (error) {
+    console.error("Erreur lors de l'envoi du livre:", error);
+    res.status(500).send("Erreur serveur");
+  }
+});
+
 app.post("/upload", upload.single("epub"), async (req, res) => {
   // Check if the request contains a file
   if (!req.file) {
     return res.status(400).send("Aucun fichier était uploadé");
   }
+
+  // Récupérer le titre à partir du nom du fichier
+  const title = req.file.originalname.replace(".epub", "");
 
   // Check if the book already exists in the database
   const existingBook = await Book.findOne({ where: { title } });
@@ -74,15 +103,66 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
   }
 });
 
+// Add these routes after the existing ones.
+
+//Getting a list of books sorted by date
+app.get("/books", async (req, res) => {
+  try {
+    const books = await Book.findAll({
+      attributes: ["id", "title", "createdAt"],
+      order: [["createdAt", "DESC"]],
+    });
+    res.json(books);
+  } catch (error) {
+    res.status(500).send("Error while receiving books");
+  }
+});
+
+// Many-to-many relationship between books and tags   (FK's)
+const BookTag = sequelize.define("BookTag", {});
+Book.belongsToMany(Tag, { through: BookTag });
+Tag.belongsToMany(Book, { through: BookTag });
+
+// Creating a tag
+app.post("/tags", async (req, res) => {
+  try {
+    const { name } = req.body;
+    if (!name || name.trim() === "") {
+      return res.status(400).send("The name of the tag is a requirement");
+    }
+
+    const existingTag = await Tag.findOne({ where: { name } });
+    if (existingTag) {
+      return res.status(409).send("This is what happens");
+    }
+
+    const tag = await Tag.create({ name });
+    res.status(201).json(tag);
+  } catch (error) {
+    console.error("Erreur lors de la creation du tag:", error);
+    res.status(500).send("Please serve");
+  }
+});
+
+// Get all tags
+app.get("/tags", async (req, res) => {
+  try {
+    const tags = await Tag.findAll();
+    res.json(tags);
+  } catch (error) {
+    res.status(500).send("Error getting tags");
+  }
+});
+
 app.listen(port, async () => {
   console.log(`Server listening on port ${port}`);
 
   try {
     await sequelize.authenticate();
-    // Используйте alter: true для безопасного обновления структуры
+    // Use alter: true to safely update the structure
     await Book.sync({ alter: true });
 
-    // Проверяем, существует ли уже книга
+    // Check if the book already exists
     const exists = await Book.findOne({ where: { title: "mousquetaires" } });
     if (!exists) {
       const epubData = FS.readFileSync(
