@@ -16,6 +16,14 @@ module.exports = (sequelize) => {
       epub: {
         type: DataTypes.BLOB("long"),
       },
+      coverImage: {
+        type: DataTypes.BLOB("long"),
+        allowNull: true,
+      },
+      lastReadPage: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
     },
     {
       timestamps: true,

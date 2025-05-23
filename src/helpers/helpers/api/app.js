@@ -103,8 +103,6 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
   }
 });
 
-// Add these routes after the existing ones.
-
 //Getting a list of books sorted by date
 app.get("/books", async (req, res) => {
   try {
@@ -154,6 +152,145 @@ app.get("/tags", async (req, res) => {
   }
 });
 
+// Update last read page for a book
+app.put("/books/:id/lastpage", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { page } = req.body;
+
+    if (typeof page !== "number" || page < 0) {
+      return res.status(400).send("Invalid page number");
+    }
+
+    const book = await Book.findByPk(id);
+    if (!book) {
+      return res.status(404).send("Book not found");
+    }
+
+    book.lastReadPage = page;
+    await book.save();
+    res.json({ success: true });
+  } catch (error) {
+    console.error("Error updating last read page:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Get books with optional tag filter
+app.get("/books/filter", async (req, res) => {
+  try {
+    const { tagIds } = req.query;
+    let whereClause = {};
+    let includeClause = [];
+
+    if (tagIds) {
+      const tagIdsArray = tagIds.split(",");
+      includeClause = [
+        {
+          model: Tag,
+          where: {
+            id: tagIdsArray,
+          },
+          through: { attributes: [] },
+        },
+      ];
+    }
+
+    const books = await Book.findAll({
+      attributes: ["id", "title", "createdAt", "lastReadPage"],
+      include: includeClause,
+      order: [["createdAt", "DESC"]],
+    });
+
+    res.json(books);
+  } catch (error) {
+    console.error("Error filtering books:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Associate tags with a book
+app.post("/books/:id/tags", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { tagIds } = req.body;
+
+    const book = await Book.findByPk(id);
+    if (!book) {
+      return res.status(404).send("Book not found");
+    }
+
+    await book.setTags(tagIds);
+    const updatedBook = await Book.findByPk(id, {
+      include: [Tag],
+    });
+
+    res.json(updatedBook);
+  } catch (error) {
+    console.error("Error associating tags:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Get tags for a specific book
+app.get("/books/:id/tags", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const book = await Book.findByPk(id, {
+      include: [Tag],
+    });
+
+    if (!book) {
+      return res.status(404).send("Book not found");
+    }
+
+    res.json(book.Tags);
+  } catch (error) {
+    console.error("Error getting book tags:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Update book cover image
+app.put("/books/:id/cover", upload.single("cover"), async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!req.file) {
+      return res.status(400).send("No cover image provided");
+    }
+
+    const book = await Book.findByPk(id);
+    if (!book) {
+      return res.status(404).send("Book not found");
+    }
+
+    book.coverImage = req.file.buffer;
+    await book.save();
+    res.json({ success: true });
+  } catch (error) {
+    console.error("Error updating cover image:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Get book cover image
+app.get("/books/:id/cover", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const book = await Book.findByPk(id);
+
+    if (!book || !book.coverImage) {
+      return res.status(404).send("Cover image not found");
+    }
+
+    res.header("Content-Type", "image/jpeg").send(book.coverImage);
+  } catch (error) {
+    console.error("Error getting cover image:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+//turn on!
 app.listen(port, async () => {
   console.log(`Server listening on port ${port}`);
 
