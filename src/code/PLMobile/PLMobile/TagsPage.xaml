@@ -1,53 +1,73 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PLMobile.ViewModels"
+             xmlns:models="clr-namespace:PLMobile.Models"
              x:Class="PLMobile.TagsPage"
-             Title="Tags">
+             x:DataType="viewmodels:TagsPageViewModel"
+             Title="{Binding Title}">
 
-    <VerticalStackLayout Padding="30" Spacing="20">
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="20">
 
-        <Label Text="Tags"
-               FontSize="24"
-               HorizontalOptions="Center"
-               FontAttributes="Bold" />
+        <VerticalStackLayout Grid.Row="0"
+                            Spacing="20">
+            <Label Text="Créer un nouveau tag"
+                   FontSize="20"
+                   TextColor="Black"/>
 
-        <!-- Affichage dynamique des tags -->
-        <CollectionView x:Name="TagsList"
-                        ItemsSource="{Binding Tags}"
-                        SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BorderColor="Gray" CornerRadius="10" Padding="10" Margin="0,5">
-                        <HorizontalStackLayout>
+            <Grid ColumnDefinitions="*,Auto">
+                <Entry Grid.Column="0"
+                       Text="{Binding NewTagName}"
+                       Placeholder="Nom du tag"
+                       ReturnCommand="{Binding CreateTagCommand}"/>
+
+                <Button Grid.Column="1"
+                        Text="Créer"
+                        Command="{Binding CreateTagCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Style="{StaticResource PrimaryButton}"
+                        Margin="10,0,0,0"/>
+            </Grid>
+        </VerticalStackLayout>
+
+        <RefreshView Grid.Row="1"
+                     Command="{Binding LoadTagsCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+            <CollectionView ItemsSource="{Binding Tags}"
+                          Margin="0,20,0,0">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout>
+                        <Label Text="Aucun tag"
+                               HorizontalOptions="Center"
+                               TextColor="Gray"
+                               FontSize="18"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:TagModel">
+                        <Frame Margin="0,0,0,10"
+                               Padding="10"
+                               BorderColor="LightGray">
                             <Label Text="{Binding Name}"
-                                   VerticalOptions="Center"
-                                   FontSize="16" />
-                            <ImageButton Source="delete_icon.png"
-                                         HeightRequest="24"
-                                         HorizontalOptions="EndAndExpand"
-                                         Clicked="DeleteTag"
-                                         CommandParameter="{Binding Id}" />
-                        </HorizontalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                   FontSize="16"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
 
-        <!-- Saisie -->
-        <Entry x:Name="TagEntry"
-               Placeholder="Entrez le nom du tag"
-               FontSize="16" />
+        <Button Grid.Row="2"
+                Text="Retour"
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource SecondaryButton}"
+                Margin="0,20,0,0"/>
 
-        <Button Text="Créer un tag"
-                Clicked="CreateTag"
-                HorizontalOptions="Center"
-                BackgroundColor="LightGreen"
-                TextColor="Black" />
+        <ActivityIndicator Grid.RowSpan="3"
+                          IsVisible="{Binding IsBusy}"
+                          IsRunning="{Binding IsBusy}"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"/>
+    </Grid>
 
-        <Button Text="Retour"
-                Clicked="GoBack"
-                HorizontalOptions="Center"
-                BackgroundColor="LightGray"
-                TextColor="Black" />
-    </VerticalStackLayout>
 </ContentPage>

@@ -1,29 +1,12 @@
-﻿namespace PLMobile
+﻿using PLMobile.ViewModels;
+
+namespace PLMobile;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage(MainPageViewModel viewModel)
     {
-
-        public MainPage()
-        {
-            InitializeComponent();
-        }
-
-        private async void NavigateToTagsPage(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync(nameof(TagsPage));
-        }
-
-        private async void NavigateToLibraryPage(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync(nameof(LibraryPage));
-        }
-
-        private async void NavigateToImportPage(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync(nameof(ImportPage));
-        }
-
-
+        InitializeComponent();
+        BindingContext = viewModel;
     }
-
 }

@@ -311,27 +311,3 @@ app.listen(port, async () => {
     console.error("Database error:", error);
   }
 });
-/*
-// Initialize and start server
-(async () => {
-  await initDB();
-
-  try {
-    await sequelize.authenticate();
-    await sequelize.sync({ force: false });
-
-    // Sample data insertion
-    const exists = await Book.findOne({ where: { title: "mousquetaires" } });
-    if (!exists) {
-      const epubData = FS.readFileSync(
-        `${__dirname}/Dumas, Alexandre - Les trois mousquetaires.epub`
-      );
-      await Book.create({ title: "mousquetaires", epub: epubData });
-    }
-
-    app.listen(port, () => console.log(`Server running on port ${port}`));
-  } catch (error) {
-    console.error("Database initialization failed:", error);
-  }
-})();
-*/

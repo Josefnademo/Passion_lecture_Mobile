@@ -8,8 +8,23 @@
     Title="PLMobile">
 
     <ShellContent
-        Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:LibraryPage}"
+        Route="LibraryPage" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:ImportPage}"
+        Route="ImportPage" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:TagsPage}"
+        Route="TagsPage" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:ReadPage}"
+        Route="ReadPage" />
 
 </Shell>

@@ -1,19 +1,22 @@
 //using BrowserEngineKit;
 using Microsoft.Maui.Storage;
+using PLMobile.Services;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
-
+using PLMobile.ViewModels;
 
 namespace PLMobile;
 
 public partial class ImportPage : ContentPage
 {
-    private readonly HttpClient client = new();
-    public ImportPage()
+    private readonly ApiService _apiService;
+
+    public ImportPage(ApiService apiService, ImportPageViewModel viewModel)
     {
         InitializeComponent();
+        _apiService = apiService;
+        BindingContext = viewModel;
     }
-
 
     // This is the correct way to define file picker file types
     public static readonly FilePickerFileType Epub = new(new Dictionary<DevicePlatform, IEnumerable<string>>
@@ -29,32 +32,39 @@ public partial class ImportPage : ContentPage
         //choose file, stock in db via api POST methode
         try
         {
-            //display only EPUB files
             var options = new PickOptions
             {
-                PickerTitle = "Select EPUB file", // File selection window title
-                FileTypes = Epub // Limitation to EPUB files only (type of EPUB ,wich i created)
+                PickerTitle = "Select EPUB file",
+                FileTypes = Epub
             };
 
             var file = await FilePicker.Default.PickAsync(options);
 
-            if (file != null )
+            if (file != null)
             {
                 using var stream = await file.OpenReadAsync();
-                using var content = new MultipartFormDataContent();
-                var streamContent = new StreamContent(stream);
-                streamContent.Headers.ContentType = new MediaTypeHeaderValue("application/epub+zip");
+                var memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+                var epubData = memoryStream.ToArray();
 
-                content.Add(streamContent, "epub", file.FileName);
-
-                var response = await client.PostAsync("http://localhost:3000/upload", content);
-
-                if (response.IsSuccessStatusCode)
-                    await DisplayAlert("SuccËs", "Livre importÈ avec succËs.", "OK");
-                else if ((int)response.StatusCode == 409)
-                    await DisplayAlert("Attention", "Ce livre existe dÈj‡.", "OK");
-                else
+                try
+                {
+                    await _apiService.UploadBookAsync(
+                        Path.GetFileNameWithoutExtension(file.FileName),
+                        epubData,
+                        null // We'll add cover image support later
+                    );
+                    await DisplayAlert("Succ√®s", "Livre import√© avec succ√®s.", "OK");
+                    await Shell.Current.GoToAsync("..");
+                }
+                catch (HttpRequestException ex) when (ex.Message.Contains("409"))
+                {
+                    await DisplayAlert("Attention", "Ce livre existe d√©j√†.", "OK");
+                }
+                catch
+                {
                     await DisplayAlert("Erreur", "Impossible d'importer le livre.", "OK");
+                }
             }
         }
         catch (Exception ex)
@@ -66,6 +76,6 @@ public partial class ImportPage : ContentPage
     //Use GoBackAsync function from Shell to get on previous page
     private async void GoBack(object sender, EventArgs e)
     {
-        await AppShell.GoBackAsync();
+        await Shell.Current.GoToAsync("..");
     }
 }

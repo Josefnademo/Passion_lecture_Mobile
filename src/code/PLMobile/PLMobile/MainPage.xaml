@@ -1,58 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PLMobile.ViewModels"
              x:Class="PLMobile.MainPage"
-             Title="Accueil"
-             BackgroundImageSource="ancient-library.jpeg">
-<Grid>
+             x:DataType="viewmodels:MainPageViewModel"
+             Title="{Binding Title}"
+             BackgroundImageSource="ancient_library.jpeg">
 
-        <!-- Background Image -->
-        <Image Source="ancient-library.jpeg"
-               Aspect="AspectFill"/>
+    <Grid RowDefinitions="*,Auto,Auto,Auto"
+          Padding="20">
 
-        <!-- Semi-transparent overlay -->
-        <BoxView Color="#FFFFFF" Opacity="0.8"/>
-
-        <!-- Content -->
-        <ScrollView>
-        <VerticalStackLayout
-            Padding="30,60,30,30"
-            Spacing="40">
-
-            <Label
-                Text="Bienvenue à la librairie des amoureux des livres"
-                Style="{StaticResource MainTitle}"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Welcome to library of books lovers" />
-
-            <VerticalStackLayout Spacing="20">
-                <Button
-     x:Name="Library"
-     Text="Ma bibliothèque" 
-     SemanticProperties.Hint="library with all added books"
-     Style="{StaticResource PrimaryButton}"
-     Clicked="NavigateToLibraryPage" />
-
-                <Button
-      x:Name="Import"
-      Text="Importer un livre" 
-      SemanticProperties.Hint="Import a book"
-      Style="{StaticResource PrimaryButton}"
-      Clicked="NavigateToImportPage"      />
-
-
-                <Button
-      x:Name="Tags"
-      Text="Tags" 
-      SemanticProperties.Hint="Your Tags"
-      Style="{StaticResource SecondaryButton}"
-      Clicked="NavigateToTagsPage" />
-            </VerticalStackLayout>
-
+        <VerticalStackLayout Grid.Row="0"
+                            VerticalOptions="Center"
+                            Spacing="10">
+            <Label Text="Bienvenue à la"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   FontSize="32"/>
+            <Label Text="librairie des"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   FontSize="32"/>
+            <Label Text="amoureux des"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   FontSize="32"/>
+            <Label Text="livres"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   FontSize="32"/>
         </VerticalStackLayout>
-    </ScrollView>
+
+        <Button Grid.Row="1"
+                Text="Ma bibliothèque"
+                Command="{Binding NavigateToLibraryCommand}"
+                Margin="0,10"
+                Style="{StaticResource PrimaryButton}"/>
+
+        <Button Grid.Row="2"
+                Text="Importer un livre"
+                Command="{Binding NavigateToImportCommand}"
+                Margin="0,10"
+                Style="{StaticResource SecondaryButton}"/>
+
+        <Button Grid.Row="3"
+                Text="Tags"
+                Command="{Binding NavigateToTagsCommand}"
+                Margin="0,10"
+                Style="{StaticResource SecondaryButton}"/>
     </Grid>
 
 </ContentPage>

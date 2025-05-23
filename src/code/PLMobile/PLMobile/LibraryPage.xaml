@@ -1,30 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PLMobile.ViewModels"
+             xmlns:models="clr-namespace:PLMobile.Models"
              x:Class="PLMobile.LibraryPage"
-             Title="Ma Bibliothèque">
-    <RefreshView>
-        <CollectionView x:Name="booksCollection"
-                       SelectionMode="Single"
-                       SelectionChanged="OnBookSelected">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10">
-                        <Frame Style="{StaticResource BookCard}">
-                            <StackLayout Orientation="Horizontal" Spacing="15">
-                                <Image Source="book_placeholder.png"
-                                       WidthRequest="60"
-                                       HeightRequest="80"/>
-                                <StackLayout VerticalOptions="Center">
+             x:DataType="viewmodels:LibraryPageViewModel"
+             Title="{Binding Title}"
+             BackgroundImageSource="background_library.png">
+
+    <Grid RowDefinitions="Auto,*,Auto"  Padding="20">
+
+
+        <Grid Grid.Row="0" 
+              ColumnDefinitions="*,*,*"
+              Margin="0,0,0,20">
+            <Button Grid.Column="0"
+                    Text="Filtrer par tag"
+                    Command="{Binding FilterByTagCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"/>
+            <Button Grid.Column="1"
+                    Text="Trier par date"
+                    Command="{Binding SortByDateCommand}"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    Margin="10,0"/>
+            <Button Grid.Column="2"
+                    Text="Importer"
+                    Command="{Binding ImportBookCommand}"
+                    BackgroundColor="#9C27B0"
+                    TextColor="White"/>
+        </Grid>
+
+        <RefreshView Grid.Row="1"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding LoadBooksCommand}">
+            <CollectionView ItemsSource="{Binding Books}"
+                          SelectionMode="Single"
+                          SelectionChangedCommand="{Binding OpenBookCommand}"
+                          SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:BookModel">
+                        <Frame Margin="0,5"
+                               BackgroundColor="#80000000"
+                               BorderColor="Transparent"
+                               CornerRadius="10">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout Grid.Column="0"
+                                                    Spacing="5">
                                     <Label Text="{Binding Title}"
-                                           Style="{StaticResource BookTitle}"/>
-                                    <Label Text="{Binding CreatedAt, StringFormat='Ajouté le {0:dd.MM.yyyy}'}"
-                                           Style="{StaticResource BookDate}"/>
-                                </StackLayout>
-                            </StackLayout>
+                                           TextColor="White"
+                                           FontSize="18"/>
+                                    <Label Text="{Binding CreatedAt, StringFormat='{0:dd/MM/yyyy}'}"
+                                           TextColor="LightGray"
+                                           FontSize="14"/>
+                                    <Label Text="{Binding LastReadPage, StringFormat='Page: {0}'}"
+                                           TextColor="LightGray"
+                                           FontSize="14"/>
+                                </VerticalStackLayout>
+                                <CollectionView Grid.Column="1"
+                                              ItemsSource="{Binding Tags}"
+                                              HorizontalOptions="End">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:TagModel">
+                                            <Border BackgroundColor="#4CAF50"
+                                                    Stroke="Transparent"
+                                                    StrokeThickness="0"
+                                                    Margin="2"
+                                                    Padding="5,2"
+                                                    StrokeShape="RoundRectangle 10">
+                                                <Label Text="{Binding Name}"
+                                                       TextColor="White"
+                                                       FontSize="12"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                    <CollectionView.ItemsLayout>
+                                        <LinearItemsLayout Orientation="Horizontal"/>
+                                    </CollectionView.ItemsLayout>
+                                </CollectionView>
+                            </Grid>
                         </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <Button Grid.Row="2"
+                Text="Retour"
+                Command="{Binding GoBackCommand}"
+                BackgroundColor="#333333"
+                TextColor="White"
+                Margin="0,20,0,0"/>
+    </Grid>
+
 </ContentPage>

@@ -1,0 +1,372 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PLMobile</name>
+    </assembly>
+    <members>
+        <member name="T:PLMobile.ViewModels.BaseViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BaseViewModel.IsBusy">
+            <inheritdoc cref="F:PLMobile.ViewModels.BaseViewModel._isBusy"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BaseViewModel.Title">
+            <inheritdoc cref="F:PLMobile.ViewModels.BaseViewModel._title"/>
+        </member>
+        <member name="T:PLMobile.ViewModels.ImportPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ImportPageViewModel.SelectedFilePath">
+            <inheritdoc cref="F:PLMobile.ViewModels.ImportPageViewModel._selectedFilePath"/>
+        </member>
+        <member name="F:PLMobile.ViewModels.ImportPageViewModel.importBookCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.ImportPageViewModel.ImportBookCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.ImportPageViewModel.ImportBookCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.ImportPageViewModel.ImportBook"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.ImportPageViewModel.goBackCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.ImportPageViewModel.GoBackCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.ImportPageViewModel.GoBackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.ImportPageViewModel.GoBack"/>.</summary>
+        </member>
+        <member name="T:PLMobile.ViewModels.LibraryPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.Books">
+            <inheritdoc cref="F:PLMobile.ViewModels.LibraryPageViewModel._books"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.SelectedTags">
+            <inheritdoc cref="F:PLMobile.ViewModels.LibraryPageViewModel._selectedTags"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.IsSortedByDateDesc">
+            <inheritdoc cref="F:PLMobile.ViewModels.LibraryPageViewModel._isSortedByDateDesc"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.SearchQuery">
+            <inheritdoc cref="F:PLMobile.ViewModels.LibraryPageViewModel._searchQuery"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.IsRefreshing">
+            <inheritdoc cref="F:PLMobile.ViewModels.LibraryPageViewModel._isRefreshing"/>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.loadBooksCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.LoadBooksCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.LoadBooksCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.LoadBooks"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.filterByTagCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.FilterByTagCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.FilterByTagCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.FilterByTag"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.searchCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.SearchCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.SearchCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.Search"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.clearSearchCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.ClearSearchCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.ClearSearchCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.ClearSearch"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.sortByDateCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.SortByDateCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.SortByDateCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.SortByDate"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.openBookCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.OpenBookCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.OpenBookCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.OpenBook(PLMobile.Models.BookModel)"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.manageTagsCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.ManageTagsCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.ManageTagsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.ManageTags"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.importBookCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.ImportBookCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.ImportBookCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.ImportBook"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.goBackCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.GoBackCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.GoBackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.GoBack"/>.</summary>
+        </member>
+        <member name="T:PLMobile.ViewModels.MainPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:PLMobile.ViewModels.MainPageViewModel.navigateToLibraryCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.MainPageViewModel.NavigateToLibraryCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.MainPageViewModel.NavigateToLibraryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.MainPageViewModel.NavigateToLibrary"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.MainPageViewModel.navigateToImportCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.MainPageViewModel.NavigateToImportCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.MainPageViewModel.NavigateToImportCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.MainPageViewModel.NavigateToImport"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.MainPageViewModel.navigateToTagsCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.MainPageViewModel.NavigateToTagsCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.MainPageViewModel.NavigateToTagsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.MainPageViewModel.NavigateToTags"/>.</summary>
+        </member>
+        <member name="T:PLMobile.ViewModels.ReadPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.BookId">
+            <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._bookId"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.BookTitle">
+            <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._bookTitle"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.CurrentPage">
+            <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._currentPage"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.EpubContent">
+            <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._epubContent"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.PageContent">
+            <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._pageContent"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.CanGoNext">
+            <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._canGoNext"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.CanGoPrevious">
+            <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._canGoPrevious"/>
+        </member>
+        <member name="M:PLMobile.ViewModels.ReadPageViewModel.OnBookIdChanged(System.Int32)">
+            <summary>Executes the logic for when <see cref="P:PLMobile.ViewModels.ReadPageViewModel.BookId"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:PLMobile.ViewModels.ReadPageViewModel.BookId"/> is changed.</remarks>
+        </member>
+        <member name="M:PLMobile.ViewModels.ReadPageViewModel.OnBookTitleChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:PLMobile.ViewModels.ReadPageViewModel.BookTitle"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:PLMobile.ViewModels.ReadPageViewModel.BookTitle"/> is changed.</remarks>
+        </member>
+        <member name="M:PLMobile.ViewModels.ReadPageViewModel.OnCurrentPageChanged(System.Int32)">
+            <summary>Executes the logic for when <see cref="P:PLMobile.ViewModels.ReadPageViewModel.CurrentPage"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:PLMobile.ViewModels.ReadPageViewModel.CurrentPage"/> is changed.</remarks>
+        </member>
+        <member name="F:PLMobile.ViewModels.ReadPageViewModel.loadBookCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.ReadPageViewModel.LoadBookCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.LoadBookCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.ReadPageViewModel.LoadBook"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.ReadPageViewModel.loadPageContentCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.ReadPageViewModel.LoadPageContentCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.LoadPageContentCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:PLMobile.ViewModels.ReadPageViewModel.LoadPageContent(System.Int32)"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.ReadPageViewModel.updateProgressCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.ReadPageViewModel.UpdateProgressCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.UpdateProgressCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:PLMobile.ViewModels.ReadPageViewModel.UpdateProgress(System.Int32)"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.ReadPageViewModel.nextPageCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.ReadPageViewModel.NextPageCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.NextPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.ReadPageViewModel.NextPage"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.ReadPageViewModel.previousPageCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.ReadPageViewModel.PreviousPageCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.PreviousPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.ReadPageViewModel.PreviousPage"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.ReadPageViewModel.goBackCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.ReadPageViewModel.GoBackCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.GoBackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.ReadPageViewModel.GoBack"/>.</summary>
+        </member>
+        <member name="T:PLMobile.ViewModels.TagsPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:PLMobile.ViewModels.TagsPageViewModel.Tags">
+            <inheritdoc cref="F:PLMobile.ViewModels.TagsPageViewModel._tags"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.TagsPageViewModel.NewTagName">
+            <inheritdoc cref="F:PLMobile.ViewModels.TagsPageViewModel._newTagName"/>
+        </member>
+        <member name="F:PLMobile.ViewModels.TagsPageViewModel.loadTagsCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.TagsPageViewModel.LoadTagsCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.TagsPageViewModel.LoadTagsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.TagsPageViewModel.LoadTags"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.TagsPageViewModel.createTagCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.TagsPageViewModel.CreateTagCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.TagsPageViewModel.CreateTagCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.TagsPageViewModel.CreateTag"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.TagsPageViewModel.goBackCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.TagsPageViewModel.GoBackCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.TagsPageViewModel.GoBackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.TagsPageViewModel.GoBack"/>.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsNotBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsNotBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedFilePath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedFilePath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Books">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Books" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSortedByDateDesc">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSortedByDateDesc" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SearchQuery">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SearchQuery" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BookId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BookId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BookTitle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BookTitle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentPage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentPage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.EpubContent">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "EpubContent" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PageContent">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PageContent" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CanGoNext">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CanGoNext" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CanGoPrevious">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CanGoPrevious" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NewTagName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NewTagName" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNotBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNotBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedFilePath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedFilePath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Books">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Books" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSortedByDateDesc">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSortedByDateDesc" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SearchQuery">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SearchQuery" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BookId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BookId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BookTitle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BookTitle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentPage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentPage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EpubContent">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EpubContent" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PageContent">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PageContent" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CanGoNext">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CanGoNext" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CanGoPrevious">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CanGoPrevious" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NewTagName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NewTagName" generated properties.</summary>
+        </member>
+    </members>
+</doc>

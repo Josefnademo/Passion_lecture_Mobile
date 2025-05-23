@@ -1,17 +1,58 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PLMobile.ViewModels"
              x:Class="PLMobile.ReadPage"
-             Title="Read Book">
+             x:DataType="viewmodels:ReadPageViewModel"
+             Title="{Binding Title}">
 
-    <StackLayout>
-        <WebView x:Name="bookContent"
-                 VerticalOptions="FillAndExpand"
-                 HeightRequest="1000" />
+    <Grid RowDefinitions="*, Auto"
+          Padding="20">
 
-        <Button Text="Back"
-                Clicked="GoBack"
-                HorizontalOptions="Center"
-                Margin="0,10"/>
-    </StackLayout>
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Spacing="20">
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                 IsVisible="{Binding IsBusy}"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"/>
+
+                <Label Text="{Binding PageContent}"
+                       FontSize="16"
+                       TextColor="Black"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill"
+                       IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="1" 
+              ColumnDefinitions="Auto,*,Auto"
+              RowDefinitions="Auto,Auto"
+              Margin="0,20,0,0">
+
+            <Button Grid.Row="0" Grid.Column="0"
+                    Text="Page précédente"
+                    Command="{Binding PreviousPageCommand}"
+                    IsEnabled="{Binding CanGoPrevious}"
+                    Style="{StaticResource PrimaryButton}"/>
+
+            <Label Grid.Row="0" Grid.Column="1"
+                   Text="{Binding CurrentPage, StringFormat='Page {0}'}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+            <Button Grid.Row="0" Grid.Column="2"
+                    Text="Page suivante"
+                    Command="{Binding NextPageCommand}"
+                    IsEnabled="{Binding CanGoNext}"
+                    Style="{StaticResource PrimaryButton}"/>
+
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                    Text="Retour"
+                    Command="{Binding GoBackCommand}"
+                    Style="{StaticResource SecondaryButton}"
+                    Margin="0,10,0,0"/>
+        </Grid>
+    </Grid>
+
 </ContentPage>

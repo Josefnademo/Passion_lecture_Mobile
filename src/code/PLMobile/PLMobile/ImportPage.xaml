@@ -1,37 +1,47 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PLMobile.ViewModels"
              x:Class="PLMobile.ImportPage"
-             Title="ImportPage">
-    <VerticalStackLayout Spacing="40" Padding="20">
+             x:DataType="viewmodels:ImportPageViewModel"
+             Title="{Binding Title}"
+             BackgroundImageSource="chains_and_gears.jpg">
 
-        <!-- Heading -->
-        <Label Text="Importation"
-                   Style="{StaticResource PageTitle}"
-                   HorizontalOptions="Center" />
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="20">
 
-        <!-- Main content -->
-        <Frame Style="{StaticResource UploadFrame}">
-            <VerticalStackLayout Spacing="20" 
-                                   HorizontalOptions="Center" 
-                                   VerticalOptions="Center">
+        <Label Grid.Row="0"
+               Text="Importation"
+               HorizontalOptions="Center"
+               TextColor="White"
+               FontSize="24"
+               Margin="0,20"/>
 
-                <!-- Import button -->
-                <Button Text="Importer un livre"
-                            Clicked="ImportBook"
-                            Style="{StaticResource PrimaryButton}"
-                            WidthRequest="250"
-                            HorizontalOptions="Center"/>
+        <VerticalStackLayout Grid.Row="1"
+                            VerticalOptions="Center"
+                            Spacing="20">
+            <Label Text="Sélectionnez un fichier EPUB à importer"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
 
-                <!-- Format hint -->
-                <Label Text="Formats supportés: .epub, .pdf"
-                           Style="{StaticResource HintLabel}"
-                           HorizontalOptions="Center" />
+            <Button Text="Importer un livre"
+                    Command="{Binding ImportBookCommand}"
+                    Style="{StaticResource PrimaryButton}"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"/>
+        </VerticalStackLayout>
 
-                <Button Text="Back"
-            Clicked="GoBack"
-            HorizontalOptions="Center"/>
-            </VerticalStackLayout>
-        </Frame>
-    </VerticalStackLayout>
+        <Button Grid.Row="2"
+                Text="Retour"
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource SecondaryButton}"
+                Margin="0,20,0,0"/>
+
+        <ActivityIndicator Grid.RowSpan="3"
+                          IsVisible="{Binding IsBusy}"
+                          IsRunning="{Binding IsBusy}"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"/>
+    </Grid>
+
 </ContentPage>

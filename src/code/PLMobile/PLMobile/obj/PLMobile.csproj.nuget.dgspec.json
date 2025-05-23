@@ -68,6 +68,10 @@
         "net8.0-android34.0": {
           "targetAlias": "net8.0-android",
           "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
             "EPubSharp": {
               "target": "Package",
               "version": "[0.4.2, )"
@@ -75,6 +79,10 @@
             "EpubSharp.dll": {
               "target": "Package",
               "version": "[1.1.5, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -141,6 +149,10 @@
         "net8.0-ios18.0": {
           "targetAlias": "net8.0-ios",
           "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
             "EPubSharp": {
               "target": "Package",
               "version": "[0.4.2, )"
@@ -148,6 +160,10 @@
             "EpubSharp.dll": {
               "target": "Package",
               "version": "[1.1.5, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -202,6 +218,10 @@
         "net8.0-maccatalyst18.0": {
           "targetAlias": "net8.0-maccatalyst",
           "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
             "EPubSharp": {
               "target": "Package",
               "version": "[0.4.2, )"
@@ -209,6 +229,10 @@
             "EpubSharp.dll": {
               "target": "Package",
               "version": "[1.1.5, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -264,6 +288,10 @@
         "net8.0-windows10.0.19041": {
           "targetAlias": "net8.0-windows10.0.19041.0",
           "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
             "EPubSharp": {
               "target": "Package",
               "version": "[0.4.2, )"
@@ -271,6 +299,10 @@
             "EpubSharp.dll": {
               "target": "Package",
               "version": "[1.1.5, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",

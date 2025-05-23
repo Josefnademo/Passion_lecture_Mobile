@@ -5,14 +5,17 @@
         public AppShell()
         {
             InitializeComponent();
-
-            //Save all pages for navigation
-            Routing.RegisterRoute(nameof(TagsPage), typeof(TagsPage));
-            Routing.RegisterRoute(nameof(LibraryPage), typeof(LibraryPage));
-           // Routing.RegisterRoute(nameof(EditPage), typeof(EditPage));
-            Routing.RegisterRoute(nameof(ImportPage), typeof(ImportPage));
-           // Routing.RegisterRoute(nameof(ReadBookPage), typeof(ReadBookPage));
+            RegisterRoutes();
         }
+
+        private void RegisterRoutes()
+        {
+            Routing.RegisterRoute(nameof(LibraryPage), typeof(LibraryPage));
+            Routing.RegisterRoute(nameof(ImportPage), typeof(ImportPage));
+            Routing.RegisterRoute(nameof(TagsPage), typeof(TagsPage));
+            Routing.RegisterRoute(nameof(ReadPage), typeof(ReadPage));
+        }
+
         // Static method for back navigation (can be called from any pages)
         public static async Task GoBackAsync()
         {
