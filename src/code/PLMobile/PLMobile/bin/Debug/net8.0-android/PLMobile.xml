@@ -118,6 +118,13 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:PLMobile.ViewModels.MainPageViewModel.testConnectionCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.MainPageViewModel.TestConnectionCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.MainPageViewModel.TestConnectionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.MainPageViewModel.TestConnection"/>.</summary>
         </member>
         <member name="F:PLMobile.ViewModels.MainPageViewModel.navigateToLibraryCommand">
             <summary>The backing field for <see cref="P:PLMobile.ViewModels.MainPageViewModel.NavigateToLibraryCommand"/>.</summary>

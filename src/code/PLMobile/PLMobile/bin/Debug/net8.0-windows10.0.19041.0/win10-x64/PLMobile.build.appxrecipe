@@ -46,23 +46,8 @@
     <AppxPackagedFile Include="C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\chains_and_gears.scale-100.jpg">
       <PackagePath>chains_and_gears.scale-100.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\background_library1.scale-100.png">
-      <PackagePath>background_library1.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
-      <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
-      <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
-      <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
-      <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
-      <PackagePath>dotnet_bot.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\background_library.scale-100.png">
+      <PackagePath>background_library.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
@@ -211,31 +196,52 @@
     <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.57\lib\net8.0\WinRT.Runtime.dll">
       <PackagePath>WinRT.Runtime.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.configuration\8.0.0\lib\net8.0\Microsoft.Extensions.Configuration.dll">
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\communitytoolkit.mvvm\8.4.0\lib\net8.0-windows10.0.17763\CommunityToolkit.Mvvm.dll">
+      <PackagePath>CommunityToolkit.Mvvm.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\epubsharp\0.4.2\lib\3.5\epubsharp.dll">
+      <PackagePath>epubsharp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.configuration\9.0.5\lib\net8.0\Microsoft.Extensions.Configuration.dll">
       <PackagePath>Microsoft.Extensions.Configuration.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.configuration.abstractions\8.0.0\lib\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll">
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.configuration.abstractions\9.0.5\lib\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll">
       <PackagePath>Microsoft.Extensions.Configuration.Abstractions.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.dependencyinjection\8.0.1\lib\net8.0\Microsoft.Extensions.DependencyInjection.dll">
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.configuration.binder\9.0.5\lib\net8.0\Microsoft.Extensions.Configuration.Binder.dll">
+      <PackagePath>Microsoft.Extensions.Configuration.Binder.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.dependencyinjection\9.0.5\lib\net8.0\Microsoft.Extensions.DependencyInjection.dll">
       <PackagePath>Microsoft.Extensions.DependencyInjection.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\8.0.2\lib\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\9.0.5\lib\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
       <PackagePath>Microsoft.Extensions.DependencyInjection.Abstractions.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.logging\8.0.1\lib\net8.0\Microsoft.Extensions.Logging.dll">
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.diagnostics\9.0.5\lib\net8.0\Microsoft.Extensions.Diagnostics.dll">
+      <PackagePath>Microsoft.Extensions.Diagnostics.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.diagnostics.abstractions\9.0.5\lib\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll">
+      <PackagePath>Microsoft.Extensions.Diagnostics.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.http\9.0.5\lib\net8.0\Microsoft.Extensions.Http.dll">
+      <PackagePath>Microsoft.Extensions.Http.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.logging\9.0.5\lib\net8.0\Microsoft.Extensions.Logging.dll">
       <PackagePath>Microsoft.Extensions.Logging.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.logging.abstractions\8.0.2\lib\net8.0\Microsoft.Extensions.Logging.Abstractions.dll">
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.logging.abstractions\9.0.5\lib\net8.0\Microsoft.Extensions.Logging.Abstractions.dll">
       <PackagePath>Microsoft.Extensions.Logging.Abstractions.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.logging.debug\8.0.1\lib\net8.0\Microsoft.Extensions.Logging.Debug.dll">
       <PackagePath>Microsoft.Extensions.Logging.Debug.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.options\8.0.2\lib\net8.0\Microsoft.Extensions.Options.dll">
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.options\9.0.5\lib\net8.0\Microsoft.Extensions.Options.dll">
       <PackagePath>Microsoft.Extensions.Options.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.primitives\8.0.0\lib\net8.0\Microsoft.Extensions.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.options.configurationextensions\9.0.5\lib\net8.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll">
+      <PackagePath>Microsoft.Extensions.Options.ConfigurationExtensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.extensions.primitives\9.0.5\lib\net8.0\Microsoft.Extensions.Primitives.dll">
       <PackagePath>Microsoft.Extensions.Primitives.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.graphics.win2d\1.2.0\lib\net6.0-windows10.0.19041.0\Microsoft.Graphics.Canvas.Interop.dll">
@@ -309,6 +315,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.windowsappsdk\1.5.240802000\lib\net6.0-windows10.0.18362.0\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.Net.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\system.diagnostics.diagnosticsource\9.0.5\lib\net8.0\System.Diagnostics.DiagnosticSource.dll">
+      <PackagePath>System.Diagnostics.DiagnosticSource.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pn25kdv\.nuget\packages\microsoft.maui.controls.core\8.0.100\lib\net8.0-windows10.0.19041\ar\Microsoft.Maui.Controls.resources.dll">
       <PackagePath>ar\Microsoft.Maui.Controls.resources.dll</PackagePath>

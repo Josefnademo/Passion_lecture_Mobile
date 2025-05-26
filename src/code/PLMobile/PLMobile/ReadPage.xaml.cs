@@ -31,7 +31,7 @@ public partial class ReadPage : ContentPage
         _viewModel = viewModel;
         BindingContext = viewModel;
     }
-    /*
+    /*l
     private async void LoadBookAsync()
     {
         try

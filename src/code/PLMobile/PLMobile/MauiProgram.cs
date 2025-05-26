@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using PLMobile.Services;
 using PLMobile.ViewModels;
+using PLMobile.Views;
 
 namespace PLMobile
 {
@@ -17,7 +18,7 @@ namespace PLMobile
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            // Register services
+            // Register Services
             builder.Services.AddSingleton<ApiService>();
 
             // Register ViewModels
@@ -25,14 +26,12 @@ namespace PLMobile
             builder.Services.AddTransient<LibraryPageViewModel>();
             builder.Services.AddTransient<ImportPageViewModel>();
             builder.Services.AddTransient<TagsPageViewModel>();
-            builder.Services.AddTransient<ReadPageViewModel>();
 
             // Register Pages
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<LibraryPage>();
             builder.Services.AddTransient<ImportPage>();
             builder.Services.AddTransient<TagsPage>();
-            builder.Services.AddTransient<ReadPage>();
 
 #if DEBUG
             builder.Logging.AddDebug();

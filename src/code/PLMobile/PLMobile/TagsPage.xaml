@@ -5,7 +5,8 @@
              xmlns:models="clr-namespace:PLMobile.Models"
              x:Class="PLMobile.TagsPage"
              x:DataType="viewmodels:TagsPageViewModel"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundImageSource="chains_and_gears.jpg">
 
     <Grid RowDefinitions="Auto,*,Auto"
           Padding="20">
@@ -16,18 +17,13 @@
                    FontSize="20"
                    TextColor="Black"/>
 
-            <Grid ColumnDefinitions="*,Auto">
+            <Grid ColumnDefinitions="*,Auto"  Margin="0,150,0,0">
                 <Entry Grid.Column="0"
                        Text="{Binding NewTagName}"
                        Placeholder="Nom du tag"
                        ReturnCommand="{Binding CreateTagCommand}"/>
 
-                <Button Grid.Column="1"
-                        Text="Créer"
-                        Command="{Binding CreateTagCommand}"
-                        IsEnabled="{Binding IsNotBusy}"
-                        Style="{StaticResource PrimaryButton}"
-                        Margin="10,0,0,0"/>
+                
             </Grid>
         </VerticalStackLayout>
 
@@ -38,6 +34,12 @@
                           Margin="0,20,0,0">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout>
+                        <Button Grid.Column="1"
+        Text="Créer"
+        Command="{Binding CreateTagCommand}"
+        IsEnabled="{Binding IsNotBusy}"
+        Style="{StaticResource PrimaryButton}"
+        Margin="10,100,0,0"/>
                         <Label Text="Aucun tag"
                                HorizontalOptions="Center"
                                TextColor="Gray"
@@ -61,7 +63,7 @@
                 Text="Retour"
                 Command="{Binding GoBackCommand}"
                 Style="{StaticResource SecondaryButton}"
-                Margin="0,20,0,0"/>
+                Margin="0,-300,0,0"/>
 
         <ActivityIndicator Grid.RowSpan="3"
                           IsVisible="{Binding IsBusy}"

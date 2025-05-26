@@ -42,3 +42,18 @@ INSERT INTO Tags (name, createdAt, updatedAt) VALUES
 ('History', NOW(), NOW()),
 ('Technology', NOW(), NOW()),
 ('Programming', NOW(), NOW()); 
+
+
+-- Example of how to insert a book (you'll need to replace the binary data)
+-- INSERT INTO Books (id, title, epub, createdAt, updatedAt)
+-- VALUES (UUID(), 'Sample Book', LOAD_FILE('/path/to/book.epub'), NOW(), NOW());
+
+-- Example of how to create a tag
+-- INSERT INTO Tags (name, createdAt, updatedAt)
+-- VALUES ('Fiction', NOW(), NOW());
+
+-- Example of how to associate a book with a tag
+-- INSERT INTO BookTags (BookId, TagId, createdAt, updatedAt)
+-- SELECT b.id, t.id, NOW(), NOW()
+-- FROM Books b, Tags t
+-- WHERE b.title = 'Sample Book' AND t.name = 'Fiction'; 
