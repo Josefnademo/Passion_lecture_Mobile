@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using PLMobile.Services;
 using PLMobile.ViewModels;
-using PLMobile.Views;
+using PLMobile;
 
 namespace PLMobile
 {
@@ -32,6 +32,7 @@ namespace PLMobile
             builder.Services.AddTransient<LibraryPage>();
             builder.Services.AddTransient<ImportPage>();
             builder.Services.AddTransient<TagsPage>();
+            builder.Services.AddTransient<LibraryPage>();
 
 #if DEBUG
             builder.Logging.AddDebug();

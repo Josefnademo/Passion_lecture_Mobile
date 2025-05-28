@@ -12,7 +12,7 @@
 
         <Label Grid.Row="0"
                Text="Importation"
-               HorizontalOptions="Center"
+                                   HorizontalOptions="Center" 
                TextColor="White"
                FontSize="24"
                Margin="0,20"/>
@@ -22,14 +22,14 @@
                             Spacing="20">
             <Label Text="Sélectionnez un fichier EPUB à importer"
                    TextColor="White"
-                   HorizontalOptions="Center"/>
+                            HorizontalOptions="Center"/>
 
             <Button Text="Importer un livre"
                     Command="{Binding ImportBookCommand}"
                     Style="{StaticResource PrimaryButton}"
                     HorizontalOptions="Center"
                     WidthRequest="200"/>
-        </VerticalStackLayout>
+            </VerticalStackLayout>
 
         <Button Grid.Row="2"
                 Text="Retour"

@@ -1,14 +1,14 @@
 using PLMobile.ViewModels;
 
-namespace PLMobile;
 
-public partial class LibraryPage : ContentPage
+namespace PLMobile
 {
-    public LibraryPage(LibraryPageViewModel viewModel)
+    public partial class LibraryPage : ContentPage
     {
-        InitializeComponent();
-        BindingContext = viewModel;
+        public LibraryPage(LibraryPageViewModel viewModel)
+        {
+            InitializeComponent();
+            BindingContext = viewModel;
+        }
     }
 }
-
-   

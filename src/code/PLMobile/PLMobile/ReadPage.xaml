@@ -38,7 +38,7 @@
 
             <Label Grid.Row="0" Grid.Column="1"
                    Text="{Binding CurrentPage, StringFormat='Page {0}'}"
-                   HorizontalOptions="Center"
+                HorizontalOptions="Center"
                    VerticalOptions="Center"/>
 
             <Button Grid.Row="0" Grid.Column="2"

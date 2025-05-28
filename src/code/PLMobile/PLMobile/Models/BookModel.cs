@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace PLMobile.Models
@@ -8,7 +9,7 @@ namespace PLMobile.Models
         public string Title { get; set; }
         public DateTime CreatedAt { get; set; }
         public int LastReadPage { get; set; }
-        public byte[] CoverImage { get; set; }
-        public List<TagModel> Tags { get; set; } = new();
+        public List<string> Tags { get; set; } = new();
+        public string CoverUrl { get; set; }
     }
 } 

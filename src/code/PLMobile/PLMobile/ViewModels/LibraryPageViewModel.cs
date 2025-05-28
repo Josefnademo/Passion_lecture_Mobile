@@ -46,8 +46,7 @@ namespace PLMobile.ViewModels
                 IsBusy = true;
                 IsRefreshing = true;
 
-                var selectedTagIds = SelectedTags.Select(t => t.Id).ToList();
-                var booksList = await _apiService.GetBooksAsync(selectedTagIds);
+                var booksList = await _apiService.GetBooksAsync();
                 
                 if (!string.IsNullOrWhiteSpace(SearchQuery))
                 {
@@ -79,43 +78,7 @@ namespace PLMobile.ViewModels
         [RelayCommand]
         private async Task FilterByTag()
         {
-            if (IsBusy) return;
-
-            try
-            {
-                IsBusy = true;
-                var tags = await _apiService.GetTagsAsync();
-                var tagNames = tags.Select(t => t.Name).ToArray();
-                
-                var action = await Shell.Current.DisplayActionSheet(
-                    "Filtrer par tag", 
-                    "Annuler", 
-                    "Effacer les filtres",
-                    tagNames);
-
-                if (action == "Effacer les filtres")
-                {
-                    SelectedTags.Clear();
-                }
-                else if (action != "Annuler" && action != null)
-                {
-                    var selectedTag = tags.First(t => t.Name == action);
-                    if (!SelectedTags.Any(t => t.Id == selectedTag.Id))
-                    {
-                        SelectedTags.Add(selectedTag);
-                    }
-                }
-
-                await LoadBooks();
-            }
-            catch (Exception ex)
-            {
-                await Shell.Current.DisplayAlert("Erreur", "Impossible de filtrer les livres: " + ex.Message, "OK");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+            await Shell.Current.GoToAsync(nameof(TagsPage));
         }
 
         [RelayCommand]
