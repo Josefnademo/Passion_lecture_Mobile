@@ -67,6 +67,7 @@ namespace PLMobile
             builder.Services.AddTransient<ImportPage>();
             builder.Services.AddTransient<TagsPage>();
             builder.Services.AddTransient<ApiPage>();
+            builder.Services.AddTransient<ReadPage>();
 
 #if DEBUG
             builder.Logging.AddDebug();

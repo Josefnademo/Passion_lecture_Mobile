@@ -100,8 +100,15 @@ C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobil
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlSaveStateFile.xml
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\PLMobile.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauisplash.stamp
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauifont.stamp
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\ancient_library.scale-100.jpeg
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png

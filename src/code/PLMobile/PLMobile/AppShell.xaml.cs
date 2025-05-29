@@ -11,7 +11,8 @@ namespace PLMobile;
         // Register routes for navigation
             Routing.RegisterRoute(nameof(LibraryPage), typeof(LibraryPage));
             Routing.RegisterRoute(nameof(ImportPage), typeof(ImportPage));
-        Routing.RegisterRoute(nameof(TagsPage), typeof(TagsPage));
+            Routing.RegisterRoute(nameof(TagsPage), typeof(TagsPage));
+            Routing.RegisterRoute(nameof(ReadPage), typeof(ReadPage));
         }
 
         // Static method for back navigation (can be called from any pages)

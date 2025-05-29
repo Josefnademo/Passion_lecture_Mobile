@@ -106,10 +106,10 @@ namespace PLMobile.ViewModels
         }
 
         [RelayCommand]
-        private async Task SortByDate()
+        private void SortByDate()
         {
             IsSortedByDateDesc = !IsSortedByDateDesc;
-            await LoadBooks();
+            ApplyFilters();
         }
 
         [RelayCommand]
@@ -190,34 +190,63 @@ namespace PLMobile.ViewModels
                     b.CreatedAt.Year == ActiveYearFilter.Value).ToList();
             }
 
+            // Apply sorting
+            filteredBooks = IsSortedByDateDesc 
+                ? filteredBooks.OrderByDescending(b => b.CreatedAt).ToList()
+                : filteredBooks.OrderBy(b => b.CreatedAt).ToList();
+
             // Update the observable collection
             Books.Clear();
-            foreach (var book in filteredBooks.OrderByDescending(b => b.CreatedAt))
+            foreach (var book in filteredBooks)
             {
                 Books.Add(book);
             }
 
             // Log the current state
-            System.Diagnostics.Debug.WriteLine($"[API] Applied filters - Books count: {Books.Count}");
+            System.Diagnostics.Debug.WriteLine($"[API] Applied filters and sorting - Books count: {Books.Count}");
             if (Books.Any())
             {
                 var years = Books.Select(b => b.CreatedAt.Year).Distinct().OrderByDescending(y => y);
                 System.Diagnostics.Debug.WriteLine($"[API] Years in filtered books: {string.Join(", ", years)}");
+                System.Diagnostics.Debug.WriteLine($"[API] Sorting order: {(IsSortedByDateDesc ? "Newest first" : "Oldest first")}");
             }
         }
 
         [RelayCommand]
         private async Task OpenBook(BookModel book)
         {
-            if (book == null) return;
-
-            var parameters = new Dictionary<string, object>
+            if (book == null)
             {
-                { "BookId", book.Id },
-                { "Title", book.Title }
-            };
+                System.Diagnostics.Debug.WriteLine("[Navigation] Cannot open book: book is null");
+                return;
+            }
 
-            await Shell.Current.GoToAsync($"{nameof(ReadPage)}", parameters);
+            try
+            {
+                System.Diagnostics.Debug.WriteLine($"[Navigation] Attempting to open book: {book.Id} - {book.Title}");
+                
+                var parameters = new Dictionary<string, object>
+                {
+                    { "BookId", book.Id },
+                    { "Title", book.Title }
+                };
+
+                System.Diagnostics.Debug.WriteLine($"[Navigation] Parameters prepared: BookId={book.Id}, Title={book.Title}");
+                
+                // Use the Shell navigation pattern with absolute route
+                var route = $"///ReadPage?BookId={Uri.EscapeDataString(book.Id)}&Title={Uri.EscapeDataString(book.Title)}";
+                System.Diagnostics.Debug.WriteLine($"[Navigation] Navigation route: {route}");
+                
+                await Shell.Current.GoToAsync(route);
+                System.Diagnostics.Debug.WriteLine("[Navigation] Navigation completed successfully");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[Navigation] Error navigating to ReadPage: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[Navigation] Stack trace: {ex.StackTrace}");
+                await Shell.Current.DisplayAlert("Erreur", 
+                    "Impossible d'ouvrir le livre. Veuillez réessayer.", "OK");
+            }
         }
 
         [RelayCommand]

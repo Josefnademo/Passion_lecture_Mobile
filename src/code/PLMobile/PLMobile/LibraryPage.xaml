@@ -8,96 +8,101 @@
              Title="{Binding Title}"
              BackgroundImageSource="background_library.png">
 
-    <Grid RowDefinitions="Auto,Auto,*"
-          Padding="20">
-        
-        <!-- Filter Controls -->
-        <Grid Grid.Row="0" 
-              ColumnDefinitions="*,*"
-              ColumnSpacing="10"
-              Margin="0,0,0,20">
-            
-            <!-- Tag Filter -->
-            <Button Grid.Column="0"
-                    Text="Filtrer par tag"
-                    Command="{Binding ShowTagFilterCommand}"
-                    Style="{StaticResource SecondaryButton}"/>
-            
-            <!-- Year Filter -->
-            <Button Grid.Column="1"
+    <Grid>
+        <Grid RowDefinitions="Auto,*">
+            <!-- Search and Filter Bar -->
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto,Auto" Padding="10">
+                <SearchBar Grid.Column="0" 
+                           Placeholder="Rechercher un livre..."
+                           Text="{Binding SearchQuery}"
+                           SearchCommand="{Binding SearchCommand}"/>
+                
+                <Button Grid.Column="1" 
+                        Text="Filtrer"
+                        Command="{Binding ShowTagFilterCommand}"
+                        Margin="5,0"/>
+
+                <!-- Year Filter -->
+                <Button Grid.Column="2"
                     Text="Trier par date"
                     Command="{Binding ShowYearFilterCommand}"
                     Style="{StaticResource SecondaryButton}"/>
+
+
+                <Button Grid.Column="3" 
+                        Text="+"
+                        Command="{Binding ImportBookCommand}"/>
+            </Grid>
+
+            <!-- Books List -->
+            <RefreshView Grid.Row="1" 
+                        Command="{Binding LoadBooksCommand}"
+                        IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView ItemsSource="{Binding Books}"
+                              SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:BookModel">
+                            <Grid Padding="10" ColumnDefinitions="Auto,*">
+                                <!-- Book Cover -->
+                                <Frame Grid.Column="0" 
+                                       HeightRequest="120" 
+                                       WidthRequest="80" 
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                                    <Image Source="{Binding CoverUrl}"
+                                           Aspect="AspectFill">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenBookCommand}"
+                                                CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+
+                                <!-- Book Details -->
+                                <VerticalStackLayout Grid.Column="1" 
+                                                   Padding="10,0,0,0"
+                                                   VerticalOptions="Center">
+                                    <Label Text="{Binding Title}" 
+                                           FontSize="16"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding CreatedAt, StringFormat='{0:d}'}" 
+                                           TextColor="Gray"
+                                           FontSize="12"/>
+                                    <FlexLayout BindableLayout.ItemsSource="{Binding Tags}"
+                                              Wrap="Wrap"
+                                              JustifyContent="Start"
+                                              AlignItems="Start">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate x:DataType="models:TagModel">
+                                                <Frame Padding="5,2" 
+                                                       Margin="0,2,5,2"
+                                                       BackgroundColor="LightGray"
+                                                       CornerRadius="10">
+                                                    <Label Text="{Binding Name}" 
+                                                           FontSize="10"/>
+                                                </Frame>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </FlexLayout>
+                                </VerticalStackLayout>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenBookCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
         </Grid>
 
-        <!-- Active Filters Display -->
-        <StackLayout Grid.Row="1" 
-                     Orientation="Horizontal"
-                     Spacing="10"
-                     Margin="0,0,0,10">
-            <Label Text="{Binding ActiveTagFilter, StringFormat='Tag: {0}'}"
-                   IsVisible="{Binding HasActiveTagFilter}"/>
-            <Label Text="{Binding ActiveYearFilter, StringFormat='Année: {0}'}"
-                   IsVisible="{Binding HasActiveYearFilter}"/>
-            <Button Text="Effacer les filtres"
-                    Command="{Binding ClearFiltersCommand}"
-                    IsVisible="{Binding HasAnyFilter}"
-                    Style="{StaticResource DangerButton}"/>
-        </StackLayout>
-
-        <RefreshView Grid.Row="2"
-                     Command="{Binding LoadBooksCommand}"
-                     IsRefreshing="{Binding IsBusy}">
-            <CollectionView ItemsSource="{Binding Books}"
-                        SelectionMode="Single"
-                        SelectionChangedCommand="{Binding OpenBookCommand}"
-                        SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
-                <CollectionView.EmptyView>
-                    <VerticalStackLayout HorizontalOptions="Center" 
-                                     VerticalOptions="Center">
-                        <Label Text="Aucun livre trouvé"
-                             TextColor="White"
-                             FontSize="18"
-                             HorizontalOptions="Center"/>
-                        <Label Text="Importez un livre pour commencer"
-                             TextColor="LightGray"
-                             FontSize="14"
-                             HorizontalOptions="Center"/>
-                    </VerticalStackLayout>
-                </CollectionView.EmptyView>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:BookModel">
-                        <Frame Margin="0,5"
-                             BackgroundColor="#80000000"
-                             BorderColor="Transparent"
-                             CornerRadius="10"
-                             HasShadow="True">
-                            <Grid ColumnDefinitions="*,Auto">
-                                <VerticalStackLayout Grid.Column="0"
-                                                 Spacing="5">
-                                    <Label Text="{Binding Title}"
-                                         TextColor="White"
-                                         FontSize="18"
-                                         FontAttributes="Bold"/>
-                                    <Label Text="{Binding CreatedAt, StringFormat='{0:dd/MM/yyyy}'}"
-                                         TextColor="LightGray"
-                                         FontSize="14"/>
-                                    <Label Text="{Binding LastReadPage, StringFormat='Page: {0}'}"
-                                         TextColor="LightGray"
-                                         FontSize="14"/>
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
-
-        <ActivityIndicator Grid.RowSpan="3"
-                          IsVisible="{Binding IsBusy}"
+        <!-- Loading Indicator -->
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
                           IsRunning="{Binding IsBusy}"
                           HorizontalOptions="Center"
                           VerticalOptions="Center"/>
     </Grid>
-
 </ContentPage>

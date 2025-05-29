@@ -145,9 +145,28 @@ namespace PLMobile.Services
 
         public async Task<byte[]> GetBookContentAsync(string bookId)
         {
-            var response = await _httpClient.GetAsync($"/api/books/{bookId}/epub");
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsByteArrayAsync();
+            try
+            {
+                System.Diagnostics.Debug.WriteLine($"[API] Getting book content for book ID: {bookId}");
+                var response = await _httpClient.GetAsync($"/api/books/{bookId}/epub");
+                
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    System.Diagnostics.Debug.WriteLine($"[API] Error getting book content. Status: {response.StatusCode}, Error: {errorContent}");
+                    throw new HttpRequestException($"Failed to get book content. Status: {response.StatusCode}");
+                }
+
+                var content = await response.Content.ReadAsByteArrayAsync();
+                System.Diagnostics.Debug.WriteLine($"[API] Successfully retrieved book content. Size: {content.Length} bytes");
+                return content;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[API] Error in GetBookContentAsync: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[API] Stack trace: {ex.StackTrace}");
+                throw;
+            }
         }
 
         public async Task<int> GetLastReadPageAsync(string bookId)
@@ -192,7 +211,24 @@ namespace PLMobile.Services
 
         public async Task<byte[]> GetBookEpubAsync(string bookId)
         {
-            return await GetBookContentAsync(bookId);
+            try
+            {
+                System.Diagnostics.Debug.WriteLine($"[API] Getting EPUB for book ID: {bookId}");
+                var content = await GetBookContentAsync(bookId);
+                
+                if (content == null || content.Length == 0)
+                {
+                    throw new Exception("No EPUB content received from server");
+                }
+                
+                return content;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[API] Error in GetBookEpubAsync: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[API] Stack trace: {ex.StackTrace}");
+                throw;
+            }
         }
 
         public async Task<bool> TestConnectionAsync()

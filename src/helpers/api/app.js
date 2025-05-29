@@ -190,7 +190,7 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
 app.get("/api/books", async (req, res) => {
   try {
     const books = await Book.findAll({
-      attributes: ["id", "title", "createdAt", "lastReadPage"],
+      attributes: ["id", "title", "createdAt", "lastReadPage", "coverImage"],
       order: [["createdAt", "DESC"]],
       include: [{
         model: Tag,
@@ -202,6 +202,12 @@ app.get("/api/books", async (req, res) => {
     const booksJson = books.map(book => {
       const plainBook = book.get({ plain: true });
       plainBook.id = String(plainBook.id);
+      // Add cover URL
+      plainBook.coverUrl = plainBook.coverImage 
+        ? `/api/books/${plainBook.id}/cover` 
+        : null;
+      // Remove the actual coverImage binary data from the response
+      delete plainBook.coverImage;
       if (plainBook.Tags) {
         plainBook.Tags = plainBook.Tags.map(tag => ({
           ...tag,
@@ -279,23 +285,28 @@ app.get("/api/tags", async (req, res) => {
 });
 
 // Creating a tag
-app.post("/tags", async (req, res) => {
+app.post("/api/tags", async (req, res) => {
   try {
     const { name } = req.body;
     if (!name || name.trim() === "") {
-      return res.status(400).send("The name of the tag is a requirement");
+      return res.status(400).json({ error: "The name of the tag is required" });
     }
 
     const existingTag = await Tag.findOne({ where: { name } });
     if (existingTag) {
-      return res.status(409).send("This is what happens");
+      return res.status(409).json({ error: "Tag already exists" });
     }
 
     const tag = await Tag.create({ name });
-    res.status(201).json(tag);
+    // Convert ID to string before sending
+    const tagJson = {
+      id: String(tag.id),
+      name: tag.name
+    };
+    res.status(201).json(tagJson);
   } catch (error) {
-    console.error("Erreur lors de la creation du tag:", error);
-    res.status(500).send("Please serve");
+    console.error("Error creating tag:", error);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
@@ -401,6 +412,31 @@ app.get("/books/:id/cover", async (req, res) => {
   } catch (error) {
     console.error("Error getting cover image:", error);
     res.status(500).send("Server error");
+  }
+});
+
+// Get book EPUB content
+app.get("/api/books/:id/epub", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(`[API] Getting EPUB content for book ID: ${id}`);
+    
+    const book = await Book.findByPk(id);
+    if (!book || !book.epub) {
+      console.log(`[API] Book not found or no EPUB content for ID: ${id}`);
+      return res.status(404).json({ error: "Book content not found" });
+    }
+
+    res
+      .header("Content-Type", "application/epub+zip")
+      .header("Content-Disposition", `attachment; filename="${book.title}.epub"`)
+      .header("Content-Length", book.epub.length)
+      .send(book.epub);
+      
+    console.log(`[API] Successfully sent EPUB content for book: ${book.title}`);
+  } catch (error) {
+    console.error("[API] Error getting book content:", error);
+    res.status(500).json({ error: "Server error" });
   }
 });
 

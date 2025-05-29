@@ -116,7 +116,7 @@
             <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.SortByDateCommand"/>.</summary>
         </member>
         <member name="P:PLMobile.ViewModels.LibraryPageViewModel.SortByDateCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.SortByDate"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.SortByDate"/>.</summary>
         </member>
         <member name="F:PLMobile.ViewModels.LibraryPageViewModel.showTagFilterCommand">
             <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.ShowTagFilterCommand"/>.</summary>
@@ -208,9 +208,6 @@
         <member name="P:PLMobile.ViewModels.ReadPageViewModel.CurrentPage">
             <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._currentPage"/>
         </member>
-        <member name="P:PLMobile.ViewModels.ReadPageViewModel.EpubContent">
-            <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._epubContent"/>
-        </member>
         <member name="P:PLMobile.ViewModels.ReadPageViewModel.PageContent">
             <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._pageContent"/>
         </member>
@@ -219,6 +216,9 @@
         </member>
         <member name="P:PLMobile.ViewModels.ReadPageViewModel.CanGoPrevious">
             <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._canGoPrevious"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ReadPageViewModel.TotalPages">
+            <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._totalPages"/>
         </member>
         <member name="M:PLMobile.ViewModels.ReadPageViewModel.OnBookIdChanged(System.String)">
             <summary>Executes the logic for when <see cref="P:PLMobile.ViewModels.ReadPageViewModel.BookId"/> just changed.</summary>
@@ -355,9 +355,6 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentPage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentPage" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.EpubContent">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "EpubContent" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PageContent">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PageContent" generated properties.</summary>
         </member>
@@ -366,6 +363,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CanGoPrevious">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CanGoPrevious" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalPages">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalPages" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tags">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tags" generated properties.</summary>
@@ -427,9 +427,6 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentPage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentPage" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EpubContent">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EpubContent" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PageContent">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PageContent" generated properties.</summary>
         </member>
@@ -438,6 +435,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CanGoPrevious">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CanGoPrevious" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalPages">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalPages" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tags">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tags" generated properties.</summary>
