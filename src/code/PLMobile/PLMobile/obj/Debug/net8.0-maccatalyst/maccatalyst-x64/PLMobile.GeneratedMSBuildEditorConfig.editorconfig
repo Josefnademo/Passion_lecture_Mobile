@@ -1,0 +1,96 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.MvvmToolkitEnableINotifyPropertyChangingSupport = true
+build_property._MvvmToolkitIsUsingWindowsRuntimePack = false
+build_property.CsWinRTComponent = 
+build_property.CsWinRTAotOptimizerEnabled = 
+build_property.CsWinRTAotWarningLevel = 
+build_property.TargetFramework = net8.0-maccatalyst
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PLMobile
+build_property.ProjectDir = C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/ApiPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.ApiPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ApiPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ApiPage.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/ImportPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.ImportPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ImportPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ImportPage.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/LibraryPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.LibraryPage.xaml
+build_metadata.AdditionalFiles.TargetPath = LibraryPage.xaml
+build_metadata.AdditionalFiles.RelativePath = LibraryPage.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/ReadPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.ReadPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ReadPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ReadPage.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/Resources/Styles/ImportStyles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.Resources.Styles.ImportStyles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\ImportStyles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\ImportStyles.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/Resources/Styles/TagsStyles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.Resources.Styles.TagsStyles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\TagsStyles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\TagsStyles.xaml
+
+[C:/Users/hdjdj/Documents/GitHub/Passion_lecture_Mobile/src/code/PLMobile/PLMobile/TagsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PLMobile.TagsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = TagsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = TagsPage.xaml

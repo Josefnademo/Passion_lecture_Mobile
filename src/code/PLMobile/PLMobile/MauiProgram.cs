@@ -25,6 +25,8 @@ namespace PLMobile
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<LibraryPageViewModel>();
             builder.Services.AddTransient<ImportPageViewModel>();
+            builder.Services.AddTransient<BaseViewModel>();
+            builder.Services.AddTransient<ReadPageViewModel>();
             builder.Services.AddTransient<TagsPageViewModel>();
 
             // Register Pages

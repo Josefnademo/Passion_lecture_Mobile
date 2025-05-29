@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PLMobile.ApiPage">
+    <VerticalStackLayout Spacing="10" Padding="20">
+        <Entry x:Name="endpoint" 
+               Placeholder="API Endpoint"
+               Text="{Binding ApiUrl}" />
+        
+        <Button Text="Load Book"
+                Clicked="Button_Clicked"/>
+        
+        <Image x:Name="cover" 
+               HeightRequest="300"
+               WidthRequest="200"
+               Aspect="AspectFit"/>
+        
+        <Label x:Name="title" 
+               FontSize="20"
+               HorizontalOptions="Center"/>
+        
+        <Switch x:Name="xmlSwitch" 
+                IsToggled="false"
+                Toggled="Switch_Toggled"
+                HorizontalOptions="Center"/>
+        
+        <Label Text="Use XML Parser"
+               HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage> 

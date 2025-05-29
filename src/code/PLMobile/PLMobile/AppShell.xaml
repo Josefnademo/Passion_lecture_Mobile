@@ -8,8 +8,14 @@
     Title="PLMobile">
 
     <ShellContent
+        Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+    <ShellContent
+        Title="API Test"
+        ContentTemplate="{DataTemplate local:ApiPage}"
+        Route="ApiPage" />
 
     <ShellContent
         ContentTemplate="{DataTemplate local:LibraryPage}"

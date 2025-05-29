@@ -1,11 +1,12 @@
-//Auteur : JMY
+//Auteur : JMY
 //Date   : 03.4.2024 
 //Lieu   : ETML
-//Descr. : squelette pour chargement de data à partir d’une api
+//Descr. : squelette pour chargement de data à partir d'une api
 
 using System.IO.Compression;
 using System.Xml;
 using static Android.Provider.MediaStore;
+using HelloMaui1.Helpers;
 
 namespace HelloMaui1;
 
@@ -17,14 +18,17 @@ public partial class ApiPage : ContentPage
 	public ApiPage()
 	{
 		InitializeComponent();
+		// Set the default API endpoint in the endpoint text field
+		endpoint.Text = ApiConfiguration.GetApiUrl();
 	}
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
 		try
 		{
-			//Call API
-            var response = await client.GetAsync(endpoint.Text);
+			// Use the ApiConfiguration to get the proper endpoint
+			var apiUrl = endpoint.Text ?? ApiConfiguration.GetApiUrl();
+			var response = await client.GetAsync(apiUrl);
 			if (response.IsSuccessStatusCode)
 			{
 				var content = response.Content;
