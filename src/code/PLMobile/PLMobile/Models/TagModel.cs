@@ -1,9 +1,16 @@
+using System.Text.Json.Serialization;
+
 namespace PLMobile.Models
 {
     public class TagModel
     {
-        public int Id { get; set; }
+        [JsonPropertyName("id")]
+        public string Id { get; set; }
+
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        public List<BookModel> Books { get; set; } = new();
+
+        [JsonPropertyName("booksCount")]
+        public int BooksCount { get; set; }
     }
 } 

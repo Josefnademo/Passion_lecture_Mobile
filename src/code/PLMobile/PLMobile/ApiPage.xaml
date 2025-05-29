@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PLMobile.ApiPage">
+             xmlns:viewmodels="clr-namespace:PLMobile.ViewModels"
+             x:Class="PLMobile.ApiPage"
+             x:DataType="viewmodels:ApiPageViewModel"
+             Title="{Binding Title}">
+    
     <VerticalStackLayout Spacing="10" Padding="20">
-        <Entry x:Name="endpoint" 
-               Placeholder="API Endpoint"
-               Text="{Binding ApiUrl}" />
-        
         <Button Text="Load Book"
-                Clicked="Button_Clicked"/>
+                Command="{Binding LoadBookCommand}"
+                IsEnabled="{Binding IsNotBusy}"/>
         
-        <Image x:Name="cover" 
+        <Image Source="{Binding CoverImage}"
                HeightRequest="300"
                WidthRequest="200"
                Aspect="AspectFit"/>
         
-        <Label x:Name="title" 
+        <Label Text="{Binding BookTitle}"
                FontSize="20"
                HorizontalOptions="Center"/>
         
-        <Switch x:Name="xmlSwitch" 
-                IsToggled="false"
-                Toggled="Switch_Toggled"
+        <Switch IsToggled="{Binding UseXml}"
                 HorizontalOptions="Center"/>
         
         <Label Text="Use XML Parser"
                HorizontalOptions="Center"/>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                          IsVisible="{Binding IsBusy}"
+                          HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage> 

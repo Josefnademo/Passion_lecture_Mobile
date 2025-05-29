@@ -4,6 +4,25 @@
         <name>PLMobile</name>
     </assembly>
     <members>
+        <member name="T:PLMobile.ViewModels.ApiPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ApiPageViewModel.CoverImage">
+            <inheritdoc cref="F:PLMobile.ViewModels.ApiPageViewModel._coverImage"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ApiPageViewModel.BookTitle">
+            <inheritdoc cref="F:PLMobile.ViewModels.ApiPageViewModel._bookTitle"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.ApiPageViewModel.UseXml">
+            <inheritdoc cref="F:PLMobile.ViewModels.ApiPageViewModel._useXml"/>
+        </member>
+        <member name="F:PLMobile.ViewModels.ApiPageViewModel.loadBookCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.ApiPageViewModel.LoadBookCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.ApiPageViewModel.LoadBookCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.ApiPageViewModel.LoadBook"/>.</summary>
+        </member>
         <member name="T:PLMobile.ViewModels.BaseViewModel">
             <inheritdoc/>
         </member>
@@ -44,6 +63,9 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:PLMobile.ViewModels.LibraryPageViewModel.Books">
             <inheritdoc cref="F:PLMobile.ViewModels.LibraryPageViewModel._books"/>
@@ -59,6 +81,12 @@
         </member>
         <member name="P:PLMobile.ViewModels.LibraryPageViewModel.IsRefreshing">
             <inheritdoc cref="F:PLMobile.ViewModels.LibraryPageViewModel._isRefreshing"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.ActiveTagFilter">
+            <inheritdoc cref="F:PLMobile.ViewModels.LibraryPageViewModel._activeTagFilter"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.ActiveYearFilter">
+            <inheritdoc cref="F:PLMobile.ViewModels.LibraryPageViewModel._activeYearFilter"/>
         </member>
         <member name="F:PLMobile.ViewModels.LibraryPageViewModel.loadBooksCommand">
             <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.LoadBooksCommand"/>.</summary>
@@ -89,6 +117,24 @@
         </member>
         <member name="P:PLMobile.ViewModels.LibraryPageViewModel.SortByDateCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.SortByDate"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.showTagFilterCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.ShowTagFilterCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.ShowTagFilterCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.ShowTagFilter"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.showYearFilterCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.ShowYearFilterCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.ShowYearFilterCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.ShowYearFilter"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.LibraryPageViewModel.clearFiltersCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.ClearFiltersCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.LibraryPageViewModel.ClearFiltersCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.ClearFilters"/>.</summary>
         </member>
         <member name="F:PLMobile.ViewModels.LibraryPageViewModel.openBookCommand">
             <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.OpenBookCommand"/>.</summary>
@@ -174,7 +220,7 @@
         <member name="P:PLMobile.ViewModels.ReadPageViewModel.CanGoPrevious">
             <inheritdoc cref="F:PLMobile.ViewModels.ReadPageViewModel._canGoPrevious"/>
         </member>
-        <member name="M:PLMobile.ViewModels.ReadPageViewModel.OnBookIdChanged(System.Int32)">
+        <member name="M:PLMobile.ViewModels.ReadPageViewModel.OnBookIdChanged(System.String)">
             <summary>Executes the logic for when <see cref="P:PLMobile.ViewModels.ReadPageViewModel.BookId"/> just changed.</summary>
             <param name="value">The new property value that was set.</param>
             <remarks>This method is invoked right after the value of <see cref="P:PLMobile.ViewModels.ReadPageViewModel.BookId"/> is changed.</remarks>
@@ -261,6 +307,15 @@
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CoverImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CoverImage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BookTitle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BookTitle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UseXml">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UseXml" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
         </member>
@@ -288,11 +343,14 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ActiveTagFilter">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ActiveTagFilter" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ActiveYearFilter">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ActiveYearFilter" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BookId">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BookId" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BookTitle">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BookTitle" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentPage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentPage" generated properties.</summary>
@@ -321,6 +379,15 @@
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CoverImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CoverImage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BookTitle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BookTitle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UseXml">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UseXml" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
         </member>
@@ -348,11 +415,14 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ActiveTagFilter">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ActiveTagFilter" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ActiveYearFilter">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ActiveYearFilter" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BookId">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BookId" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BookTitle">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BookTitle" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentPage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentPage" generated properties.</summary>

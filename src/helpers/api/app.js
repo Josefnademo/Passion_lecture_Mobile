@@ -10,6 +10,22 @@ const mysql = require('mysql2/promise');
 const path = require('path');
 const fs = require('fs').promises;
 
+// Enable CORS for all routes
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
+
+// Health check endpoint
+app.get("/api/health", (req, res) => {
+    res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
 // Configure multer for file uploads
 const storage = multer.diskStorage({
     destination: './uploads/',
@@ -170,16 +186,95 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
   }
 });
 
-//Getting a list of books sorted by date
-app.get("/books", async (req, res) => {
+// Getting a list of books sorted by date
+app.get("/api/books", async (req, res) => {
   try {
     const books = await Book.findAll({
-      attributes: ["id", "title", "createdAt"],
+      attributes: ["id", "title", "createdAt", "lastReadPage"],
       order: [["createdAt", "DESC"]],
+      include: [{
+        model: Tag,
+        through: { attributes: [] }
+      }]
     });
+
+    // Convert the Sequelize model instances to plain objects and ensure IDs are strings
+    const booksJson = books.map(book => {
+      const plainBook = book.get({ plain: true });
+      plainBook.id = String(plainBook.id);
+      if (plainBook.Tags) {
+        plainBook.Tags = plainBook.Tags.map(tag => ({
+          ...tag,
+          id: String(tag.id)
+        }));
+      }
+      return plainBook;
+    });
+
+    res.json(booksJson);
+  } catch (error) {
+    console.error("Error fetching books:", error);
+    res.status(500).json({ error: "Failed to fetch books" });
+  }
+});
+
+// Get books filtered by tags
+app.get("/api/books/filter", async (req, res) => {
+  try {
+    const { tagIds } = req.query;
+    let includeClause = [{
+      model: Tag,
+      through: { attributes: [] }
+    }];
+
+    if (tagIds) {
+      includeClause = [{
+        model: Tag,
+        where: {
+          id: tagIds.split(",").map(Number)
+        },
+        through: { attributes: [] }
+      }];
+    }
+
+    const books = await Book.findAll({
+      attributes: ["id", "title", "createdAt", "lastReadPage"],
+      include: includeClause,
+      order: [["createdAt", "DESC"]]
+    });
+
     res.json(books);
   } catch (error) {
-    res.status(500).send("Error while receiving books");
+    console.error("Error filtering books:", error);
+    res.status(500).json({ error: "Failed to filter books" });
+  }
+});
+
+// Get all tags
+app.get("/api/tags", async (req, res) => {
+  try {
+    const tags = await Tag.findAll({
+      include: [{
+        model: Book,
+        attributes: ["id"],
+        through: { attributes: [] }
+      }]
+    });
+    
+    // Add booksCount to each tag and ensure IDs are strings
+    const tagsWithCount = tags.map(tag => {
+      const plainTag = tag.get({ plain: true });
+      return {
+        id: String(plainTag.id),
+        name: plainTag.name,
+        booksCount: plainTag.Books.length
+      };
+    });
+    
+    res.json(tagsWithCount);
+  } catch (error) {
+    console.error("Error fetching tags:", error);
+    res.status(500).json({ error: "Failed to fetch tags" });
   }
 });
 
@@ -204,16 +299,6 @@ app.post("/tags", async (req, res) => {
   }
 });
 
-// Get all tags
-app.get("/tags", async (req, res) => {
-  try {
-    const tags = await Tag.findAll();
-    res.json(tags);
-  } catch (error) {
-    res.status(500).send("Error getting tags");
-  }
-});
-
 // Update last read page for a book
 app.put("/books/:id/lastpage", async (req, res) => {
   try {
@@ -234,39 +319,6 @@ app.put("/books/:id/lastpage", async (req, res) => {
     res.json({ success: true });
   } catch (error) {
     console.error("Error updating last read page:", error);
-    res.status(500).send("Server error");
-  }
-});
-
-// Get books with optional tag filter
-app.get("/books/filter", async (req, res) => {
-  try {
-    const { tagIds } = req.query;
-    let whereClause = {};
-    let includeClause = [];
-
-    if (tagIds) {
-      const tagIdsArray = tagIds.split(",");
-      includeClause = [
-        {
-          model: Tag,
-          where: {
-            id: tagIdsArray,
-          },
-          through: { attributes: [] },
-        },
-      ];
-    }
-
-    const books = await Book.findAll({
-      attributes: ["id", "title", "createdAt", "lastReadPage"],
-      include: includeClause,
-      order: [["createdAt", "DESC"]],
-    });
-
-    res.json(books);
-  } catch (error) {
-    console.error("Error filtering books:", error);
     res.status(500).send("Server error");
   }
 });
@@ -352,11 +404,6 @@ app.get("/books/:id/cover", async (req, res) => {
   }
 });
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-    res.json({ status: 'healthy' });
-});
-
 // Start server only after database is initialized
 async function startServer() {
     await initializeDatabase();
@@ -378,154 +425,6 @@ const dbConfig = {
     password: process.env.MYSQL_PASSWORD || 'root123',
     database: process.env.MYSQL_DATABASE || 'passionlecture'
 };
-
-// Get all books
-app.get('/api/books', async (req, res) => {
-    try {
-        const connection = await mysql.createConnection(dbConfig);
-        const [rows] = await connection.execute('SELECT * FROM Books');
-        await connection.end();
-        res.json(rows);
-    } catch (error) {
-        console.error('Error fetching books:', error);
-        res.status(500).json({ error: 'Failed to fetch books' });
-    }
-});
-
-// Get books filtered by tags
-app.get('/api/books/filter', async (req, res) => {
-    try {
-        const tagIds = req.query.tagIds.split(',').map(Number);
-        const connection = await mysql.createConnection(dbConfig);
-        const [rows] = await connection.execute(
-            `SELECT DISTINCT b.* FROM Books b 
-             INNER JOIN BookTags bt ON b.id = bt.BookId 
-             WHERE bt.TagId IN (?)`,
-            [tagIds]
-        );
-        await connection.end();
-        res.json(rows);
-    } catch (error) {
-        console.error('Error filtering books:', error);
-        res.status(500).json({ error: 'Failed to filter books' });
-    }
-});
-
-// Get all tags
-app.get('/api/tags', async (req, res) => {
-    try {
-        const connection = await mysql.createConnection(dbConfig);
-        const [rows] = await connection.execute('SELECT * FROM Tags');
-        await connection.end();
-        res.json(rows);
-    } catch (error) {
-        console.error('Error fetching tags:', error);
-        res.status(500).json({ error: 'Failed to fetch tags' });
-    }
-});
-
-// Create a new tag
-app.post('/api/tags', async (req, res) => {
-    try {
-        const { name } = req.body;
-        const connection = await mysql.createConnection(dbConfig);
-        const [result] = await connection.execute(
-            'INSERT INTO Tags (name, createdAt, updatedAt) VALUES (?, NOW(), NOW())',
-            [name]
-        );
-        const [newTag] = await connection.execute('SELECT * FROM Tags WHERE id = ?', [result.insertId]);
-        await connection.end();
-        res.status(201).json(newTag[0]);
-    } catch (error) {
-        console.error('Error creating tag:', error);
-        res.status(500).json({ error: 'Failed to create tag' });
-    }
-});
-
-// Get a specific book
-app.get('/api/books/:id', async (req, res) => {
-    try {
-        const connection = await mysql.createConnection(dbConfig);
-        const [rows] = await connection.execute('SELECT * FROM Books WHERE id = ?', [req.params.id]);
-        await connection.end();
-        if (rows.length === 0) {
-            res.status(404).json({ error: 'Book not found' });
-        } else {
-            res.json(rows[0]);
-        }
-    } catch (error) {
-        console.error('Error fetching book:', error);
-        res.status(500).json({ error: 'Failed to fetch book' });
-    }
-});
-
-// Get book's epub content
-app.get('/api/books/:id/epub', async (req, res) => {
-    try {
-        const connection = await mysql.createConnection(dbConfig);
-        const [rows] = await connection.execute('SELECT epub FROM Books WHERE id = ?', [req.params.id]);
-        await connection.end();
-        if (rows.length === 0 || !rows[0].epub) {
-            res.status(404).json({ error: 'Epub content not found' });
-        } else {
-            res.setHeader('Content-Type', 'application/epub+zip');
-            res.send(rows[0].epub);
-        }
-    } catch (error) {
-        console.error('Error fetching epub:', error);
-        res.status(500).json({ error: 'Failed to fetch epub content' });
-    }
-});
-
-// Update last read page
-app.put('/api/books/:id/lastpage', async (req, res) => {
-    try {
-        const { lastReadPage } = req.body;
-        const connection = await mysql.createConnection(dbConfig);
-        await connection.execute(
-            'UPDATE Books SET lastReadPage = ?, updatedAt = NOW() WHERE id = ?',
-            [lastReadPage, req.params.id]
-        );
-        await connection.end();
-        res.json({ success: true });
-    } catch (error) {
-        console.error('Error updating last read page:', error);
-        res.status(500).json({ error: 'Failed to update last read page' });
-    }
-});
-
-// Upload a new book
-app.post('/api/books/upload', upload.fields([
-    { name: 'epub', maxCount: 1 },
-    { name: 'cover', maxCount: 1 }
-]), async (req, res) => {
-    try {
-        const { title } = req.body;
-        const epubFile = req.files['epub'][0];
-        const coverFile = req.files['cover'] ? req.files['cover'][0] : null;
-
-        const epubContent = await fs.readFile(epubFile.path);
-        const coverContent = coverFile ? await fs.readFile(coverFile.path) : null;
-
-        const connection = await mysql.createConnection(dbConfig);
-        const [result] = await connection.execute(
-            'INSERT INTO Books (title, epub, coverImage, createdAt, updatedAt) VALUES (?, ?, ?, NOW(), NOW())',
-            [title, epubContent, coverContent]
-        );
-
-        // Clean up uploaded files
-        await fs.unlink(epubFile.path);
-        if (coverFile) {
-            await fs.unlink(coverFile.path);
-        }
-
-        await connection.end();
-        res.status(201).json({ id: result.insertId });
-    } catch (error) {
-        console.error('Error uploading book:', error);
-        res.status(500).json({ error: 'Failed to upload book' });
-    }
-});
 
 // Create uploads directory if it doesn't exist
 fs.mkdir('./uploads').catch(() => {});

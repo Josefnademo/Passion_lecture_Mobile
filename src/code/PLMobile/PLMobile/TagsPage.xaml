@@ -11,59 +11,81 @@
     <Grid RowDefinitions="Auto,*,Auto"
           Padding="20">
 
-        <VerticalStackLayout Grid.Row="0"
-                            Spacing="20">
-            <Label Text="Créer un nouveau tag"
-                   FontSize="20"
-                   TextColor="Black"/>
+        <!-- Create Tag Section -->
+        <Frame Grid.Row="0" 
+               Margin="0,0,0,20"
+               BorderColor="LightGray"
+               BackgroundColor="White"
+               Opacity="0.9">
+            <VerticalStackLayout Spacing="15">
+                <Label Text="Créer un nouveau tag"
+                       FontSize="20"
+                       TextColor="Black"/>
 
-            <Grid ColumnDefinitions="*,Auto"  Margin="0,150,0,0">
-                <Entry Grid.Column="0"
-                       Text="{Binding NewTagName}"
-                       Placeholder="Nom du tag"
-                       ReturnCommand="{Binding CreateTagCommand}"/>
+                <Grid ColumnDefinitions="*,Auto" 
+                      ColumnSpacing="10">
+                    <Entry Grid.Column="0"
+                           Text="{Binding NewTagName}"
+                           Placeholder="Nom du tag"
+                           ReturnCommand="{Binding CreateTagCommand}"/>
+                    
+                    <Button Grid.Column="1"
+                            Text="Créer"
+                            Command="{Binding CreateTagCommand}"
+                            IsEnabled="{Binding IsNotBusy}"
+                            Style="{StaticResource PrimaryButton}"/>
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
 
-                
-            </Grid>
-        </VerticalStackLayout>
-
+        <!-- Tags List -->
         <RefreshView Grid.Row="1"
                      Command="{Binding LoadTagsCommand}"
                      IsRefreshing="{Binding IsBusy}">
-            <CollectionView ItemsSource="{Binding Tags}"
-                          Margin="0,20,0,0">
-                <CollectionView.EmptyView>
-                    <VerticalStackLayout>
-                        <Button Grid.Column="1"
-        Text="Créer"
-        Command="{Binding CreateTagCommand}"
-        IsEnabled="{Binding IsNotBusy}"
-        Style="{StaticResource PrimaryButton}"
-        Margin="10,100,0,0"/>
-                        <Label Text="Aucun tag"
-                               HorizontalOptions="Center"
-                               TextColor="Gray"
-                               FontSize="18"/>
-                    </VerticalStackLayout>
-                </CollectionView.EmptyView>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:TagModel">
-                        <Frame Margin="0,0,0,10"
-                               Padding="10"
-                               BorderColor="LightGray">
-                            <Label Text="{Binding Name}"
-                                   FontSize="16"/>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <ScrollView>
+                <CollectionView ItemsSource="{Binding Tags}"
+                              Margin="0,10">
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout>
+                            <Label Text="Aucun tag"
+                                   HorizontalOptions="Center"
+                                   TextColor="Gray"
+                                   FontSize="18"/>
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" 
+                                         ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:TagModel">
+                            <Frame BorderColor="LightGray"
+                                   BackgroundColor="White"
+                                   Opacity="0.9"
+                                   Padding="15">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="16"
+                                           VerticalOptions="Center"/>
+                                    <Label Grid.Column="1" 
+                                           Text="{Binding BooksCount, StringFormat='({0} livres)'}"
+                                           TextColor="Gray"
+                                           FontSize="14"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
         </RefreshView>
 
+        <!-- Back Button -->
         <Button Grid.Row="2"
                 Text="Retour"
                 Command="{Binding GoBackCommand}"
                 Style="{StaticResource SecondaryButton}"
-                Margin="0,-300,0,0"/>
+                Margin="0,20,0,0"/>
 
         <ActivityIndicator Grid.RowSpan="3"
                           IsVisible="{Binding IsBusy}"

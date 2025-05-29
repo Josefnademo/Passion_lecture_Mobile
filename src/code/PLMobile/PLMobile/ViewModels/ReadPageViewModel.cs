@@ -12,7 +12,7 @@ namespace PLMobile.ViewModels
         private readonly ApiService _apiService;
 
         [ObservableProperty]
-        private int _bookId;
+        private string _bookId;
 
         [ObservableProperty]
         private string _bookTitle;
@@ -41,7 +41,7 @@ namespace PLMobile.ViewModels
             CanGoPrevious = false;
         }
 
-        partial void OnBookIdChanged(int value)
+        partial void OnBookIdChanged(string value)
         {
             LoadBookCommand.Execute(null);
         }
@@ -93,9 +93,6 @@ namespace PLMobile.ViewModels
             try
             {
                 IsBusy = true;
-
-                // В реальном приложении здесь будет логика чтения содержимого страницы из EPUB
-                // Для примера просто показываем номер страницы
                 PageContent = $"Page {pageNumber}";
                 CurrentPage = pageNumber;
                 await UpdateProgress(pageNumber);

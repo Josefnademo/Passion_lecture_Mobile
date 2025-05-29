@@ -9,61 +9,58 @@ namespace PLMobile.Services
     {
         private readonly HttpClient _httpClient;
 
-        public ApiService()
+        public ApiService(HttpClient httpClient)
         {
-            // For Android Emulator, use 10.0.2.2
-            // For Windows/iOS debugging, use localhost
-            string baseUrl = DeviceInfo.Platform == DevicePlatform.Android 
-                ? "http://10.0.2.2:3000"
-                : "http://localhost:3000";
-
-            _httpClient = new HttpClient
-            {
-                BaseAddress = new Uri(baseUrl),
-                Timeout = TimeSpan.FromSeconds(10)
-            };
+            _httpClient = httpClient;
+            System.Diagnostics.Debug.WriteLine($"[API] Initialized with base URL: {_httpClient.BaseAddress}");
         }
 
-        public async Task<bool> TestConnectionAsync()
+        public async Task<List<BookModel>> GetBooksAsync()
         {
             try
             {
-                var response = await _httpClient.GetAsync("/health");
-                return response.IsSuccessStatusCode;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"API Connection Error: {ex.Message}");
-                return false;
-            }
-        }
-
-        public async Task<List<BookModel>> GetBooksAsync(List<int> tagIds = null)
-        {
-            try
-            {
-                // Health check
-                var healthResponse = await _httpClient.GetAsync("/health");
-                if (!healthResponse.IsSuccessStatusCode)
+                System.Diagnostics.Debug.WriteLine("[API] Starting GetBooksAsync request...");
+                
+                // First test the connection
+                if (!await TestConnectionAsync())
                 {
-                    throw new HttpRequestException("API server is not healthy");
+                    System.Diagnostics.Debug.WriteLine("[API] Connection test failed");
+                    throw new HttpRequestException("Cannot connect to API server");
                 }
 
-                string url = "/api/books";
-                if (tagIds != null && tagIds.Any())
+                System.Diagnostics.Debug.WriteLine("[API] Making request to /api/books");
+                var books = await _httpClient.GetFromJsonAsync<List<BookModel>>("/api/books");
+                
+                if (books != null)
                 {
-                    url = $"/api/books/filter?tagIds={string.Join(",", tagIds)}";
+                    System.Diagnostics.Debug.WriteLine($"[API] Successfully retrieved {books.Count} books");
+                    foreach (var book in books)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"[API] Book: {book.Id} - {book.Title}");
+                    }
                 }
-
-                var response = await _httpClient.GetFromJsonAsync<List<BookModel>>(url);
-                return response ?? new List<BookModel>();
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("[API] No books returned from API");
+                }
+                
+                return books ?? new List<BookModel>();
             }
-            catch (Exception ex)
+            catch (HttpRequestException ex)
             {
-                System.Diagnostics.Debug.WriteLine($"API Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[API] Connection Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[API] Stack trace: {ex.StackTrace}");
                 await Application.Current.MainPage.DisplayAlert("Connection Error", 
-                    "Could not connect to the server. Please make sure Docker is running and try again.", "OK");
-                return new List<BookModel>();
+                    $"Could not connect to the server at {_httpClient.BaseAddress}. Please make sure Docker is running and try again.", "OK");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[API] Unexpected Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[API] Stack trace: {ex.StackTrace}");
+                await Application.Current.MainPage.DisplayAlert("Error", 
+                    $"An unexpected error occurred while fetching books: {ex.Message}", "OK");
+                throw;
             }
         }
 
@@ -71,22 +68,48 @@ namespace PLMobile.Services
         {
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<List<TagModel>>("/api/tags");
-                return response ?? new List<TagModel>();
+                System.Diagnostics.Debug.WriteLine("[API] Starting GetTagsAsync request...");
+                
+                // First test the connection
+                if (!await TestConnectionAsync())
+                {
+                    System.Diagnostics.Debug.WriteLine("[API] Connection test failed");
+                    throw new HttpRequestException("Cannot connect to API server");
+                }
+
+                System.Diagnostics.Debug.WriteLine("[API] Making request to /api/tags");
+                var tags = await _httpClient.GetFromJsonAsync<List<TagModel>>("/api/tags");
+                
+                if (tags != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[API] Successfully retrieved {tags.Count} tags");
+                    foreach (var tag in tags)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"[API] Tag: {tag.Id} - {tag.Name}");
+                    }
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("[API] No tags returned from API");
+                }
+                
+                return tags ?? new List<TagModel>();
             }
             catch (HttpRequestException ex)
             {
-                System.Diagnostics.Debug.WriteLine($"API Connection Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[API] Connection Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[API] Stack trace: {ex.StackTrace}");
                 await Application.Current.MainPage.DisplayAlert("Connection Error", 
-                    "Could not connect to the server. Please make sure Docker is running and try again.", "OK");
-                return new List<TagModel>();
+                    $"Could not connect to the server at {_httpClient.BaseAddress}. Please make sure Docker is running and try again.", "OK");
+                throw;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Unexpected Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[API] Unexpected Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[API] Stack trace: {ex.StackTrace}");
                 await Application.Current.MainPage.DisplayAlert("Error", 
-                    "An unexpected error occurred while fetching tags.", "OK");
-                return new List<TagModel>();
+                    $"An unexpected error occurred while fetching tags: {ex.Message}", "OK");
+                throw;
             }
         }
 
@@ -120,14 +143,14 @@ namespace PLMobile.Services
             }
         }
 
-        public async Task<byte[]> GetBookContentAsync(int bookId)
+        public async Task<byte[]> GetBookContentAsync(string bookId)
         {
             var response = await _httpClient.GetAsync($"/api/books/{bookId}/epub");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsByteArrayAsync();
         }
 
-        public async Task<int> GetLastReadPageAsync(int bookId)
+        public async Task<int> GetLastReadPageAsync(string bookId)
         {
             try
             {
@@ -140,7 +163,7 @@ namespace PLMobile.Services
             }
         }
 
-        public async Task UpdateLastReadPageAsync(int bookId, int page)
+        public async Task UpdateLastReadPageAsync(string bookId, int page)
         {
             var content = new StringContent(
                 JsonSerializer.Serialize(new { lastReadPage = page }),
@@ -167,9 +190,30 @@ namespace PLMobile.Services
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task<byte[]> GetBookEpubAsync(int bookId)
+        public async Task<byte[]> GetBookEpubAsync(string bookId)
         {
             return await GetBookContentAsync(bookId);
+        }
+
+        public async Task<bool> TestConnectionAsync()
+        {
+            try
+            {
+                System.Diagnostics.Debug.WriteLine("[API] Testing connection...");
+                var response = await _httpClient.GetAsync("/api/health");
+                var success = response.IsSuccessStatusCode;
+                System.Diagnostics.Debug.WriteLine($"[API] Connection test result: {success}");
+                if (!success)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[API] Status code: {response.StatusCode}");
+                }
+                return success;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[API] Connection test failed: {ex.Message}");
+                return false;
+            }
         }
     }
 } 

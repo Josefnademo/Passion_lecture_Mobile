@@ -8,28 +8,46 @@
              Title="{Binding Title}"
              BackgroundImageSource="background_library.png">
 
-    <Grid RowDefinitions="Auto,*" Padding="20">
+    <Grid RowDefinitions="Auto,Auto,*"
+          Padding="20">
+        
+        <!-- Filter Controls -->
         <Grid Grid.Row="0" 
-            ColumnDefinitions="*,*,*"
-            Margin="0,0,0,20">
+              ColumnDefinitions="*,*"
+              ColumnSpacing="10"
+              Margin="0,0,0,20">
+            
+            <!-- Tag Filter -->
             <Button Grid.Column="0"
-                  Text="Filtrer par tag"
-                  Command="{Binding FilterByTagCommand}"
-                  Style="{StaticResource PrimaryButton}"/>
+                    Text="Filtrer par tag"
+                    Command="{Binding ShowTagFilterCommand}"
+                    Style="{StaticResource SecondaryButton}"/>
+            
+            <!-- Year Filter -->
             <Button Grid.Column="1"
-                  Text="Trier par date"
-                  Command="{Binding SortByDateCommand}"
-                  Style="{StaticResource SecondaryButton}"
-                  Margin="10,0"/>
-            <Button Grid.Column="2"
-                  Text="Importer"
-                  Command="{Binding ImportBookCommand}"
-                  Style="{StaticResource SecondaryButton}"/>
+                    Text="Trier par date"
+                    Command="{Binding ShowYearFilterCommand}"
+                    Style="{StaticResource SecondaryButton}"/>
         </Grid>
 
-        <RefreshView Grid.Row="1"
-                   IsRefreshing="{Binding IsRefreshing}"
-                   Command="{Binding LoadBooksCommand}">
+        <!-- Active Filters Display -->
+        <StackLayout Grid.Row="1" 
+                     Orientation="Horizontal"
+                     Spacing="10"
+                     Margin="0,0,0,10">
+            <Label Text="{Binding ActiveTagFilter, StringFormat='Tag: {0}'}"
+                   IsVisible="{Binding HasActiveTagFilter}"/>
+            <Label Text="{Binding ActiveYearFilter, StringFormat='Année: {0}'}"
+                   IsVisible="{Binding HasActiveYearFilter}"/>
+            <Button Text="Effacer les filtres"
+                    Command="{Binding ClearFiltersCommand}"
+                    IsVisible="{Binding HasAnyFilter}"
+                    Style="{StaticResource DangerButton}"/>
+        </StackLayout>
+
+        <RefreshView Grid.Row="2"
+                     Command="{Binding LoadBooksCommand}"
+                     IsRefreshing="{Binding IsBusy}">
             <CollectionView ItemsSource="{Binding Books}"
                         SelectionMode="Single"
                         SelectionChangedCommand="{Binding OpenBookCommand}"
@@ -74,6 +92,12 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
+
+        <ActivityIndicator Grid.RowSpan="3"
+                          IsVisible="{Binding IsBusy}"
+                          IsRunning="{Binding IsBusy}"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"/>
     </Grid>
 
 </ContentPage>
