@@ -18,6 +18,9 @@
 
             </ResourceDictionary.MergedDictionaries>
 
+            <!-- Converters -->
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+
             <!-- Colors -->
             <Color x:Key="PrimaryColor">#512BD4</Color>
             <Color x:Key="SecondaryColor">#2B0B98</Color>

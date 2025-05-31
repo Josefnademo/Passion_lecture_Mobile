@@ -159,26 +159,68 @@ app.get("/epub/:id", async (req, res) => {
 });
 
 app.post("/upload", upload.single("epub"), async (req, res) => {
-  // Check if the request contains a file
-  if (!req.file) {
-    return res.status(400).send("Aucun fichier était uploadé");
-  }
-
-  // Récupérer le titre à partir du nom du fichier
-  const title = req.file.originalname.replace(".epub", "");
-
-  // Check if the book already exists in the database
-  const existingBook = await Book.findOne({ where: { title } });
-  if (existingBook) {
-    return res.status(409).send("Book already exists.");
-  }
-
-  //create a new book
   try {
+    // Check if the request contains a file
+    if (!req.file) {
+      return res.status(400).send("Aucun fichier était uploadé");
+    }
+
+    // Get title from the filename
+    const title = req.file.originalname.replace(".epub", "");
+
+    // Check if the book already exists
+    const existingBook = await Book.findOne({ where: { title } });
+    if (existingBook) {
+      return res.status(409).send("Book already exists.");
+    }
+
+    // Extract cover image from EPUB
+    let coverImage = null;
+    try {
+      const zip = new require('adm-zip')(req.file.buffer);
+      const entries = zip.getEntries();
+      
+      // Try common cover image paths
+      const coverPaths = [
+        'OEBPS/Images/cover.png',
+        'OEBPS/images/cover.png',
+        'OEBPS/Images/cover.jpg',
+        'OEBPS/images/cover.jpg',
+        'OPS/images/cover.jpg',
+        'OPS/Images/cover.jpg',
+        'cover.jpg',
+        'cover.png'
+      ];
+
+      for (const coverPath of coverPaths) {
+        const entry = entries.find(e => e.entryName.toLowerCase() === coverPath.toLowerCase());
+        if (entry) {
+          coverImage = entry.getData();
+          break;
+        }
+      }
+
+      // If no cover found in common paths, try to find any image that might be a cover
+      if (!coverImage) {
+        const imageEntry = entries.find(e => 
+          e.entryName.toLowerCase().includes('cover') && 
+          (e.entryName.endsWith('.jpg') || e.entryName.endsWith('.png'))
+        );
+        if (imageEntry) {
+          coverImage = imageEntry.getData();
+        }
+      }
+    } catch (error) {
+      console.error("Error extracting cover:", error);
+    }
+
+    // Create the book with cover if found
     await Book.create({
-      title: req.file.originalname.replace(".epub", ""),
+      title: title,
       epub: req.file.buffer,
+      coverImage: coverImage
     });
+
     res.status(200).send("Fichier uploadé avec succès");
   } catch (error) {
     console.error("Erreur lors de l'upload du fichier:", error);
@@ -198,13 +240,15 @@ app.get("/api/books", async (req, res) => {
       }]
     });
 
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    
     // Convert the Sequelize model instances to plain objects and ensure IDs are strings
     const booksJson = books.map(book => {
       const plainBook = book.get({ plain: true });
       plainBook.id = String(plainBook.id);
-      // Add cover URL
+      // Add cover URL with full path
       plainBook.coverUrl = plainBook.coverImage 
-        ? `/api/books/${plainBook.id}/cover` 
+        ? `${baseUrl}/api/books/${plainBook.id}/cover` 
         : null;
       // Remove the actual coverImage binary data from the response
       delete plainBook.coverImage;
@@ -399,7 +443,7 @@ app.put("/books/:id/cover", upload.single("cover"), async (req, res) => {
 });
 
 // Get book cover image
-app.get("/books/:id/cover", async (req, res) => {
+app.get("/api/books/:id/cover", async (req, res) => {
   try {
     const { id } = req.params;
     const book = await Book.findByPk(id);
@@ -408,7 +452,12 @@ app.get("/books/:id/cover", async (req, res) => {
       return res.status(404).send("Cover image not found");
     }
 
-    res.header("Content-Type", "image/jpeg").send(book.coverImage);
+    // Try to detect image type from the first few bytes
+    const imageType = book.coverImage[0] === 0x89 ? 'image/png' : 'image/jpeg';
+    
+    res.header("Content-Type", imageType)
+       .header("Cache-Control", "public, max-age=31536000") // Cache for 1 year
+       .send(book.coverImage);
   } catch (error) {
     console.error("Error getting cover image:", error);
     res.status(500).send("Server error");

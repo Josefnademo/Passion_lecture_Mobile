@@ -171,13 +171,13 @@ namespace PLMobile.ViewModels
             // Apply tag filter
             if (!string.IsNullOrEmpty(ActiveTagFilter))
             {
-                var selectedTag = _availableTags.FirstOrDefault(t => 
+                var selectedTag = _availableTags.FirstOrDefault(t =>
                     string.Equals(t.Name, ActiveTagFilter, StringComparison.OrdinalIgnoreCase));
-                
+
                 if (selectedTag != null)
                 {
-                    filteredBooks = filteredBooks.Where(b => 
-                        b.Tags != null && 
+                    filteredBooks = filteredBooks.Where(b =>
+                        b.Tags != null &&
                         b.Tags.Any(tag => tag.Id == selectedTag.Id))
                         .ToList();
                 }
@@ -186,12 +186,12 @@ namespace PLMobile.ViewModels
             // Apply year filter
             if (ActiveYearFilter.HasValue)
             {
-                filteredBooks = filteredBooks.Where(b => 
+                filteredBooks = filteredBooks.Where(b =>
                     b.CreatedAt.Year == ActiveYearFilter.Value).ToList();
             }
 
             // Apply sorting
-            filteredBooks = IsSortedByDateDesc 
+            filteredBooks = IsSortedByDateDesc
                 ? filteredBooks.OrderByDescending(b => b.CreatedAt).ToList()
                 : filteredBooks.OrderBy(b => b.CreatedAt).ToList();
 
@@ -224,19 +224,19 @@ namespace PLMobile.ViewModels
             try
             {
                 System.Diagnostics.Debug.WriteLine($"[Navigation] Attempting to open book: {book.Id} - {book.Title}");
-                
+
                 var parameters = new Dictionary<string, object>
-                {
-                    { "BookId", book.Id },
-                    { "Title", book.Title }
-                };
+            {
+                { "BookId", book.Id },
+                { "Title", book.Title }
+            };
 
                 System.Diagnostics.Debug.WriteLine($"[Navigation] Parameters prepared: BookId={book.Id}, Title={book.Title}");
-                
+
                 // Use the Shell navigation pattern with absolute route
                 var route = $"///ReadPage?BookId={Uri.EscapeDataString(book.Id)}&Title={Uri.EscapeDataString(book.Title)}";
                 System.Diagnostics.Debug.WriteLine($"[Navigation] Navigation route: {route}");
-                
+
                 await Shell.Current.GoToAsync(route);
                 System.Diagnostics.Debug.WriteLine("[Navigation] Navigation completed successfully");
             }
@@ -244,7 +244,7 @@ namespace PLMobile.ViewModels
             {
                 System.Diagnostics.Debug.WriteLine($"[Navigation] Error navigating to ReadPage: {ex.Message}");
                 System.Diagnostics.Debug.WriteLine($"[Navigation] Stack trace: {ex.StackTrace}");
-                await Shell.Current.DisplayAlert("Erreur", 
+                await Shell.Current.DisplayAlert("Erreur",
                     "Impossible d'ouvrir le livre. Veuillez réessayer.", "OK");
             }
         }
@@ -272,7 +272,7 @@ namespace PLMobile.ViewModels
             try
             {
                 System.Diagnostics.Debug.WriteLine("[API] Starting GetBooksAsync...");
-                
+
                 // First test the connection
                 if (!await TestConnectionAsync())
                 {
@@ -290,19 +290,19 @@ namespace PLMobile.ViewModels
                 var response = await _httpClient.GetFromJsonAsync<List<BookModel>>(url);
                 var books = response ?? new List<BookModel>();
                 System.Diagnostics.Debug.WriteLine($"[API] Successfully fetched {books.Count} books");
-                
+
                 // Log the dates we received
                 foreach (var book in books)
                 {
                     System.Diagnostics.Debug.WriteLine($"[API] Book {book.Title}: Created at {book.CreatedAt}");
                 }
-                
+
                 if (books.Any())
                 {
                     var years = books.Select(b => b.CreatedAt.Year).Distinct().OrderByDescending(y => y);
                     System.Diagnostics.Debug.WriteLine($"[API] Available years: {string.Join(", ", years)}");
                 }
-                
+
                 return books;
             }
             catch (Exception ex)
@@ -326,4 +326,4 @@ namespace PLMobile.ViewModels
             }
         }
     }
-} 
+}

@@ -6,10 +6,9 @@
              x:DataType="viewmodels:ReadPageViewModel"
              Title="{Binding Title}">
 
-    <Grid RowDefinitions="*, Auto"
-          Padding="20">
-
-        <ScrollView Grid.Row="0">
+    <Grid RowDefinitions="*, Auto">
+        <!-- Main Content -->
+        <ScrollView Grid.Row="0" Margin="20,10">
             <VerticalStackLayout Spacing="20">
                 <ActivityIndicator IsRunning="{Binding IsBusy}"
                                  IsVisible="{Binding IsBusy}"
@@ -19,39 +18,65 @@
                 <Label Text="{Binding PageContent}"
                        FontSize="16"
                        TextColor="Black"
+                       LineHeight="1.5"
                        HorizontalOptions="Fill"
                        VerticalOptions="Fill"
                        IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"/>
             </VerticalStackLayout>
         </ScrollView>
 
+        <!-- Navigation Controls -->
         <Grid Grid.Row="1" 
               ColumnDefinitions="Auto,*,Auto"
               RowDefinitions="Auto,Auto"
-              Margin="0,20,0,0">
+              Padding="20"
+              BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}">
 
+            <!-- Previous Page Button -->
             <Button Grid.Row="0" Grid.Column="0"
-                    Text="Page précédente"
+                    Text="←"
+                    FontSize="24"
                     Command="{Binding PreviousPageCommand}"
                     IsEnabled="{Binding CanGoPrevious}"
-                    Style="{StaticResource PrimaryButton}"/>
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    Padding="0"
+                    Margin="0,0,10,0"/>
 
-            <Label Grid.Row="0" Grid.Column="1"
-                   Text="{Binding CurrentPage, StringFormat='Page {0}'}"
-                HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
+            <!-- Page Progress -->
+            <VerticalStackLayout Grid.Row="0" Grid.Column="1"
+                               HorizontalOptions="Center"
+                               Spacing="5">
+                <Label Text="{Binding CurrentPage, StringFormat='Page {0}'}"
+                       HorizontalOptions="Center"
+                       FontSize="16"/>
+                <ProgressBar Progress="{Binding ReadingProgress}"
+                            WidthRequest="200"
+                            HeightRequest="6"/>
+                <Label Text="{Binding ProgressText}"
+                       HorizontalOptions="Center"
+                       FontSize="12"
+                       TextColor="Gray"/>
+            </VerticalStackLayout>
 
+            <!-- Next Page Button -->
             <Button Grid.Row="0" Grid.Column="2"
-                    Text="Page suivante"
+                    Text="→"
+                    FontSize="24"
                     Command="{Binding NextPageCommand}"
                     IsEnabled="{Binding CanGoNext}"
-                    Style="{StaticResource PrimaryButton}"/>
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    Padding="0"
+                    Margin="10,0,0,0"/>
 
+            <!-- Return Button -->
             <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
                     Text="Retour"
-                    Command="{Binding GoBackCommand}"
-                    Style="{StaticResource SecondaryButton}"
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource SecondaryButton}"
                     Margin="0,10,0,0"/>
+
         </Grid>
     </Grid>
 
