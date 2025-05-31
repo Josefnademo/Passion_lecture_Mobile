@@ -1,28 +1,56 @@
-﻿using PLMobile.Services;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using PLMobile.ViewModels;
-using PLMobile.Models;
+﻿using PLMobile.ViewModels;
+using System.Web;
 
 namespace PLMobile;
 
 public partial class ReadPage : ContentPage
 {
-    private readonly ApiService _apiService;
-    private string _bookId;
-    private int _currentPage = 1;
-    private byte[] _epubData;
     private readonly ReadPageViewModel _viewModel;
 
-    public ReadPage(ApiService apiService, ReadPageViewModel viewModel)
+    public ReadPage(ReadPageViewModel viewModel)
     {
         InitializeComponent();
-        _apiService = apiService;
-        _viewModel = viewModel;
-        BindingContext = viewModel;
+        BindingContext = _viewModel = viewModel;
     }
-    private async void GoBack(object sender, EventArgs e)
+
+    protected override async void OnAppearing()
     {
-        await Shell.Current.GoToAsync("..");
+        base.OnAppearing();
+        await _viewModel.LoadBook();
+
+        // Restore scroll position
+        await MainScrollView.ScrollToAsync(0, _viewModel.ScrollPosition, false);
+    }
+
+    private void OnScrollChanged(object sender, ScrolledEventArgs e)
+    {
+        // Maintaining position while scrolling
+        if (MainScrollView.ContentSize.Height > 0)
+        {
+            _viewModel.ScrollPosition = e.ScrollY;
+            _viewModel.SavePosition(e.ScrollY / MainScrollView.ContentSize.Height);
+        }
+    }
+
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+
+        // Handle Shell navigation parameters
+        if (Shell.Current.CurrentState.Location.OriginalString.Contains("bookId="))
+        {
+            var bookId = HttpUtility.ParseQueryString(
+                new Uri(Shell.Current.CurrentState.Location.OriginalString).Query)["bookId"];
+            _viewModel.BookId = bookId;
+        }
+        else if (Shell.Current.CurrentState.Location.OriginalString.Contains("numericBookId="))
+        {
+            var numericId = HttpUtility.ParseQueryString(
+                new Uri(Shell.Current.CurrentState.Location.OriginalString).Query)["numericBookId"];
+            if (int.TryParse(numericId, out int id))
+            {
+                _viewModel.NumericBookId = id;
+            }
+        }
     }
 }

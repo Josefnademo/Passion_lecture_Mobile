@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using PLMobile.Models;
 using PLMobile.Services;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Json;
 
@@ -217,35 +218,36 @@ namespace PLMobile.ViewModels
         {
             if (book == null)
             {
-                System.Diagnostics.Debug.WriteLine("[Navigation] Cannot open book: book is null");
+                Debug.WriteLine("[Navigation] Cannot open book: book is null");
                 return;
             }
 
             try
             {
-                System.Diagnostics.Debug.WriteLine($"[Navigation] Attempting to open book: {book.Id} - {book.Title}");
+                Debug.WriteLine($"[Navigation] Attempting to open book: {book.Title}");
+                Debug.WriteLine($"[Navigation] Book ID: {book.Id}, NumericID: {book.NumericId}");
 
-                var parameters = new Dictionary<string, object>
-            {
-                { "BookId", book.Id },
-                { "Title", book.Title }
-            };
-
-                System.Diagnostics.Debug.WriteLine($"[Navigation] Parameters prepared: BookId={book.Id}, Title={book.Title}");
-
-                // Use the Shell navigation pattern with absolute route
-                var route = $"///ReadPage?BookId={Uri.EscapeDataString(book.Id)}&Title={Uri.EscapeDataString(book.Title)}";
-                System.Diagnostics.Debug.WriteLine($"[Navigation] Navigation route: {route}");
-
-                await Shell.Current.GoToAsync(route);
-                System.Diagnostics.Debug.WriteLine("[Navigation] Navigation completed successfully");
+                if (book.NumericId > 0)
+                {
+                    Debug.WriteLine($"[Navigation] Using numeric ID: {book.NumericId}");
+                    await Shell.Current.GoToAsync($"{nameof(ReadPage)}?numericBookId={book.NumericId}");
+                }
+                else if (!string.IsNullOrEmpty(book.Id))
+                {
+                    Debug.WriteLine($"[Navigation] Using GUID: {book.Id}");
+                    await Shell.Current.GoToAsync($"{nameof(ReadPage)}?bookId={book.Id}");
+                }
+                else
+                {
+                    Debug.WriteLine("[Navigation] Book has no valid ID");
+                    await Shell.Current.DisplayAlert("Error", "This book has no valid identifier", "OK");
+                    return;
+                }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"[Navigation] Error navigating to ReadPage: {ex.Message}");
-                System.Diagnostics.Debug.WriteLine($"[Navigation] Stack trace: {ex.StackTrace}");
-                await Shell.Current.DisplayAlert("Erreur",
-                    "Impossible d'ouvrir le livre. Veuillez réessayer.", "OK");
+                Debug.WriteLine($"[Navigation Error] {ex}");
+                await Shell.Current.DisplayAlert("Error", "Could not open the book", "OK");
             }
         }
 

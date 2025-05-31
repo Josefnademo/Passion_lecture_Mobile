@@ -39,7 +39,7 @@
                         Command="{Binding LoadBooksCommand}"
                         IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView ItemsSource="{Binding Books}"
-                              SelectionMode="None">
+                SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:BookModel">
                             <Grid Padding="10" ColumnDefinitions="Auto,*">
@@ -89,8 +89,8 @@
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer 
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenBookCommand}"
-                                        CommandParameter="{Binding .}"/>
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LibraryPageViewModel}}, Path=OpenBookCommand}"
+                        CommandParameter="{Binding .}"/>
                                 </Grid.GestureRecognizers>
                             </Grid>
                         </DataTemplate>

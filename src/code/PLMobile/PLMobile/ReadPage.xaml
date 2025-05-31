@@ -1,83 +1,48 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:PLMobile.ViewModels"
              x:Class="PLMobile.ReadPage"
-             x:DataType="viewmodels:ReadPageViewModel"
-             Title="{Binding Title}">
+             Title="Чтение">
 
-    <Grid RowDefinitions="*, Auto">
-        <!-- Main Content -->
-        <ScrollView Grid.Row="0" Margin="20,10">
-            <VerticalStackLayout Spacing="20">
-                <ActivityIndicator IsRunning="{Binding IsBusy}"
-                                 IsVisible="{Binding IsBusy}"
-                                 HorizontalOptions="Center"
-                                 VerticalOptions="Center"/>
+    <Grid RowDefinitions="*,Auto">
 
-                <Label Text="{Binding PageContent}"
-                       FontSize="16"
-                       TextColor="Black"
-                       LineHeight="1.5"
-                       HorizontalOptions="Fill"
-                       VerticalOptions="Fill"
-                       IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"/>
-            </VerticalStackLayout>
+        <!-- Main text of book -->
+        <ScrollView x:Name="MainScrollView"
+                    Grid.Row="0"
+                    Scrolled="OnScrollChanged"
+                    VerticalScrollBarVisibility="Always">
+
+            <StackLayout>
+                <!-- Load More Button -->
+                <Button Text="Load More"
+Command="{Binding LoadMoreCommand}"
+IsVisible="{Binding HasMoreText}"
+HorizontalOptions="Center"/>
+
+
+                <Label Text="{Binding DisplayText}" 
+               FontSize="16"
+               LineBreakMode="WordWrap"
+               Padding="15"/>
+            </StackLayout>
         </ScrollView>
 
-        <!-- Navigation Controls -->
-        <Grid Grid.Row="1" 
-              ColumnDefinitions="Auto,*,Auto"
-              RowDefinitions="Auto,Auto"
-              Padding="20"
-              BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}">
+        <!-- Progress panel -->
+        <Grid Grid.Row="1"
+              Padding="10"
+              BackgroundColor="{StaticResource PrimaryColor}">
 
-            <!-- Previous Page Button -->
-            <Button Grid.Row="0" Grid.Column="0"
-                    Text="←"
-                    FontSize="24"
-                    Command="{Binding PreviousPageCommand}"
-                    IsEnabled="{Binding CanGoPrevious}"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    Padding="0"
-                    Margin="0,0,10,0"/>
+            <Label Text="{Binding ProgressText}"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   FontSize="14"/>
 
-            <!-- Page Progress -->
-            <VerticalStackLayout Grid.Row="0" Grid.Column="1"
-                               HorizontalOptions="Center"
-                               Spacing="5">
-                <Label Text="{Binding CurrentPage, StringFormat='Page {0}'}"
-                       HorizontalOptions="Center"
-                       FontSize="16"/>
-                <ProgressBar Progress="{Binding ReadingProgress}"
-                            WidthRequest="200"
-                            HeightRequest="6"/>
-                <Label Text="{Binding ProgressText}"
-                       HorizontalOptions="Center"
-                       FontSize="12"
-                       TextColor="Gray"/>
-            </VerticalStackLayout>
-
-            <!-- Next Page Button -->
-            <Button Grid.Row="0" Grid.Column="2"
-                    Text="→"
-                    FontSize="24"
-                    Command="{Binding NextPageCommand}"
-                    IsEnabled="{Binding CanGoNext}"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    Padding="0"
-                    Margin="10,0,0,0"/>
-
-            <!-- Return Button -->
-            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
-                    Text="Retour"
-                Command="{Binding GoBackCommand}"
-                Style="{StaticResource SecondaryButton}"
-                    Margin="0,10,0,0"/>
-
+            <Button Text="Назад"
+                    Command="{Binding GoBackCommand}"
+                    HorizontalOptions="End"
+                    BackgroundColor="Transparent"
+                    TextColor="White"/>
         </Grid>
-    </Grid>
 
+    </Grid>
 </ContentPage>

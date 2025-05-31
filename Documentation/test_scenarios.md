@@ -13,20 +13,18 @@
 
 Expected Result: Book should be successfully uploaded and displayed in the library with all metadata.
 
-## Scenario 2: Tag Management and Filtering
+## Scenario 2: Book Reading Experience
 
-1. Create a new tag called "Science Fiction"
-2. Create another tag called "Classics"
-3. Select a book from the library
-4. Associate both tags with the book
-5. Go to the library view
-6. Filter books by "Science Fiction" tag
-7. Verify that:
-   - Only books with the "Science Fiction" tag are shown
-   - The book count matches the filter
-   - Clearing the filter shows all books again
+1. Select a book from the library
+2. Open the book reader view
+3. Verify that:
+   - The text loads within 3 seconds
+   - The progress percentage updates correctly
+   - Scrolling is smooth and responsive
+   - The last read position is remembered when reopening
+   - The book title is displayed in the header
 
-Expected Result: Tags should be created, associated with books, and filtering should work correctly.
+Expected Result: Book content loads quickly and can be read smoothly with proper progress tracking.
 
 ## Scenario 3: Reading Progress and Navigation
 

@@ -9,6 +9,11 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
+      numericId: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        unique: true,
+      },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -31,6 +36,8 @@ module.exports = (sequelize) => {
       underscored: false,
     }
   );
-
+  Book.associate = function (models) {
+    Book.belongsToMany(models.Tag, { through: "BookTags" });
+  };
   return Book;
 };

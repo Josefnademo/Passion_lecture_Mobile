@@ -4,7 +4,7 @@ namespace PLMobile.Services
 {
     public static class ApiConfiguration
     {
-        // Production API URL - this should be your actual deployed server URL
+        // Production API URL - this is actual deployed server URL
         private static string ProductionUrl = "http://localhost:3000";  // During development we'll use localhost
 
         public static string GetApiUrl()

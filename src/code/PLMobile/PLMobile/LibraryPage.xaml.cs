@@ -5,10 +5,14 @@ namespace PLMobile
 {
     public partial class LibraryPage : ContentPage
     {
+        private readonly LibraryPageViewModel _viewModel;
+
         public LibraryPage(LibraryPageViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = viewModel;
+            BindingContext = _viewModel = viewModel;
         }
+
+       
     }
 }

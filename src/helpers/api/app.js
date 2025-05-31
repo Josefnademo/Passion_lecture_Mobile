@@ -8,7 +8,10 @@ const BookModel = require("./models/BookModel");
 const TagModel = require("./models/TagModel");
 const mysql = require("mysql2/promise");
 const path = require("path");
+const { parseString } = require("xml2js");
+const JSZip = require("jszip");
 const fs = require("fs").promises;
+const AdmZip = require("adm-zip");
 
 // Enable CORS for all routes
 app.use((req, res, next) => {
@@ -31,15 +34,8 @@ app.get("/api/health", (req, res) => {
 
 // Configure multer for file uploads
 const storage = multer.memoryStorage();
-
-/*multer is a middleware for Express.js that allows you to accept files from multipart/form-data requests 
-(for example, when uploading an .epub file from a MAUI application).
-When you send a file via HttpClient with MultipartFormDataContent,
-the file is not sent as JSON, but as "form-data" (as in HTML <form enctype="multipart/form-data">). 
-Express can't handle this on its own, and multer is needed to parse the file and put it into req.file. */
 const upload = multer({ storage });
 
-// Function to try connecting to database with retries
 async function connectWithRetry(retries = 5, delay = 5000) {
   for (let i = 0; i < retries; i++) {
     try {
@@ -77,7 +73,6 @@ let Book;
 let Tag;
 let BookTag;
 
-// Initialize database connection and models
 async function initializeDatabase() {
   try {
     sequelize = await connectWithRetry();
@@ -92,7 +87,6 @@ async function initializeDatabase() {
     await Tag.sync({ alter: true });
     await BookTag.sync({ alter: true });
 
-    // Initialize default book if needed
     const exists = await Book.findOne({ where: { title: "mousquetaires" } });
     if (!exists) {
       try {
@@ -105,21 +99,29 @@ async function initializeDatabase() {
         console.error("Error creating default book:", error.message);
       }
     }
+
+    const books = await Book.findAll({ order: [["createdAt", "ASC"]] });
+    for (let i = 0; i < books.length; i++) {
+      if (!books[i].numericId) {
+        books[i].numericId = i + 1;
+        await books[i].save();
+      }
+    }
   } catch (error) {
     console.error("Failed to initialize database:", error.message);
     process.exit(1);
   }
 }
 
-app.use(express.json()); // permet de lire le body JSON des requêtes
+app.use(express.json());
 
-//FROM FILE
+// FROM FILE
 app.get("/epub/1", function (req, res) {
   const file = `${__dirname}/Dickens, Charles - Oliver Twist.epub`;
   res.download(file);
 });
 
-//FROM DB
+// FROM DB
 app.get("/epub/2", function (req, res) {
   Book.findAll({
     attributes: ["epub", "title"],
@@ -132,12 +134,11 @@ app.get("/epub/2", function (req, res) {
         'attachment; filename="' + result[0].title + '.epub"'
       )
       .header("Content-Length", blob.length)
-
       .send(blob);
   });
 });
 
-//use any epub by id
+// use any epub by id
 app.get("/epub/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -161,27 +162,21 @@ app.get("/epub/:id", async (req, res) => {
 
 app.post("/upload", upload.single("epub"), async (req, res) => {
   try {
-    // Check if the request contains a file
     if (!req.file) {
       return res.status(400).send("Aucun fichier était uploadé");
     }
 
-    // Get title from the filename
     const title = req.file.originalname.replace(".epub", "");
-
-    // Check if the book already exists
     const existingBook = await Book.findOne({ where: { title } });
     if (existingBook) {
       return res.status(409).send("Book already exists.");
     }
 
-    // Extract cover image from EPUB
     let coverImage = null;
     try {
-      const zip = new require("adm-zip")(req.file.buffer);
+      const zip = new AdmZip(req.file.buffer);
       const entries = zip.getEntries();
 
-      // Try common cover image paths
       const coverPaths = [
         "OEBPS/Images/cover.png",
         "OEBPS/images/cover.png",
@@ -203,7 +198,6 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
         }
       }
 
-      // If no cover found in common paths, try to find any image that might be a cover
       if (!coverImage) {
         const imageEntry = entries.find(
           (e) =>
@@ -217,17 +211,7 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
     } catch (error) {
       console.error("Error extracting cover:", error);
     }
-    console.log("Titre:", title);
-    console.log("Taille EPUB:", req.file?.buffer?.length);
-    console.log("Type:", typeof req.file?.buffer);
 
-    console.log("Contenu que l'on veut enregistrer :", {
-      title: title,
-      epub: req.file.buffer,
-      coverImage: coverImage,
-    });
-
-    // Create the book with cover if found
     await Book.create({
       title: title,
       epub: req.file.buffer,
@@ -241,11 +225,18 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
   }
 });
 
-// Getting a list of books sorted by date
+// Getting a list of books
 app.get("/api/books", async (req, res) => {
   try {
     const books = await Book.findAll({
-      attributes: ["id", "title", "createdAt", "lastReadPage", "coverImage"],
+      attributes: [
+        "id",
+        "numericId",
+        "title",
+        "createdAt",
+        "lastReadPage",
+        "coverImage",
+      ],
       order: [["createdAt", "DESC"]],
       include: [
         {
@@ -257,29 +248,32 @@ app.get("/api/books", async (req, res) => {
 
     const baseUrl = `${req.protocol}://${req.get("host")}`;
 
-    // Convert the Sequelize model instances to plain objects and ensure IDs are strings
     const booksJson = books.map((book) => {
       const plainBook = book.get({ plain: true });
       plainBook.id = String(plainBook.id);
-      // Add cover URL with full path
+      plainBook.numericId = book.numericId || null;
       plainBook.coverUrl = plainBook.coverImage
         ? `${baseUrl}/api/books/${plainBook.id}/cover`
         : null;
-      // Remove the actual coverImage binary data from the response
       delete plainBook.coverImage;
+
       if (plainBook.Tags) {
         plainBook.Tags = plainBook.Tags.map((tag) => ({
-          ...tag,
           id: String(tag.id),
+          name: tag.name,
         }));
       }
+
       return plainBook;
     });
 
     res.json(booksJson);
   } catch (error) {
     console.error("Error fetching books:", error);
-    res.status(500).json({ error: "Failed to fetch books" });
+    res.status(500).json({
+      error: "Failed to fetch books",
+      details: error.message,
+    });
   }
 });
 
@@ -332,7 +326,6 @@ app.get("/api/tags", async (req, res) => {
       ],
     });
 
-    // Add booksCount to each tag and ensure IDs are strings
     const tagsWithCount = tags.map((tag) => {
       const plainTag = tag.get({ plain: true });
       return {
@@ -363,7 +356,6 @@ app.post("/api/tags", async (req, res) => {
     }
 
     const tag = await Tag.create({ name });
-    // Convert ID to string before sending
     const tagJson = {
       id: String(tag.id),
       name: tag.name,
@@ -473,12 +465,11 @@ app.get("/api/books/:id/cover", async (req, res) => {
       return res.status(404).send("Cover image not found");
     }
 
-    // Try to detect image type from the first few bytes
     const imageType = book.coverImage[0] === 0x89 ? "image/png" : "image/jpeg";
 
     res
       .header("Content-Type", imageType)
-      .header("Cache-Control", "public, max-age=31536000") // Cache for 1 year
+      .header("Cache-Control", "public, max-age=31536000")
       .send(book.coverImage);
   } catch (error) {
     console.error("Error getting cover image:", error);
@@ -486,16 +477,82 @@ app.get("/api/books/:id/cover", async (req, res) => {
   }
 });
 
+// Get text by numeric ID
+app.get("/api/books/numeric/:numericId/text", async (req, res) => {
+  try {
+    const numericId = parseInt(req.params.numericId);
+    if (isNaN(numericId)) {
+      return res.status(400).json({ error: "Invalid numeric ID" });
+    }
+
+    const book = await Book.findOne({
+      where: { numericId },
+      attributes: ["id", "numericId", "title", "epub"],
+    });
+
+    if (!book || !book.epub) {
+      const availableBooks = await Book.findAll({
+        attributes: ["numericId", "id", "title"],
+        order: [["numericId", "ASC"]],
+      });
+      return res.status(404).json({
+        error: "Book not found or has no content",
+        availableBooks,
+      });
+    }
+
+    const zip = await JSZip.loadAsync(book.epub);
+    let fullText = "";
+
+    await Promise.all(
+      Object.entries(zip.files)
+        .filter(([name]) => name.endsWith(".html") || name.endsWith(".xhtml"))
+        .map(async ([name, file]) => {
+          const content = await file.async("text");
+          fullText +=
+            content
+              .replace(/<[^>]+>/g, " ")
+              .replace(/\s+/g, " ")
+              .trim() + "\n\n";
+        })
+    );
+
+    res.json({
+      id: book.id,
+      numericId: book.numericId,
+      title: book.title,
+      text: fullText.trim(),
+      length: fullText.length,
+    });
+  } catch (error) {
+    console.error("Error in numeric text endpoint:", error);
+    res.status(500).json({
+      error: "Text extraction failed",
+      details: error.message,
+    });
+  }
+});
+
 // Get book EPUB content
 app.get("/api/books/:id/epub", async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(`[API] Getting EPUB content for book ID: ${id}`);
+    const book = await Book.findByPk(id, {
+      attributes: ["id", "title", "epub"],
+    });
 
-    const book = await Book.findByPk(id);
-    if (!book || !book.epub) {
-      console.log(`[API] Book not found or no EPUB content for ID: ${id}`);
-      return res.status(404).json({ error: "Book content not found" });
+    if (!book) {
+      return res.status(404).json({
+        error: "Book not found",
+        details: `No book exists with ID ${id}`,
+      });
+    }
+
+    if (!book.epub) {
+      return res.status(404).json({
+        error: "No EPUB content",
+        details: `Book ${book.title} has no EPUB data`,
+      });
     }
 
     res
@@ -506,11 +563,12 @@ app.get("/api/books/:id/epub", async (req, res) => {
       )
       .header("Content-Length", book.epub.length)
       .send(book.epub);
-
-    console.log(`[API] Successfully sent EPUB content for book: ${book.title}`);
   } catch (error) {
-    console.error("[API] Error getting book content:", error);
-    res.status(500).json({ error: "Server error" });
+    console.error("Error getting book content:", error);
+    res.status(500).json({
+      error: "Server error",
+      details: error.message,
+    });
   }
 });
 

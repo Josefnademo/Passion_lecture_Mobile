@@ -9,6 +9,9 @@ namespace PLMobile.Models
         [JsonPropertyName("id")]
         public string Id { get; set; }
 
+        [JsonPropertyName("numericId")]
+        public int NumericId { get; set; }
+
         [JsonPropertyName("title")]
         public string Title { get; set; }
 
