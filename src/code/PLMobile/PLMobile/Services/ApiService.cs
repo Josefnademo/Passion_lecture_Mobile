@@ -1,4 +1,4 @@
-using PLMobile.Models;
+﻿using PLMobile.Models;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
@@ -174,7 +174,8 @@ namespace PLMobile.Services
                 {
                     try
                     {
-                        var response = await _httpClient.GetAsync($"/api/books/{bookId}/content");
+                        System.Diagnostics.Debug.WriteLine($"[API] Getting book content for book ID: {bookId}");
+                        var response = await _httpClient.GetAsync($"/epub/{bookId}");
 
                         if (response.IsSuccessStatusCode)
                         {
@@ -218,7 +219,7 @@ namespace PLMobile.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"/api/books/{bookId}");
+                var response = await _httpClient.GetAsync($"/books/{bookId}/lastpage");
                 if (response.IsSuccessStatusCode)
                 {
                     var book = await response.Content.ReadFromJsonAsync<BookModel>();
@@ -241,7 +242,7 @@ namespace PLMobile.Services
                     Encoding.UTF8,
                     "application/json");
 
-                var response = await _httpClient.PutAsync($"/api/books/{bookId}/lastpage", content);
+                var response = await _httpClient.PutAsync($"/books/{bookId}/lastpage", content);
                 response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)

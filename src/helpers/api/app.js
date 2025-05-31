@@ -6,69 +6,70 @@ const port = 3000;
 const multer = require("multer");
 const BookModel = require("./models/BookModel");
 const TagModel = require("./models/TagModel");
-const mysql = require('mysql2/promise');
-const path = require('path');
-const fs = require('fs').promises;
+const mysql = require("mysql2/promise");
+const path = require("path");
+const fs = require("fs").promises;
 
 // Enable CORS for all routes
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    }
-    next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
 });
 
 // Health check endpoint
 app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", timestamp: new Date().toISOString() });
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
 // Configure multer for file uploads
-const storage = multer.diskStorage({
-    destination: './uploads/',
-    filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`);
-    }
-});
+const storage = multer.memoryStorage();
 
 /*multer is a middleware for Express.js that allows you to accept files from multipart/form-data requests 
 (for example, when uploading an .epub file from a MAUI application).
 When you send a file via HttpClient with MultipartFormDataContent,
 the file is not sent as JSON, but as "form-data" (as in HTML <form enctype="multipart/form-data">). 
 Express can't handle this on its own, and multer is needed to parse the file and put it into req.file. */
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
 // Function to try connecting to database with retries
 async function connectWithRetry(retries = 5, delay = 5000) {
-    for (let i = 0; i < retries; i++) {
-        try {
-            const sequelize = new Sequelize(
-                process.env.MYSQL_DATABASE || "passionlecture",
-                process.env.MYSQL_USER || "root",
-                process.env.MYSQL_PASSWORD || "root123",
-                {
-                    host: process.env.MYSQL_HOST || "db",
-                    dialect: "mysql",
-                    retry: {
-                        max: 3
-                    }
-                }
-            );
-            await sequelize.authenticate();
-            console.log('Database connection established successfully.');
-            return sequelize;
-        } catch (err) {
-            console.log(`Failed to connect to database (attempt ${i + 1}/${retries}):`, err.message);
-            if (i < retries - 1) {
-                console.log(`Retrying in ${delay/1000} seconds...`);
-                await new Promise(resolve => setTimeout(resolve, delay));
-            }
+  for (let i = 0; i < retries; i++) {
+    try {
+      const sequelize = new Sequelize(
+        process.env.MYSQL_DATABASE || "passionlecture",
+        process.env.MYSQL_USER || "root",
+        process.env.MYSQL_PASSWORD || "root123",
+        {
+          host: process.env.MYSQL_HOST || "db",
+          dialect: "mysql",
+          retry: {
+            max: 3,
+          },
         }
+      );
+      await sequelize.authenticate();
+      console.log("Database connection established successfully.");
+      return sequelize;
+    } catch (err) {
+      console.log(
+        `Failed to connect to database (attempt ${i + 1}/${retries}):`,
+        err.message
+      );
+      if (i < retries - 1) {
+        console.log(`Retrying in ${delay / 1000} seconds...`);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      }
     }
-    throw new Error('Failed to connect to database after multiple retries');
+  }
+  throw new Error("Failed to connect to database after multiple retries");
 }
 
 let sequelize;
@@ -78,36 +79,36 @@ let BookTag;
 
 // Initialize database connection and models
 async function initializeDatabase() {
-    try {
-        sequelize = await connectWithRetry();
-        Book = BookModel(sequelize);
-        Tag = TagModel(sequelize);
-        BookTag = sequelize.define("BookTag", {});
-        
-        Book.belongsToMany(Tag, { through: BookTag });
-        Tag.belongsToMany(Book, { through: BookTag });
+  try {
+    sequelize = await connectWithRetry();
+    Book = BookModel(sequelize);
+    Tag = TagModel(sequelize);
+    BookTag = sequelize.define("BookTag", {});
 
-        await Book.sync({ alter: true });
-        await Tag.sync({ alter: true });
-        await BookTag.sync({ alter: true });
+    Book.belongsToMany(Tag, { through: BookTag });
+    Tag.belongsToMany(Book, { through: BookTag });
 
-        // Initialize default book if needed
-        const exists = await Book.findOne({ where: { title: "mousquetaires" } });
-        if (!exists) {
-            try {
-                const epubData = FS.readFileSync(
-                    `${__dirname}/Dumas, Alexandre - Les trois mousquetaires.epub`
-                );
-                await Book.create({ title: "mousquetaires", epub: epubData });
-                console.log('Default book created successfully');
-            } catch (error) {
-                console.error('Error creating default book:', error.message);
-            }
-        }
-    } catch (error) {
-        console.error('Failed to initialize database:', error.message);
-        process.exit(1);
+    await Book.sync({ alter: true });
+    await Tag.sync({ alter: true });
+    await BookTag.sync({ alter: true });
+
+    // Initialize default book if needed
+    const exists = await Book.findOne({ where: { title: "mousquetaires" } });
+    if (!exists) {
+      try {
+        const epubData = FS.readFileSync(
+          `${__dirname}/Dumas, Alexandre - Les trois mousquetaires.epub`
+        );
+        await Book.create({ title: "mousquetaires", epub: epubData });
+        console.log("Default book created successfully");
+      } catch (error) {
+        console.error("Error creating default book:", error.message);
+      }
     }
+  } catch (error) {
+    console.error("Failed to initialize database:", error.message);
+    process.exit(1);
+  }
 }
 
 app.use(express.json()); // permet de lire le body JSON des requêtes
@@ -177,23 +178,25 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
     // Extract cover image from EPUB
     let coverImage = null;
     try {
-      const zip = new require('adm-zip')(req.file.buffer);
+      const zip = new require("adm-zip")(req.file.buffer);
       const entries = zip.getEntries();
-      
+
       // Try common cover image paths
       const coverPaths = [
-        'OEBPS/Images/cover.png',
-        'OEBPS/images/cover.png',
-        'OEBPS/Images/cover.jpg',
-        'OEBPS/images/cover.jpg',
-        'OPS/images/cover.jpg',
-        'OPS/Images/cover.jpg',
-        'cover.jpg',
-        'cover.png'
+        "OEBPS/Images/cover.png",
+        "OEBPS/images/cover.png",
+        "OEBPS/Images/cover.jpg",
+        "OEBPS/images/cover.jpg",
+        "OPS/images/cover.jpg",
+        "OPS/Images/cover.jpg",
+        "cover.jpg",
+        "cover.png",
       ];
 
       for (const coverPath of coverPaths) {
-        const entry = entries.find(e => e.entryName.toLowerCase() === coverPath.toLowerCase());
+        const entry = entries.find(
+          (e) => e.entryName.toLowerCase() === coverPath.toLowerCase()
+        );
         if (entry) {
           coverImage = entry.getData();
           break;
@@ -202,9 +205,10 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
 
       // If no cover found in common paths, try to find any image that might be a cover
       if (!coverImage) {
-        const imageEntry = entries.find(e => 
-          e.entryName.toLowerCase().includes('cover') && 
-          (e.entryName.endsWith('.jpg') || e.entryName.endsWith('.png'))
+        const imageEntry = entries.find(
+          (e) =>
+            e.entryName.toLowerCase().includes("cover") &&
+            (e.entryName.endsWith(".jpg") || e.entryName.endsWith(".png"))
         );
         if (imageEntry) {
           coverImage = imageEntry.getData();
@@ -213,12 +217,21 @@ app.post("/upload", upload.single("epub"), async (req, res) => {
     } catch (error) {
       console.error("Error extracting cover:", error);
     }
+    console.log("Titre:", title);
+    console.log("Taille EPUB:", req.file?.buffer?.length);
+    console.log("Type:", typeof req.file?.buffer);
+
+    console.log("Contenu que l'on veut enregistrer :", {
+      title: title,
+      epub: req.file.buffer,
+      coverImage: coverImage,
+    });
 
     // Create the book with cover if found
     await Book.create({
       title: title,
       epub: req.file.buffer,
-      coverImage: coverImage
+      coverImage: coverImage,
     });
 
     res.status(200).send("Fichier uploadé avec succès");
@@ -234,28 +247,30 @@ app.get("/api/books", async (req, res) => {
     const books = await Book.findAll({
       attributes: ["id", "title", "createdAt", "lastReadPage", "coverImage"],
       order: [["createdAt", "DESC"]],
-      include: [{
-        model: Tag,
-        through: { attributes: [] }
-      }]
+      include: [
+        {
+          model: Tag,
+          through: { attributes: [] },
+        },
+      ],
     });
 
-    const baseUrl = `${req.protocol}://${req.get('host')}`;
-    
+    const baseUrl = `${req.protocol}://${req.get("host")}`;
+
     // Convert the Sequelize model instances to plain objects and ensure IDs are strings
-    const booksJson = books.map(book => {
+    const booksJson = books.map((book) => {
       const plainBook = book.get({ plain: true });
       plainBook.id = String(plainBook.id);
       // Add cover URL with full path
-      plainBook.coverUrl = plainBook.coverImage 
-        ? `${baseUrl}/api/books/${plainBook.id}/cover` 
+      plainBook.coverUrl = plainBook.coverImage
+        ? `${baseUrl}/api/books/${plainBook.id}/cover`
         : null;
       // Remove the actual coverImage binary data from the response
       delete plainBook.coverImage;
       if (plainBook.Tags) {
-        plainBook.Tags = plainBook.Tags.map(tag => ({
+        plainBook.Tags = plainBook.Tags.map((tag) => ({
           ...tag,
-          id: String(tag.id)
+          id: String(tag.id),
         }));
       }
       return plainBook;
@@ -272,25 +287,29 @@ app.get("/api/books", async (req, res) => {
 app.get("/api/books/filter", async (req, res) => {
   try {
     const { tagIds } = req.query;
-    let includeClause = [{
-      model: Tag,
-      through: { attributes: [] }
-    }];
+    let includeClause = [
+      {
+        model: Tag,
+        through: { attributes: [] },
+      },
+    ];
 
     if (tagIds) {
-      includeClause = [{
-        model: Tag,
-        where: {
-          id: tagIds.split(",").map(Number)
+      includeClause = [
+        {
+          model: Tag,
+          where: {
+            id: tagIds.split(",").map(Number),
+          },
+          through: { attributes: [] },
         },
-        through: { attributes: [] }
-      }];
+      ];
     }
 
     const books = await Book.findAll({
       attributes: ["id", "title", "createdAt", "lastReadPage"],
       include: includeClause,
-      order: [["createdAt", "DESC"]]
+      order: [["createdAt", "DESC"]],
     });
 
     res.json(books);
@@ -304,23 +323,25 @@ app.get("/api/books/filter", async (req, res) => {
 app.get("/api/tags", async (req, res) => {
   try {
     const tags = await Tag.findAll({
-      include: [{
-        model: Book,
-        attributes: ["id"],
-        through: { attributes: [] }
-      }]
+      include: [
+        {
+          model: Book,
+          attributes: ["id"],
+          through: { attributes: [] },
+        },
+      ],
     });
-    
+
     // Add booksCount to each tag and ensure IDs are strings
-    const tagsWithCount = tags.map(tag => {
+    const tagsWithCount = tags.map((tag) => {
       const plainTag = tag.get({ plain: true });
       return {
         id: String(plainTag.id),
         name: plainTag.name,
-        booksCount: plainTag.Books.length
+        booksCount: plainTag.Books.length,
       };
     });
-    
+
     res.json(tagsWithCount);
   } catch (error) {
     console.error("Error fetching tags:", error);
@@ -345,7 +366,7 @@ app.post("/api/tags", async (req, res) => {
     // Convert ID to string before sending
     const tagJson = {
       id: String(tag.id),
-      name: tag.name
+      name: tag.name,
     };
     res.status(201).json(tagJson);
   } catch (error) {
@@ -453,11 +474,12 @@ app.get("/api/books/:id/cover", async (req, res) => {
     }
 
     // Try to detect image type from the first few bytes
-    const imageType = book.coverImage[0] === 0x89 ? 'image/png' : 'image/jpeg';
-    
-    res.header("Content-Type", imageType)
-       .header("Cache-Control", "public, max-age=31536000") // Cache for 1 year
-       .send(book.coverImage);
+    const imageType = book.coverImage[0] === 0x89 ? "image/png" : "image/jpeg";
+
+    res
+      .header("Content-Type", imageType)
+      .header("Cache-Control", "public, max-age=31536000") // Cache for 1 year
+      .send(book.coverImage);
   } catch (error) {
     console.error("Error getting cover image:", error);
     res.status(500).send("Server error");
@@ -469,7 +491,7 @@ app.get("/api/books/:id/epub", async (req, res) => {
   try {
     const { id } = req.params;
     console.log(`[API] Getting EPUB content for book ID: ${id}`);
-    
+
     const book = await Book.findByPk(id);
     if (!book || !book.epub) {
       console.log(`[API] Book not found or no EPUB content for ID: ${id}`);
@@ -478,10 +500,13 @@ app.get("/api/books/:id/epub", async (req, res) => {
 
     res
       .header("Content-Type", "application/epub+zip")
-      .header("Content-Disposition", `attachment; filename="${book.title}.epub"`)
+      .header(
+        "Content-Disposition",
+        `attachment; filename="${book.title}.epub"`
+      )
       .header("Content-Length", book.epub.length)
       .send(book.epub);
-      
+
     console.log(`[API] Successfully sent EPUB content for book: ${book.title}`);
   } catch (error) {
     console.error("[API] Error getting book content:", error);
@@ -491,25 +516,25 @@ app.get("/api/books/:id/epub", async (req, res) => {
 
 // Start server only after database is initialized
 async function startServer() {
-    await initializeDatabase();
-    
-    app.listen(port, "0.0.0.0", () => {
-        console.log(`Server listening on port ${port} on all interfaces`);
-    });
+  await initializeDatabase();
+
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`Server listening on port ${port} on all interfaces`);
+  });
 }
 
-startServer().catch(error => {
-    console.error('Failed to start server:', error.message);
-    process.exit(1);
+startServer().catch((error) => {
+  console.error("Failed to start server:", error.message);
+  process.exit(1);
 });
 
 // MySQL connection configuration
 const dbConfig = {
-    host: process.env.MYSQL_HOST || 'db',
-    user: 'root',
-    password: process.env.MYSQL_PASSWORD || 'root123',
-    database: process.env.MYSQL_DATABASE || 'passionlecture'
+  host: process.env.MYSQL_HOST || "db",
+  user: "root",
+  password: process.env.MYSQL_PASSWORD || "root123",
+  database: process.env.MYSQL_DATABASE || "passionlecture",
 };
 
 // Create uploads directory if it doesn't exist
-fs.mkdir('./uploads').catch(() => {});
+fs.mkdir("./uploads").catch(() => {});
