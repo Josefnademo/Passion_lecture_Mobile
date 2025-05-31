@@ -1,23 +1,23 @@
 type: collection.insomnia.rest/5.0
 name: App_mobile
 meta:
-  id: wrk_797094cce73a4be7a68b72b79ac62c9d
-  created: 1745994472068
-  modified: 1747399475334
+  id: wrk_48a68d8124924f428c918241032627d9
+  created: 1748689673527
+  modified: 1748689673527
 collection:
   - name: book_routers
     meta:
-      id: fld_43e040c7d76a40d4882505f1d3cad8a0
+      id: fld_e4a77ec0237244bfb76fed288bc7e982
       created: 1710235985227
       modified: 1710235985227
       sortKey: -1710235985227
     children:
-      - url: http://localhost:3000/books
+      - url: http://localhost:3000/api/books
         name: getBooks
         meta:
-          id: req_9a67a1cf91474439a0f13ce4f74f70a1
+          id: req_e791ac9326ba41fb999c9a61f3048c83
           created: 1710245982533
-          modified: 1748000903813
+          modified: 1748689830614
           isPrivate: false
           sortKey: -1710245982533
         method: GET
@@ -35,9 +35,9 @@ collection:
       - url: http://localhost:3000/upload
         name: postBook
         meta:
-          id: req_3dc204da5aa546258a4894b03aea7b7c
+          id: req_16b84e68dffc4761b70277b07ba69701
           created: 1710246720186
-          modified: 1748001674291
+          modified: 1748689904229
           isPrivate: false
           sortKey: -1710238487722.25
         method: POST
@@ -46,9 +46,9 @@ collection:
           params:
             - name: epub
               id: pair_9d37ab59e4fc4d0888bcee4505aba8af
+              fileName: C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\helpers\api\Dumas,
+                Alexandre - Les trois mousquetaires.epub
               type: file
-              fileName: C:\Users\pn25kdv\Documents\GitHub\Passion_lecture_Mobile\src\books\books\Doyle,
-                Artur Conan - Sherlock Holmes.epub
         headers:
           - name: Content-Type
             value: multipart/form-data
@@ -68,7 +68,7 @@ collection:
       - url: http://localhost:3000/epub/1
         name: getBooksId
         meta:
-          id: req_4e5c098e47044f1e85b02f197ff1eeee
+          id: req_c2ca65273d17464b9cd421eab62ac0f9
           created: 1748005286439
           modified: 1748005309586
           isPrivate: false
@@ -87,17 +87,17 @@ collection:
           rebuildPath: true
   - name: Tags_routers
     meta:
-      id: fld_57b53a6c99d546aa9c5d7a7710ffa069
+      id: fld_62eb66abcc314cf1a069623cfe1e8075
       created: 1748005321038
       modified: 1748005321038
       sortKey: -1748005321038
     children:
-      - url: http://localhost:3000/tags
+      - url: http://localhost:3000/api/tags
         name: getTags
         meta:
-          id: req_82075c0ce3af469f83533f0b5ad9f70a
+          id: req_a86eee53dd5941e4a5686365b902f95d
           created: 1710246408934
-          modified: 1748005324168
+          modified: 1748689846357
           isPrivate: false
           sortKey: -1748005323915
         method: GET
@@ -115,7 +115,7 @@ collection:
       - url: http://localhost:3000/upload
         name: postTag
         meta:
-          id: req_4b87622d948641079e5c008c8f0c30b3
+          id: req_448fc8a6ac4e4eb7946b3114670e65a3
           created: 1748001914484
           modified: 1748005326073
           isPrivate: false
@@ -135,13 +135,13 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_d9710b7f19c0434a8490ba6c9616a016
+    id: jar_be9c233365114100adacb502a4e60f6c
     created: 1744096011537
     modified: 1744096011537
 environments:
   name: Base Environment
   meta:
-    id: env_d084ddadc5934e45a91caa74a0dd5dde
+    id: env_a11227755d7545099c90e94c0ed48ca1
     created: 1744096011535
     modified: 1744096011535
     isPrivate: false
