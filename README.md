@@ -11,7 +11,16 @@ Passion_lecture_Mobile: The company "Read4All" aims to popularize reading by off
    git clone https://github.com/Josefnademo/Passion_lecture_Mobile
    ```
 
-2. **Compose docker container:**
+2. **Installation of dependencies**
+
+   Installation of dependencies for backend
+
+   ```bash
+   cd Passion_lecture_Mobile\src\helpers\api
+   npm install
+   ```
+
+3. **Compose docker container:**
 
    First, build thedocker container with (MySQL database, Backend API, PHPMyAdmin).
 
@@ -21,7 +30,7 @@ Passion_lecture_Mobile: The company "Read4All" aims to popularize reading by off
    ```bash
    docker compose up --build
    ```
-3. **Deploy application**
+4. **Deploy application**
 
    After this you can start the application on you mobile device, for this run the **.sln** file named "**PLMobile.sln**".
 
