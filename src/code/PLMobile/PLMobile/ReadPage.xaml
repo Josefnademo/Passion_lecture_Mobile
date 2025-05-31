@@ -1,31 +1,27 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PLMobile.ReadPage"
-             Title="Чтение">
+             Title="{Binding BookTitle}">
 
     <Grid RowDefinitions="*,Auto">
-
-        <!-- Main text of book -->
+        <!-- Scrollable main text -->
         <ScrollView x:Name="MainScrollView"
                     Grid.Row="0"
                     Scrolled="OnScrollChanged"
                     VerticalScrollBarVisibility="Always">
-
-            <StackLayout>
-                <!-- Load More Button -->
-                <Button Text="Load More"
-Command="{Binding LoadMoreCommand}"
-IsVisible="{Binding HasMoreText}"
-HorizontalOptions="Center"/>
-
-
-                <Label Text="{Binding DisplayText}" 
-               FontSize="16"
-               LineBreakMode="WordWrap"
-               Padding="15"/>
-            </StackLayout>
+            <Label Text="{Binding DisplayText}" 
+                   FontSize="16"
+                   LineBreakMode="WordWrap"
+                   Padding="15"/>
         </ScrollView>
+
+        <!--downloading indicator-->
+        <ActivityIndicator Grid.RowSpan="2"
+                          IsVisible="{Binding IsLoading}"
+                          IsRunning="{Binding IsLoading}"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"/>
+
 
         <!-- Progress panel -->
         <Grid Grid.Row="1"
@@ -43,6 +39,6 @@ HorizontalOptions="Center"/>
                     BackgroundColor="Transparent"
                     TextColor="White"/>
         </Grid>
-
     </Grid>
 </ContentPage>
+

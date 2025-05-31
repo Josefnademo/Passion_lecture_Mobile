@@ -12,27 +12,22 @@ namespace PLMobile.ViewModels
     {
         private readonly ApiService _apiService;
         private string _fullText = "";
-        private int _lastPosition = 0;
-        private const int ChunkSize = 10000;
-        private double _scrollPosition;
+        private double _lastScrollPosition = 0;
 
         [ObservableProperty]
         private string _displayText = "Loading...";
 
-        public double ScrollPosition
-        {
-            get => _scrollPosition;
-            set => SetProperty(ref _scrollPosition, value);
-        }
-
         [ObservableProperty]
-        private string _progressText = "0%";
+        private string _bookTitle;
 
         [ObservableProperty]
         private bool _isLoading;
 
         [ObservableProperty]
-        private string _bookTitle;
+        private double _scrollPosition;
+
+        [ObservableProperty]
+        private string _progressText = "0%";
 
         public string BookId { get; set; }
         public int NumericBookId { get; set; }
@@ -42,33 +37,27 @@ namespace PLMobile.ViewModels
             _apiService = apiService;
         }
 
-
         [RelayCommand]
         public async Task LoadBook()
         {
             try
             {
                 IsLoading = true;
-                DisplayText = "Loading book content...";
+                DisplayText = "Loading book...";
 
-                ApiService.BookTextResponse response;
-                if (NumericBookId > 0)
-                {
-                    response = await _apiService.GetBookTextAsync(NumericBookId);
-                }
-                else
-                {
-                    response = await _apiService.GetBookTextAsync(BookId);
-                }
+                var response = NumericBookId > 0
+                    ? await _apiService.GetBookTextAsync(NumericBookId)
+                    : await _apiService.GetBookTextAsync(BookId);
 
-                _fullText = WebUtility.HtmlDecode(response.Text); // Decode HTML entities
+                _fullText = WebUtility.HtmlDecode(response.Text);
                 BookTitle = response.Title;
 
-                // Restore position
-                var positionKey = NumericBookId > 0 ? $"Pos_{NumericBookId}" : $"Pos_{BookId}";
-                _lastPosition = Preferences.Get(positionKey, 0);
+                // Restoring the position
+                var positionKey = GetPositionKey();
+                _lastScrollPosition = Preferences.Get(positionKey, 0.0);
 
-                UpdateDisplayText();
+                DisplayText = _fullText;
+                UpdateProgress();
             }
             catch (Exception ex)
             {
@@ -81,80 +70,35 @@ namespace PLMobile.ViewModels
             }
         }
 
-        private void UpdateDisplayText()
+        private void UpdateProgress()
         {
-            try
-            {
-                if (string.IsNullOrEmpty(_fullText))
-                {
-                    DisplayText = "No text available";
-                    return;
-                }
+            if (string.IsNullOrEmpty(_fullText)) return;
 
-                _lastPosition = Math.Clamp(_lastPosition, 0, _fullText.Length - 1);
-                var displayLength = Math.Min(ChunkSize, _fullText.Length - _lastPosition);
-                DisplayText = _fullText.Substring(_lastPosition, displayLength);
-
-                var progress = (double)_lastPosition / _fullText.Length;
-                ProgressText = $"{progress:P0}";
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Display error: {ex}");
-                DisplayText = "Error displaying text";
-            }
+            var progress = _lastScrollPosition * 100;
+            ProgressText = $"{progress:F1}%";
         }
 
-        [ObservableProperty]
-        private bool _hasMoreText = true;
-
-        [RelayCommand]
-        private void LoadMore()
+        public void SaveReadingPosition(double scrollY, double contentHeight)
         {
-            _lastPosition += ChunkSize;
-            if (_lastPosition >= _fullText.Length)
-            {
-                _lastPosition = _fullText.Length - 1;
-                HasMoreText = false;
-            }
-            UpdateDisplayText();
+            if (contentHeight <= 0) return;
 
-            // Save position
-            var positionKey = NumericBookId > 0 ? $"Pos_{NumericBookId}" : $"Pos_{BookId}";
-            Preferences.Set(positionKey, _lastPosition);
+            _lastScrollPosition = scrollY / contentHeight;
+            var positionKey = GetPositionKey();
+            Preferences.Set(positionKey, _lastScrollPosition);
+            UpdateProgress();
         }
 
-        public void SavePosition(double position)
+        private string GetPositionKey()
         {
-            try
-            {
-                if (_fullText.Length == 0) return;
-
-                var newPosition = (int)(position * _fullText.Length);
-                _lastPosition = Math.Clamp(newPosition, 0, _fullText.Length - 1);
-
-                var positionKey = NumericBookId > 0
-                    ? $"Pos_{NumericBookId}"
-                    : $"Pos_{BookId}";
-                Preferences.Set(positionKey, _lastPosition);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[ERROR] SavePosition failed: {ex}");
-            }
+            return NumericBookId > 0
+                ? $"BookPos_{NumericBookId}"
+                : $"BookPos_{BookId}";
         }
 
         [RelayCommand]
         private async Task GoBack()
         {
-            try
-            {
-                await Shell.Current.GoToAsync("..");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[ERROR] GoBack failed: {ex}");
-            }
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

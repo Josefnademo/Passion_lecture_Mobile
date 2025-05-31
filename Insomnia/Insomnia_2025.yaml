@@ -37,7 +37,7 @@ collection:
         meta:
           id: req_16b84e68dffc4761b70277b07ba69701
           created: 1710246720186
-          modified: 1748689904229
+          modified: 1748705755240
           isPrivate: false
           sortKey: -1710238487722.25
         method: POST
@@ -46,8 +46,8 @@ collection:
           params:
             - name: epub
               id: pair_9d37ab59e4fc4d0888bcee4505aba8af
-              fileName: C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\helpers\api\Dumas,
-                Alexandre - Les trois mousquetaires.epub
+              fileName: C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\books\books\Dickens,
+                Charles - Oliver Twist.epub
               type: file
         headers:
           - name: Content-Type
@@ -73,6 +73,46 @@ collection:
           modified: 1748005309586
           isPrivate: false
           sortKey: -1710245982633
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/books/1/epub
+        name: New Request
+        meta:
+          id: req_bd5357b562c8442497913e8b4cc8278f
+          created: 1748714719758
+          modified: 1748714748213
+          isPrivate: false
+          sortKey: -1748714719758
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/books/numeric/1/text
+        name: text
+        meta:
+          id: req_d57d6271cf5f4e6e88dba97cf76589eb
+          created: 1748715842098
+          modified: 1748717700042
+          isPrivate: false
+          sortKey: -1748715842098
         method: GET
         headers:
           - name: User-Agent

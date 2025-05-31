@@ -1,8 +1,8 @@
 ﻿using PLMobile.ViewModels;
-using System.Web;
+using System.Diagnostics;
+using System.Net;
 
 namespace PLMobile;
-
 public partial class ReadPage : ContentPage
 {
     private readonly ReadPageViewModel _viewModel;
@@ -18,39 +18,47 @@ public partial class ReadPage : ContentPage
         base.OnAppearing();
         await _viewModel.LoadBook();
 
-        // Restore scroll position
-        await MainScrollView.ScrollToAsync(0, _viewModel.ScrollPosition, false);
+        // Waiting for content rendering
+        if (MainScrollView.Content != null)
+        {
+            MainScrollView.Content.SizeChanged += OnContentSizeChanged;
+        }
+    }
+
+    private void OnContentSizeChanged(object sender, EventArgs e)
+    {
+        MainScrollView.Content.SizeChanged -= OnContentSizeChanged;
+
+        Device.BeginInvokeOnMainThread(async () =>
+        {
+            await Task.Delay(50); // Additional delay
+            await RestoreScrollPosition();
+        });
+    }
+
+    private async Task RestoreScrollPosition()
+    {
+        if (MainScrollView.Content != null)
+        {
+            var scrollTo = MainScrollView.Content.Height * _viewModel.ScrollPosition;
+            await MainScrollView.ScrollToAsync(0, scrollTo, false);
+        }
     }
 
     private void OnScrollChanged(object sender, ScrolledEventArgs e)
     {
-        // Maintaining position while scrolling
-        if (MainScrollView.ContentSize.Height > 0)
+        if (MainScrollView.Content != null)
         {
-            _viewModel.ScrollPosition = e.ScrollY;
-            _viewModel.SavePosition(e.ScrollY / MainScrollView.ContentSize.Height);
+            _viewModel.SaveReadingPosition(e.ScrollY, MainScrollView.Content.Height);
         }
     }
 
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    protected override void OnDisappearing()
     {
-        base.OnNavigatedTo(args);
-
-        // Handle Shell navigation parameters
-        if (Shell.Current.CurrentState.Location.OriginalString.Contains("bookId="))
+        base.OnDisappearing();
+        if (MainScrollView.Content != null)
         {
-            var bookId = HttpUtility.ParseQueryString(
-                new Uri(Shell.Current.CurrentState.Location.OriginalString).Query)["bookId"];
-            _viewModel.BookId = bookId;
-        }
-        else if (Shell.Current.CurrentState.Location.OriginalString.Contains("numericBookId="))
-        {
-            var numericId = HttpUtility.ParseQueryString(
-                new Uri(Shell.Current.CurrentState.Location.OriginalString).Query)["numericBookId"];
-            if (int.TryParse(numericId, out int id))
-            {
-                _viewModel.NumericBookId = id;
-            }
+            MainScrollView.Content.SizeChanged -= OnContentSizeChanged;
         }
     }
 }
