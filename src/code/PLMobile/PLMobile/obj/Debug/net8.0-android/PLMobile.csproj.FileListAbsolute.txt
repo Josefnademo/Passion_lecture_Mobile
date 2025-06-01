@@ -17,8 +17,18 @@ C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobil
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\mauiimage.inputs
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\mauifont.inputs
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\mauisplash.inputs
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\sp\drawable-hdpi\splash.png
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\sp\drawable-mdpi\splash.png
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\sp\drawable-v31\maui_splash_image.xml
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\sp\drawable-xhdpi\splash.png
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\sp\drawable-xxhdpi\splash.png
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\sp\drawable-xxxhdpi\splash.png
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\sp\drawable\maui_splash_image.xml
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\sp\values\maui_colors.xml
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\mauisplash.stamp
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\mauifont.stamp
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\f\OpenSans-Regular.ttf
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\f\OpenSans-Semibold.ttf
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\r\drawable\chains_and_gears.jpg
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\r\drawable\ancient_library.jpeg
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\r\drawable\background_library.png
@@ -51,6 +61,7 @@ C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobil
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\case_map.txt
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\__Microsoft.Android.Resource.Designer.cs
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\res.flag
+C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\A52E68AE06E1868A-files.cache
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\resizetizer\2E90E89EAD89A570-files.cache
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\lp\91\jl\files.cache
 C:\Users\hdjdj\Documents\GitHub\Passion_lecture_Mobile\src\code\PLMobile\PLMobile\obj\Debug\net8.0-android\lp\92\jl\files.cache

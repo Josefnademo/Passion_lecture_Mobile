@@ -60,6 +60,9 @@ namespace PLMobile
             builder.Services.AddTransient<ReadPageViewModel>();
             builder.Services.AddTransient<TagsPageViewModel>();
             builder.Services.AddTransient<ApiPageViewModel>();
+            builder.Services.AddTransient<BookTagsViewModel>();
+            builder.Services.AddTransient<TagItemViewModel>();
+
 
             // Register Pages
             builder.Services.AddTransient<MainPage>();
@@ -68,6 +71,7 @@ namespace PLMobile
             builder.Services.AddTransient<TagsPage>();
             builder.Services.AddTransient<ApiPage>();
             builder.Services.AddTransient<ReadPage>();
+            builder.Services.AddTransient<BookTagsPage>();
 
 #if DEBUG
             builder.Logging.AddDebug();

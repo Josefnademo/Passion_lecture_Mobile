@@ -32,6 +32,66 @@
         <member name="P:PLMobile.ViewModels.BaseViewModel.Title">
             <inheritdoc cref="F:PLMobile.ViewModels.BaseViewModel._title"/>
         </member>
+        <member name="T:PLMobile.ViewModels.BookTagsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.BookTitle">
+            <inheritdoc cref="F:PLMobile.ViewModels.BookTagsViewModel.bookTitle"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.NumericBookId">
+            <inheritdoc cref="F:PLMobile.ViewModels.BookTagsViewModel.numericBookId"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.BookId">
+            <inheritdoc cref="F:PLMobile.ViewModels.BookTagsViewModel.bookId"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.AvailableTags">
+            <inheritdoc cref="F:PLMobile.ViewModels.BookTagsViewModel.availableTags"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.SelectedTags">
+            <inheritdoc cref="F:PLMobile.ViewModels.BookTagsViewModel.selectedTags"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.IsTagDropdownVisible">
+            <inheritdoc cref="F:PLMobile.ViewModels.BookTagsViewModel.isTagDropdownVisible"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.SelectedTag">
+            <inheritdoc cref="F:PLMobile.ViewModels.BookTagsViewModel.selectedTag"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.SelectedTagText">
+            <inheritdoc cref="F:PLMobile.ViewModels.BookTagsViewModel.selectedTagText"/>
+        </member>
+        <member name="M:PLMobile.ViewModels.BookTagsViewModel.OnSelectedTagChanged(PLMobile.ViewModels.TagItemViewModel)">
+            <summary>Executes the logic for when <see cref="P:PLMobile.ViewModels.BookTagsViewModel.SelectedTag"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:PLMobile.ViewModels.BookTagsViewModel.SelectedTag"/> is changed.</remarks>
+        </member>
+        <member name="F:PLMobile.ViewModels.BookTagsViewModel.loadTagsCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.BookTagsViewModel.LoadTagsCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.LoadTagsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.BookTagsViewModel.LoadTags"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.BookTagsViewModel.toggleTagDropdownCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.BookTagsViewModel.ToggleTagDropdownCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.ToggleTagDropdownCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.BookTagsViewModel.ToggleTagDropdown"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.BookTagsViewModel.removeTagCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.BookTagsViewModel.RemoveTagCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.RemoveTagCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:PLMobile.ViewModels.BookTagsViewModel.RemoveTag(PLMobile.ViewModels.TagItemViewModel)"/>.</summary>
+        </member>
+        <member name="F:PLMobile.ViewModels.BookTagsViewModel.saveTagsCommand">
+            <summary>The backing field for <see cref="P:PLMobile.ViewModels.BookTagsViewModel.SaveTagsCommand"/>.</summary>
+        </member>
+        <member name="P:PLMobile.ViewModels.BookTagsViewModel.SaveTagsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.BookTagsViewModel.SaveTagsAsync"/>.</summary>
+        </member>
         <member name="T:PLMobile.ViewModels.ImportPageViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -146,7 +206,7 @@
             <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.ManageTagsCommand"/>.</summary>
         </member>
         <member name="P:PLMobile.ViewModels.LibraryPageViewModel.ManageTagsCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.ManageTags"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:PLMobile.ViewModels.LibraryPageViewModel.ManageTags(PLMobile.Models.BookModel)"/>.</summary>
         </member>
         <member name="F:PLMobile.ViewModels.LibraryPageViewModel.importBookCommand">
             <summary>The backing field for <see cref="P:PLMobile.ViewModels.LibraryPageViewModel.ImportBookCommand"/>.</summary>
@@ -222,6 +282,18 @@
         <member name="P:PLMobile.ViewModels.ReadPageViewModel.GoBackCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:PLMobile.ViewModels.ReadPageViewModel.GoBack"/>.</summary>
         </member>
+        <member name="T:PLMobile.ViewModels.TagItemViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:PLMobile.ViewModels.TagItemViewModel.Id">
+            <inheritdoc cref="F:PLMobile.ViewModels.TagItemViewModel.id"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.TagItemViewModel.Name">
+            <inheritdoc cref="F:PLMobile.ViewModels.TagItemViewModel.name"/>
+        </member>
+        <member name="P:PLMobile.ViewModels.TagItemViewModel.IsSelected">
+            <inheritdoc cref="F:PLMobile.ViewModels.TagItemViewModel.isSelected"/>
+        </member>
         <member name="T:PLMobile.ViewModels.TagsPageViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -276,14 +348,32 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NumericBookId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NumericBookId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BookId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BookId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AvailableTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AvailableTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsTagDropdownVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsTagDropdownVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedTag">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedTag" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedTagText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedTagText" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedFilePath">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedFilePath" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Books">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Books" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedTags">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedTags" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSortedByDateDesc">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSortedByDateDesc" generated properties.</summary>
@@ -311,6 +401,15 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ProgressText">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ProgressText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSelected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSelected" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tags">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tags" generated properties.</summary>
@@ -342,14 +441,32 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NumericBookId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NumericBookId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BookId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BookId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AvailableTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AvailableTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsTagDropdownVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsTagDropdownVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTag">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTag" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTagText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTagText" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedFilePath">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedFilePath" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Books">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Books" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTags">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTags" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSortedByDateDesc">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSortedByDateDesc" generated properties.</summary>
@@ -377,6 +494,15 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ProgressText">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ProgressText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSelected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSelected" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tags">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tags" generated properties.</summary>

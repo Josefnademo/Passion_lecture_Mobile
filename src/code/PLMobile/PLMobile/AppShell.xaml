@@ -33,4 +33,8 @@
         ContentTemplate="{DataTemplate local:ReadPage}"
         Route="ReadPage" />
 
+    <ShellContent
+     ContentTemplate="{DataTemplate local:BookTagsPage}"
+     Route="BookTagsPage" />
+
 </Shell>

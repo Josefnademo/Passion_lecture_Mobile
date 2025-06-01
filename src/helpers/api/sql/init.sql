@@ -1,8 +1,7 @@
--- This script creates a database named 'passionlecture' and tables named 'books', 'Tags','BookTags', and  after that it adds some sample data to the table.
 CREATE DATABASE IF NOT EXISTS passionlecture;
 USE passionlecture;
 
--- Create the books table
+-- Books table
 CREATE TABLE IF NOT EXISTS `Books` (
   `id` CHAR(36) BINARY NOT NULL,
   `title` VARCHAR(255) NOT NULL,
@@ -14,34 +13,32 @@ CREATE TABLE IF NOT EXISTS `Books` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Create the tags table
+-- Tags table
 CREATE TABLE IF NOT EXISTS `Tags` (
-  `id` INTEGER NOT NULL auto_increment,
+  `id` CHAR(36) BINARY NOT NULL,       -- Changed from INTEGER to CHAR(36) for UUID consistency
   `name` VARCHAR(255) UNIQUE,
   `createdAt` DATETIME NOT NULL,
   `updatedAt` DATETIME NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Create the BookTags junction table
+-- Junction table BookTags
 CREATE TABLE IF NOT EXISTS `BookTags` (
   `BookId` CHAR(36) BINARY NOT NULL,
-  `TagId` INTEGER NOT NULL,
-  `createdAt` DATETIME NOT NULL,
-  `updatedAt` DATETIME NOT NULL,
+  `TagId` CHAR(36) BINARY NOT NULL,
   PRIMARY KEY (`BookId`, `TagId`),
-  FOREIGN KEY (`BookId`) REFERENCES `Books` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (`TagId`) REFERENCES `Tags` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (`BookId`) REFERENCES `Books`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`TagId`) REFERENCES `Tags`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Create some initial tags
-INSERT INTO Tags (name, createdAt, updatedAt) VALUES
-('Fiction', NOW(), NOW()),
-('Non-Fiction', NOW(), NOW()),
-('Science', NOW(), NOW()),
-('History', NOW(), NOW()),
-('Technology', NOW(), NOW()),
-('Programming', NOW(), NOW()); 
+-- Insert sample tags with UUIDs generated (replace with actual UUID strings)
+INSERT INTO `Tags` (`id`, `name`, `createdAt`, `updatedAt`) VALUES
+(UUID(), 'Fiction', NOW(), NOW()),
+(UUID(), 'Non-Fiction', NOW(), NOW()),
+(UUID(), 'Science', NOW(), NOW()),
+(UUID(), 'History', NOW(), NOW()),
+(UUID(), 'Technology', NOW(), NOW()),
+(UUID(), 'Programming', NOW(), NOW());
 
 
 -- Example of how to insert a book (you'll need to replace the binary data)

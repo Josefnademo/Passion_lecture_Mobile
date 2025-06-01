@@ -8,6 +8,7 @@
              Title="{Binding Title}"
              BackgroundImageSource="background_library.png">
 
+
     <Grid>
         <Grid RowDefinitions="Auto,*">
             <!-- Search and Filter Bar -->
@@ -16,7 +17,7 @@
                            Placeholder="Rechercher un livre..."
                            Text="{Binding SearchQuery}"
                            SearchCommand="{Binding SearchCommand}"/>
-                
+
                 <Button Grid.Column="1" 
                         Text="Filtrer"
                         Command="{Binding ShowTagFilterCommand}"
@@ -33,76 +34,82 @@
                         Text="+"
                         Command="{Binding ImportBookCommand}"/>
             </Grid>
-
-            <!-- Books List -->
             <RefreshView Grid.Row="1" 
-                        Command="{Binding LoadBooksCommand}"
-                        IsRefreshing="{Binding IsRefreshing}">
-                <CollectionView ItemsSource="{Binding Books}"
-                SelectionMode="None">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:BookModel">
-                            <Grid Padding="10" ColumnDefinitions="Auto,*">
-                                <!-- Book Cover -->
-                                <Frame Grid.Column="0" 
-                                       HeightRequest="120" 
-                                       WidthRequest="80" 
-                                       Padding="0"
-                                       IsClippedToBounds="True">
-                                    <Image Source="{Binding CoverUrl}"
-                                           Aspect="AspectFill">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer 
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenBookCommand}"
-                                                CommandParameter="{Binding .}"/>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                </Frame>
+            Command="{Binding LoadBooksCommand}"
+            IsRefreshing="{Binding IsRefreshing}">
+        <CollectionView ItemsSource="{Binding Books}"
+                    SelectionMode="None">
+            
+            
 
-                                <!-- Book Details -->
-                                <VerticalStackLayout Grid.Column="1" 
-                                                   Padding="10,0,0,0"
-                                                   VerticalOptions="Center">
-                                    <Label Text="{Binding Title}" 
-                                           FontSize="16"
-                                           FontAttributes="Bold"/>
-                                    <Label Text="{Binding CreatedAt, StringFormat='{0:d}'}" 
-                                           TextColor="Gray"
-                                           FontSize="12"/>
-                                    <FlexLayout BindableLayout.ItemsSource="{Binding Tags}"
-                                              Wrap="Wrap"
-                                              JustifyContent="Start"
-                                              AlignItems="Start">
-                                        <BindableLayout.ItemTemplate>
-                                            <DataTemplate x:DataType="models:TagModel">
-                                                <Frame Padding="5,2" 
-                                                       Margin="0,2,5,2"
-                                                       BackgroundColor="LightGray"
-                                                       CornerRadius="10">
-                                                    <Label Text="{Binding Name}" 
-                                                           FontSize="10"/>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </BindableLayout.ItemTemplate>
-                                    </FlexLayout>
-                                </VerticalStackLayout>
-
-                                <Grid.GestureRecognizers>
+            <!-- Correct ItemTemplate syntax -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:BookModel">
+                    <Grid Padding="10" ColumnDefinitions="Auto,*,Auto">
+                        <!-- Book Cover -->
+                        <Frame Grid.Column="0" 
+                           HeightRequest="120" 
+                           WidthRequest="80" 
+                           Padding="0"
+                           IsClippedToBounds="True">
+                            <Image Source="{Binding CoverUrl}"
+                               Aspect="AspectFill">
+                                <Image.GestureRecognizers>
                                     <TapGestureRecognizer 
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LibraryPageViewModel}}, Path=OpenBookCommand}"
-                        CommandParameter="{Binding .}"/>
-                                </Grid.GestureRecognizers>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </RefreshView>
-        </Grid>
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenBookCommand}"
+                                    CommandParameter="{Binding .}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
 
-        <!-- Loading Indicator -->
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                          IsRunning="{Binding IsBusy}"
-                          HorizontalOptions="Center"
-                          VerticalOptions="Center"/>
+                        <!-- Book Details -->
+                        <VerticalStackLayout Grid.Column="1" 
+                                       Padding="10,0,0,0"
+                                       VerticalOptions="Center">
+                            <Label Text="{Binding Title}" 
+                               FontSize="16"
+                               FontAttributes="Bold"/>
+                            <Label Text="{Binding CreatedAt, StringFormat='{0:d}'}" 
+                               TextColor="Gray"
+                               FontSize="12"/>
+                            <FlexLayout BindableLayout.ItemsSource="{Binding Tags}"
+                                  Wrap="Wrap"
+                                  JustifyContent="Start"
+                                  AlignItems="Start">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="models:TagModel">
+                                        <Frame Padding="5,2" 
+                                           Margin="0,2,5,2"
+                                           BackgroundColor="LightGray"
+                                           CornerRadius="10">
+                                            <Label Text="{Binding Name}" 
+                                               FontSize="10"/>
+                                        </Frame>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </VerticalStackLayout>
+
+                        <!-- Tag Management Button -->
+                        <Button Grid.Column="2"
+                            Text="✏️" 
+                            FontSize="14"
+                            BackgroundColor="Transparent"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LibraryPageViewModel}}, Path=ManageTagsCommand}"
+                            CommandParameter="{Binding .}"
+                            WidthRequest="40"
+                            HeightRequest="40"/>
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LibraryPageViewModel}}, Path=OpenBookCommand}"
+                            CommandParameter="{Binding .}"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+        </Grid>
     </Grid>
 </ContentPage>

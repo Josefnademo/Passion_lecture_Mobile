@@ -67,6 +67,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="BookTagsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="ImportPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

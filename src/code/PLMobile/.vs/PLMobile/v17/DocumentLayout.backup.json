@@ -3,16 +3,103 @@
   "WorkspaceRootPath": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\readpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\readpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\viewmodels\\librarypageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\viewmodels\\librarypageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\models\\tagmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\models\\tagmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\models\\bookmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\models\\bookmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\viewmodels\\booktagsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\viewmodels\\booktagsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\viewmodels\\importpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\viewmodels\\importpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\viewmodels\\tagitemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\viewmodels\\tagitemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\booktagspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\booktagspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\booktagspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\booktagspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\services\\apiconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\services\\apiconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\viewmodels\\readpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\viewmodels\\readpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\readpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\readpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\viewmodels\\readpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\viewmodels\\readpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\librarypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\librarypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\librarypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\librarypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\readpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\readpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\tagspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\tagspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\viewmodels\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\viewmodels\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\viewmodels\\tagspageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\viewmodels\\tagspageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\tagspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\tagspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\importpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\importpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\packs\\Microsoft.Android.Sdk.Windows\\34.0.147\\tools\\Xamarin.Android.Common.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|solutionrelative:plmobile\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A40F8494-2B9F-4D83-BFB7-CC91C59C576B}|PLMobile\\PLMobile.csproj|c:\\users\\hdjdj\\documents\\github\\passion_lecture_mobile\\src\\code\\plmobile\\plmobile\\plmobile.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -26,51 +113,337 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 20,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TagItemViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\TagItemViewModel.cs",
+              "RelativeDocumentMoniker": "PLMobile\\ViewModels\\TagItemViewModel.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\TagItemViewModel.cs",
+              "RelativeToolTip": "PLMobile\\ViewModels\\TagItemViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T08:27:31.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "PLMobile\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\MauiProgram.cs",
+              "RelativeToolTip": "PLMobile\\MauiProgram.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAgwD0AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T08:13:51.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ImportPage.xaml",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ImportPage.xaml",
+              "RelativeDocumentMoniker": "PLMobile\\ImportPage.xaml",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ImportPage.xaml",
+              "RelativeToolTip": "PLMobile\\ImportPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-01T08:05:38.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BookTagsPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\BookTagsPage.xaml.cs",
+              "RelativeDocumentMoniker": "PLMobile\\BookTagsPage.xaml.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\BookTagsPage.xaml.cs",
+              "RelativeToolTip": "PLMobile\\BookTagsPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T08:05:34.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "PLMobile\\AppShell.xaml.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\AppShell.xaml.cs",
+              "RelativeToolTip": "PLMobile\\AppShell.xaml.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T08:02:56.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\AppShell.xaml",
+              "RelativeDocumentMoniker": "PLMobile\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\AppShell.xaml",
+              "RelativeToolTip": "PLMobile\\AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-01T08:02:41.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "LibraryPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\LibraryPage.xaml.cs",
+              "RelativeDocumentMoniker": "PLMobile\\LibraryPage.xaml.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\LibraryPage.xaml.cs",
+              "RelativeToolTip": "PLMobile\\LibraryPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:58:55.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Xamarin.Android.Common.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\packs\\Microsoft.Android.Sdk.Windows\\34.0.147\\tools\\Xamarin.Android.Common.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\packs\\Microsoft.Android.Sdk.Windows\\34.0.147\\tools\\Xamarin.Android.Common.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\packs\\Microsoft.Android.Sdk.Windows\\34.0.147\\tools\\Xamarin.Android.Common.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\packs\\Microsoft.Android.Sdk.Windows\\34.0.147\\tools\\Xamarin.Android.Common.targets",
+              "ViewState": "AgIAAP8JAAAAAAAAAAAYwCYKAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-06-01T07:58:35.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "PLMobile\\ViewModels\\BaseViewModel.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\BaseViewModel.cs",
+              "RelativeToolTip": "PLMobile\\ViewModels\\BaseViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:51:07.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ApiConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\Services\\ApiConfiguration.cs",
+              "RelativeDocumentMoniker": "PLMobile\\Services\\ApiConfiguration.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\Services\\ApiConfiguration.cs",
+              "RelativeToolTip": "PLMobile\\Services\\ApiConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:50:23.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ImportPageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\ImportPageViewModel.cs",
+              "RelativeDocumentMoniker": "PLMobile\\ViewModels\\ImportPageViewModel.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\ImportPageViewModel.cs",
+              "RelativeToolTip": "PLMobile\\ViewModels\\ImportPageViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:49:31.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "LibraryPage.xaml",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\LibraryPage.xaml",
+              "RelativeDocumentMoniker": "PLMobile\\LibraryPage.xaml",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\LibraryPage.xaml",
+              "RelativeToolTip": "PLMobile\\LibraryPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-01T07:44:38.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LibraryPageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\LibraryPageViewModel.cs",
+              "RelativeDocumentMoniker": "PLMobile\\ViewModels\\LibraryPageViewModel.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\LibraryPageViewModel.cs",
+              "RelativeToolTip": "PLMobile\\ViewModels\\LibraryPageViewModel.cs",
+              "ViewState": "AgIAACkBAAAAAAAAAAAowGABAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:44:34.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TagModel.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\Models\\TagModel.cs",
+              "RelativeDocumentMoniker": "PLMobile\\Models\\TagModel.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\Models\\TagModel.cs",
+              "RelativeToolTip": "PLMobile\\Models\\TagModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:43:16.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookModel.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\Models\\BookModel.cs",
+              "RelativeDocumentMoniker": "PLMobile\\Models\\BookModel.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\Models\\BookModel.cs",
+              "RelativeToolTip": "PLMobile\\Models\\BookModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:43:16.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BookTagsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\BookTagsViewModel.cs",
+              "RelativeDocumentMoniker": "PLMobile\\ViewModels\\BookTagsViewModel.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\BookTagsViewModel.cs",
+              "RelativeToolTip": "PLMobile\\ViewModels\\BookTagsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:41:35.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BookTagsPage.xaml",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\BookTagsPage.xaml",
+              "RelativeDocumentMoniker": "PLMobile\\BookTagsPage.xaml",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\BookTagsPage.xaml",
+              "RelativeToolTip": "PLMobile\\BookTagsPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-01T07:40:19.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "TagsPageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\TagsPageViewModel.cs",
+              "RelativeDocumentMoniker": "PLMobile\\ViewModels\\TagsPageViewModel.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\TagsPageViewModel.cs",
+              "RelativeToolTip": "PLMobile\\ViewModels\\TagsPageViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:37:50.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "TagsPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\TagsPage.xaml.cs",
+              "RelativeDocumentMoniker": "PLMobile\\TagsPage.xaml.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\TagsPage.xaml.cs",
+              "RelativeToolTip": "PLMobile\\TagsPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T07:37:48.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "TagsPage.xaml",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\TagsPage.xaml",
+              "RelativeDocumentMoniker": "PLMobile\\TagsPage.xaml",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\TagsPage.xaml",
+              "RelativeToolTip": "PLMobile\\TagsPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-01T07:37:32.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ApiService.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\Services\\ApiService.cs",
+              "RelativeDocumentMoniker": "PLMobile\\Services\\ApiService.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\Services\\ApiService.cs",
+              "RelativeToolTip": "PLMobile\\Services\\ApiService.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAgwDkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T21:46:06.937Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MainPageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\MainPageViewModel.cs",
+              "RelativeDocumentMoniker": "PLMobile\\ViewModels\\MainPageViewModel.cs",
+              "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\MainPageViewModel.cs",
+              "RelativeToolTip": "PLMobile\\ViewModels\\MainPageViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T21:46:05.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "ReadPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ReadPage.xaml.cs",
               "RelativeDocumentMoniker": "PLMobile\\ReadPage.xaml.cs",
               "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ReadPage.xaml.cs",
               "RelativeToolTip": "PLMobile\\ReadPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-31T21:30:11.658Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
               "Title": "ReadPage.xaml",
               "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ReadPage.xaml",
               "RelativeDocumentMoniker": "PLMobile\\ReadPage.xaml",
               "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ReadPage.xaml",
               "RelativeToolTip": "PLMobile\\ReadPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-31T21:29:45.126Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 13,
               "Title": "ReadPageViewModel.cs",
               "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\ReadPageViewModel.cs",
               "RelativeDocumentMoniker": "PLMobile\\ViewModels\\ReadPageViewModel.cs",
               "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\ViewModels\\ReadPageViewModel.cs",
               "RelativeToolTip": "PLMobile\\ViewModels\\ReadPageViewModel.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAwwDcAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAGcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-31T21:26:36.098Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PLMobile",
+              "DocumentIndex": 25,
+              "Title": "PLMobile.csproj",
               "DocumentMoniker": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\PLMobile.csproj",
               "RelativeDocumentMoniker": "PLMobile\\PLMobile.csproj",
               "ToolTip": "C:\\Users\\hdjdj\\Documents\\GitHub\\Passion_lecture_Mobile\\src\\code\\PLMobile\\PLMobile\\PLMobile.csproj",

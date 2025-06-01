@@ -6,6 +6,7 @@ const port = 3000;
 const multer = require("multer");
 const BookModel = require("./models/BookModel");
 const TagModel = require("./models/TagModel");
+const BookTagModel = require("./models/BookTag");
 const mysql = require("mysql2/promise");
 const path = require("path");
 const { parseString } = require("xml2js");
@@ -68,21 +69,30 @@ async function connectWithRetry(retries = 5, delay = 5000) {
   throw new Error("Failed to connect to database after multiple retries");
 }
 
-let sequelize;
-let Book;
-let Tag;
-let BookTag;
+let Book, Tag, BookTag;
 
 async function initializeDatabase() {
   try {
     sequelize = await connectWithRetry();
-    Book = BookModel(sequelize);
-    Tag = TagModel(sequelize);
-    BookTag = sequelize.define("BookTag", {});
 
-    Book.belongsToMany(Tag, { through: BookTag });
-    Tag.belongsToMany(Book, { through: BookTag });
+    // Initialiser les modèles en passant la connexion sequelize
+    Book = BookModel(sequelize, Sequelize.DataTypes);
+    Tag = TagModel(sequelize, Sequelize.DataTypes);
+    BookTag = BookTagModel(sequelize, Sequelize.DataTypes);
 
+    // Configurer les associations
+    Book.belongsToMany(Tag, {
+      through: BookTag,
+      foreignKey: "BookId",
+      otherKey: "TagId",
+    });
+    Tag.belongsToMany(Book, {
+      through: BookTag,
+      foreignKey: "TagId",
+      otherKey: "BookId",
+    });
+
+    // Synchroniser les modèles
     await Book.sync({ alter: true });
     await Tag.sync({ alter: true });
     await BookTag.sync({ alter: true });
@@ -394,23 +404,43 @@ app.put("/books/:id/lastpage", async (req, res) => {
 // Associate tags with a book
 app.post("/books/:id/tags", async (req, res) => {
   try {
-    const { id } = req.params;
-    const { tagIds } = req.body;
+    const bookId = req.params.id; // book id from URL
+    const { tagIds } = req.body; // array of tag ids from the request body
 
-    const book = await Book.findByPk(id);
-    if (!book) {
-      return res.status(404).send("Book not found");
+    if (!Array.isArray(tagIds)) {
+      return res.status(400).json({ error: "tagIds must be an array" });
     }
 
-    await book.setTags(tagIds);
-    const updatedBook = await Book.findByPk(id, {
-      include: [Tag],
+    // Find a book by id
+    const book = await Book.findByPk(bookId);
+    if (!book) {
+      return res.status(404).json({ error: "Book not found" });
+    }
+
+    //Find tags by id to make sure they exist
+    const tags = await Tag.findAll({
+      where: { id: tagIds },
     });
 
-    res.json(updatedBook);
+    if (tags.length !== tagIds.length) {
+      return res.status(400).json({ error: "One or more tags not found" });
+    }
+
+    // Update links (assign tags to book)
+    await book.setTags(tags);
+
+    // Send updated tags in response
+    const updatedTags = await book.getTags();
+
+    res.json(
+      updatedTags.map((tag) => ({
+        id: String(tag.id),
+        name: tag.name,
+      }))
+    );
   } catch (error) {
-    console.error("Error associating tags:", error);
-    res.status(500).send("Server error");
+    console.error("Error updating book tags:", error);
+    res.status(500).json({ error: "Server error" });
   }
 });
 

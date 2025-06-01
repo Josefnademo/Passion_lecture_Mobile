@@ -1,0 +1,94 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PLMobile.ViewModels"
+             x:Class="PLMobile.BookTagsPage"
+             x:DataType="viewmodels:BookTagsViewModel"
+             Title="Manage Tags"
+             BackgroundImageSource="background_library.png">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto,Auto">
+
+        <!-- Book Title -->
+        <Label Grid.Row="0"
+               Text="{Binding BookTitle}"
+               FontSize="18"
+               FontAttributes="Bold"
+               Margin="10"/>
+
+        <!-- Tag Selection Dropdown -->
+        <Border Grid.Row="1"
+                Stroke="LightGray"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 5"
+                Margin="10,0"
+                Padding="10"
+                HeightRequest="70">
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="{Binding SelectedTagText}"
+                       VerticalOptions="Center"
+                       Margin="10,0"
+                       FontSize="16"/>
+                <Button Text="Assigner un tag"
+                        Command="{Binding ToggleTagDropdownCommand}"
+                        Margin="5"
+                        FontSize="14"/>
+            </Grid>
+        </Border>
+
+        <!-- Dropdown -->
+        <Frame Grid.Row="2"
+               IsVisible="{Binding IsTagDropdownVisible}"
+               Margin="10,0"
+               Padding="0"
+               CornerRadius="5"
+               BorderColor="LightGray">
+            <CollectionView ItemsSource="{Binding AvailableTags}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedTag}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodels:TagItemViewModel">
+                        <Label Text="{Binding Name}"
+                               Padding="15,10"
+                               FontSize="16"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Frame>
+
+        <!-- Selected Tags -->
+        <FlexLayout Grid.Row="3"
+                    BindableLayout.ItemsSource="{Binding SelectedTags}"
+                    Wrap="Wrap"
+                    Margin="10">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate x:DataType="viewmodels:TagItemViewModel">
+                    <Frame Padding="10,5"
+                           Margin="0,0,5,5"
+                           BackgroundColor="CornflowerBlue">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding Name}"
+                                   TextColor="White"
+                                   FontSize="14"/>
+                            <Button Grid.Column="1"
+                                    Text="×"
+                                    FontSize="14"
+                                    TextColor="White"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:BookTagsViewModel}}, Path=RemoveTagCommand}"
+                                    CommandParameter="{Binding .}"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+
+        <!-- Save Button -->
+        <Button Grid.Row="4"
+                Text="Sauvgarder Tags"
+                Command="{Binding SaveTagsCommand}"
+                Margin="10"
+                FontSize="16"
+                BackgroundColor="DarkGreen"
+                TextColor="White"/>
+    </Grid>
+</ContentPage>

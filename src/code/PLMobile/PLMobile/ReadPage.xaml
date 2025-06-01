@@ -33,7 +33,7 @@
                    TextColor="White"
                    FontSize="14"/>
 
-            <Button Text="Назад"
+            <Button Text="Retour"
                     Command="{Binding GoBackCommand}"
                     HorizontalOptions="End"
                     BackgroundColor="Transparent"

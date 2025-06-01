@@ -85,6 +85,7 @@ namespace PLMobile.ViewModels
             }
         }
 
+
         [RelayCommand]
         private async Task FilterByTag()
         {
@@ -251,11 +252,32 @@ namespace PLMobile.ViewModels
             }
         }
 
+
         [RelayCommand]
-        private async Task ManageTags()
+        private async Task ManageTags(BookModel book)
         {
-            await Shell.Current.GoToAsync(nameof(TagsPage));
+            if (IsBusy) return;
+
+            try
+            {
+                IsBusy = true;
+
+                await Shell.Current.GoToAsync(nameof(BookTagsPage), new Dictionary<string, object>
+                {
+                    ["BookId"] = book.Id,
+                    ["BookTitle"] = book.Title
+                });
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("Error", $"Failed to manage tags: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
+
 
         [RelayCommand]
         private async Task ImportBook()

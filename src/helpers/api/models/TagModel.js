@@ -10,7 +10,17 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       unique: true,
+      allowNull: false,
     },
   });
+
+  Tag.associate = (models) => {
+    Tag.belongsToMany(models.Book, {
+      through: "BookTags",
+      foreignKey: "TagId",
+      otherKey: "BookId",
+    });
+  };
+
   return Tag;
 };

@@ -36,8 +36,14 @@ module.exports = (sequelize) => {
       underscored: false,
     }
   );
-  Book.associate = function (models) {
-    Book.belongsToMany(models.Tag, { through: "BookTags" });
+
+  Book.associate = (models) => {
+    Book.belongsToMany(models.Tag, {
+      through: "BookTags",
+      foreignKey: "BookId",
+      otherKey: "TagId",
+    });
   };
+
   return Book;
 };

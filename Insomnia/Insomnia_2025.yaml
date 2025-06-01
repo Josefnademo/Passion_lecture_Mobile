@@ -172,6 +172,50 @@ collection:
             send: true
             store: true
           rebuildPath: true
+      - url: http://localhost:3000/books/2/tags
+        name: TagByBookId
+        meta:
+          id: req_570813cf295442d18bc2435eb71d7ba4
+          created: 1748767899227
+          modified: 1748769530748
+          isPrivate: false
+          sortKey: -1748767899227
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/books/2/tags
+        name: Associate tags with a book
+        meta:
+          id: req_3222f386d40a4de0a79f89d8771f4eda
+          created: 1748767950507
+          modified: 1748772311493
+          isPrivate: false
+          sortKey: -1748767950507
+        method: POST
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:

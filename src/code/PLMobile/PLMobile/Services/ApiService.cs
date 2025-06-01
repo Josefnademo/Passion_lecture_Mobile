@@ -1,4 +1,5 @@
-﻿using PLMobile.Models;
+﻿using Microsoft.Maui.Controls;
+using PLMobile.Models;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http.Json;
@@ -59,10 +60,17 @@ namespace PLMobile.Services
                                 Debug.WriteLine($"[API] Successfully retrieved {books.Count} books");
                                 foreach (var book in books)
                                 {
+                                    if (string.IsNullOrEmpty(book.Id))
+                                    {
+                                        Debug.WriteLine($"[WARNING] Book missing Id: Title={book.Title}, NumericId={book.NumericId}");
+                                    }
+
                                     if (!string.IsNullOrEmpty(book.CoverUrl) && !book.CoverUrl.StartsWith("http"))
                                     {
                                         book.CoverUrl = $"{_httpClient.BaseAddress}{book.CoverUrl.TrimStart('/')}";
                                     }
+                                    Debug.WriteLine($"[DEBUG] Response content: {content}");
+
                                 }
                                 return books;
                             }
@@ -120,49 +128,54 @@ namespace PLMobile.Services
             }
         }
 
+        // Tag-related methods
         public async Task<List<TagModel>> GetTagsAsync()
+        {
+            return await _httpClient.GetFromJsonAsync<List<TagModel>>("/api/tags");
+        }
+
+        public async Task<List<TagModel>> GetBookTagsAsync(int numericBookId)
         {
             try
             {
-                Debug.WriteLine("[API] Starting GetTagsAsync request...");
-
-                if (!await TestConnectionAsync())
-                {
-                    Debug.WriteLine("[API] Connection test failed");
-                    throw new HttpRequestException("Cannot connect to API server");
-                }
-
-                Debug.WriteLine("[API] Making request to /api/tags");
-                var tags = await _httpClient.GetFromJsonAsync<List<TagModel>>("/api/tags");
-
-                if (tags != null)
-                {
-                    Debug.WriteLine($"[API] Successfully retrieved {tags.Count} tags");
-                }
-                else
-                {
-                    Debug.WriteLine("[API] No tags returned from API");
-                }
-
-                return tags ?? new List<TagModel>();
-            }
-            catch (HttpRequestException ex)
-            {
-                Debug.WriteLine($"[API] Connection Error: {ex.Message}");
-                Debug.WriteLine($"[API] Stack trace: {ex.StackTrace}");
-                await Application.Current.MainPage.DisplayAlert("Connection Error",
-                    $"Could not connect to the server at {_httpClient.BaseAddress}. Please make sure Docker is running and try again.", "OK");
-                throw;
+                return await _httpClient.GetFromJsonAsync<List<TagModel>>($"/books/{numericBookId}/tags");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"[API] Unexpected Error: {ex.Message}");
-                Debug.WriteLine($"[API] Stack trace: {ex.StackTrace}");
-                await Application.Current.MainPage.DisplayAlert("Error",
-                    $"An unexpected error occurred while fetching tags: {ex.Message}", "OK");
-                throw;
+                Debug.WriteLine($"[API] Error getting tags for book {numericBookId}: {ex.Message}");
+                return new List<TagModel>();
             }
         }
+
+        public async Task<bool> UpdateBookTagsAsync(string bookId, List<string> tagIds)
+        {
+            try
+            {
+                var payload = new { tagIds };
+                var jsonPayload = JsonSerializer.Serialize(payload);
+                Debug.WriteLine($"[API] Sending JSON: {jsonPayload}");
+
+                var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync($"/books/{bookId}/tags", content);
+
+                var responseText = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    Debug.WriteLine($"[API] Failed to update tags: {responseText}");
+                    return false;
+                }
+
+                Debug.WriteLine($"[API] Success: {responseText}");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[API] Exception updating tags: {ex.Message}");
+                return false;
+            }
+        }
+
 
         public async Task<TagModel> CreateTagAsync(string name)
         {
